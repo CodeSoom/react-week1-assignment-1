@@ -21,7 +21,13 @@ function createElement(tagName, props, ...children) {
 }
 createElement('p', null, 'hello');
 
-let count = 0;
+const state = {
+  const: 0,
+};
+
+function plusCount() {
+  state.const += 1;
+}
 
 function render() {
   const element = (
@@ -30,13 +36,13 @@ function render() {
         <button
           type="button"
           onClick={() => {
-            count += 1;
+            plusCount();
             render();
           }}
         >
           Click me!
           (
-          {count}
+          {state.const}
           )
         </button>
       </p>
@@ -45,7 +51,7 @@ function render() {
           <button
             type="button"
             onClick={() => {
-              count = i;
+              state.const = i;
               render();
             }}
           >
