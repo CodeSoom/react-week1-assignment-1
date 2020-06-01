@@ -1,3 +1,4 @@
+import React from 'react'
 /* @jsx createElement */
 // eslint-disable-next-line no-unused-vars
 function createElement(tagName, props, ...children) {
@@ -38,6 +39,7 @@ function render(value) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
+          // eslint-disable-next-line react/jsx-key
           <button type="button" onClick={() => { handleClickNumber(i);}}>
             {i}
           </button>
