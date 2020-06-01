@@ -13,6 +13,6 @@ Scenario('Click me test', (I) => {
   I.click('Click me!');
   I.see('(5)');
 
-  I.click('2');	
+  I.click('2');
   I.see('(2)');
 });
