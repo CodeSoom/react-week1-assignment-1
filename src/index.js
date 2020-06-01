@@ -1,18 +1,15 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 
 /* @jsx createElement */
-let count = 0;
-
-function handleClick() {
-  count += 1;
-  render();
+function handleClick(prevCount) {
+  render(prevCount + 1);
 }
 
-function render() {
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(count)}>
           Click me! (
           {count}
           )
