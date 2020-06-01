@@ -1,11 +1,15 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-
 /* @jsx createElement */
-function handleClick(prevCount) {
-  render(prevCount + 1);
-}
 
 function render(count = 0) {
+  const handleClick = (prevCount) => {
+    render(prevCount + 1);
+  };
+
+  const handleClickNumber = (number) => {
+    render(number);
+  };
+
   const element = (
     <div id="hello" className="greeting">
       <p>
@@ -15,6 +19,7 @@ function render(count = 0) {
           )
         </button>
       </p>
+      <p>{[1, 2, 3].map((i) => (<button type="button" onClick={() => handleClickNumber(i)}>{i}</button>))}</p>
     </div>
   );
 
@@ -31,7 +36,7 @@ function createElement(tag, props, ...children) {
     el[k.toLowerCase()] = v;
   });
 
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       el.appendChild(child);
       return;
