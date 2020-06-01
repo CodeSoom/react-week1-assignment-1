@@ -10,7 +10,7 @@ function createElement(tagName, props, ...children) {
     element[key.toLowerCase()] = value;
   });
 
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
@@ -30,6 +30,12 @@ function handleClick() {
   // eslint-disable-next-line no-use-before-define
   render();
 }
+
+function handleClickNumber(value) {
+  click.count = value;
+  render();
+}
+
 function render() {
   const element = (
     <div id="hello" className="greeting">
@@ -40,6 +46,16 @@ function render() {
           {click.count}
           )
         </button>
+      </p>
+      <p>
+        {/* {[1, 2, 3].map((i) => (
+          <p>{i}</p>
+        ))} */}
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
