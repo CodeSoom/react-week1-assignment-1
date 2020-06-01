@@ -1,5 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -18,6 +16,32 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+function render() {
+    const element = (
+      <div id="hello" className="greeting">
+        <p>Hello, world!</p>
+        <p>
+          <button type="button" onClick={handleClick}>
+            Click me! (
+            {counts[counts.length-1]}
+            )
+          </button>
+        </p>
+        <p>
+          {[1, 2, 3].map((i) => {
+            // eslint-disable-next-line no-unused-expressions
+            return (
+              <button type="button" onClick={() => handleClickNumber(i)}>
+                  {i}
+              </button>
+            )
+          })}
+        </p>
+      </div>
+    );
+    document.getElementById('app').textContent = '';
+    document.getElementById('app').appendChild(element);
+}
 const counts = [0];
 
 function handleClick() {
@@ -29,31 +53,6 @@ function handleClickNumber(value) {
   counts.push(value);
   render();
 }
-function render() {
-  const element = (
-    <div id="hello" className="greeting">
-      <p>Hello, world!</p>
-      <p>
-        <button type="button" onClick={handleClick}>
-          Click me! (
-          {counts[counts.length-1]}
-          )
-        </button>
-      </p>
-      <p>
-        {[1, 2, 3].map((i) => {
-          // eslint-disable-next-line no-unused-expressions
-          return (
-            <button type="button" onClick={() => handleClickNumber(i)}>
-                {i}
-            </button>
-          )
-        })}
-      </p>
-    </div>
-  );
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
-}
+
 
 render();
