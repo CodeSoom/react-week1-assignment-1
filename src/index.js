@@ -21,18 +21,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const click = {
-  count: 0,
+const initCountArray = [1, 2, 3];
+
+const countObject = {
+  value: 0,
 };
 
 function handleClick() {
-  click.count += 1;
+  countObject.value += 1;
   // eslint-disable-next-line no-use-before-define
   render();
 }
 
-function handleClickNumber(value) {
-  click.count = value;
+function handleClickNumber(initCountValue) {
+  countObject.value = initCountValue;
   // eslint-disable-next-line no-use-before-define
   render();
 }
@@ -44,15 +46,12 @@ function render() {
       <p>
         <button type="button" onClick={handleClick}>
           Click me! (
-          {click.count}
+          {countObject.value}
           )
         </button>
       </p>
       <p>
-        {/* {[1, 2, 3].map((i) => (
-          <p>{i}</p>
-        ))} */}
-        {[1, 2, 3].map((i) => (
+        {initCountArray.map((i) => (
           <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
