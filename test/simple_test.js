@@ -12,5 +12,4 @@ Scenario('Click me test', (I) => {
   I.click('Click me!');
   I.click('Click me!');
   I.see('(5)');
-
 });
