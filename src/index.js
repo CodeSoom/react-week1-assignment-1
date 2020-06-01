@@ -1,6 +1,5 @@
-/* eslint-disable react/react-in-jsx-scope */
 /* @jsx createElement */
-
+// eslint-disable-next-line no-unused-vars
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -18,42 +17,36 @@ function createElement(tagName, props, ...children) {
 }
 const counts = [0];
 
+function handleClick() {
+  console.log('Click Me!');
+  counts.push(counts[counts.length - 1] + 1);
+}
+function handleClickNumber(value) {
+  counts.push(value);
+}
+
 function render() {
   const element = (
-    // eslint-disable-next-line react/jsx-filename-extension
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => { handleClick(); render(); }}>
           Click me! (
           {counts[counts.length - 1]}
           )
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => {
-          // eslint-disable-next-line no-unused-expressions
-          return (
-            <button type="button" onClick={() => handleClickNumber(i)}>
-              {i}
-            </button>
-          )
-        })}
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => { handleClickNumber(i); render; }}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
-}
-
-function handleClick() {
-  console.log('Click Me!');
-  counts.push(counts[counts.length - 1] + 1);
-  render();
-}
-function handleClickNumber(value) {
-  counts.push(value);
-  render();
 }
 
 
