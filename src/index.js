@@ -29,6 +29,7 @@ function render(count = 0) {
 
 render();
 
+/* eslint-disable no-unused-vars */
 function createElement(tag, props, ...children) {
   const el = document.createElement(tag);
 
