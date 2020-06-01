@@ -38,7 +38,7 @@ function render() {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => { handleClickNumber(i); render; }}>
+          <button type="button" onClick={() => { handleClickNumber(i); render(); }}>
             {i}
           </button>
         ))}
