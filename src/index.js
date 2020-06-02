@@ -5,7 +5,7 @@
 function createElement(tagName, props = {}, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
-    element[key.toLocaleLowerCase()] = value;
+    element[key.toLowerCase()] = value;
   });
   children.flat().forEach((child) => {
     if (child instanceof Node) {
@@ -19,14 +19,32 @@ function createElement(tagName, props = {}, ...children) {
 
 
 function render() {
+  function getCount() {
+    return document.querySelector('#count').textContent;
+  }
+  function addCount(count) {
+    if (typeof count === 'number') {
+      document.querySelector('#count').textContent = count.toString();
+      return;
+    }
+    document.querySelector('#count').textContent = count;
+  }
+  function convert(count) {
+    if (typeof count === 'string') {
+      return parseInt(count, 10);
+    }
+    return count;
+  }
+  function countUp(count) {
+    return count + 1;
+  }
+
+
   function handleClick(i) {
     if (typeof i === 'number') {
-      document.querySelector('#count').textContent = i;
+      addCount(i);
     } else {
-      const countText = document.querySelector('#count').textContent;
-      let countNumber = parseInt(countText, 10);
-      countNumber += 1;
-      document.querySelector('#count').textContent = countNumber.toString();
+      addCount(countUp(convert(getCount())));
     }
   }
 
