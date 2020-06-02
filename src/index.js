@@ -1,14 +1,15 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, no-use-before-define  */
 /* @jsx createElement */
-function render(count = 0) {
-  const handleClick = (prevCount) => {
-    render(prevCount + 1);
-  };
+function handleClick(prevCount) {
+  const count = prevCount + 1;
+  render(count);
+}
 
-  const handleClickNumber = (number) => {
+function handleClickNumber(number) {
     render(number);
-  };
+}
 
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>
