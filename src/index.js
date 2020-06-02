@@ -20,19 +20,17 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
-
-function handleClick() {
+function handleClick(count) {
   count += 1;
-  render();
+  render(count);
 }
 
 function handleClickNumber(value) {
-  count = value
-  render();
+  render(value);
 }
 
-function render() {
+function render(count) {
+  console.log(count);
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -56,4 +54,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(0);
