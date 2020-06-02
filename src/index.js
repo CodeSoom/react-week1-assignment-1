@@ -18,18 +18,32 @@ const createElement = (tagName, props, ...children) => {
   return element;
 };
 
-const onClick = () => {
-  console.log('onClick');
+let count = 0;
+
+const increaseCount = () => {
+  count += 1;
 };
 
-const element = (
-  <div id="hello-world" className="greeting">
-    <p>Hello World!</p>
-    <button type="button" onClick={onClick}>
-      Click, me!
-    </button>
-  </div>
-);
+const onClick = () => {
+  increaseCount();
+  render();
+};
 
-const container = document.getElementById('app');
-container.appendChild(element);
+const render = () => {
+  const element = (
+    <div id="hello-world" className="greeting">
+      <p>Hello World!</p>
+      <button type="button" onClick={onClick}>
+        Click, me! (
+        {count}
+        )
+      </button>
+    </div>
+  );
+
+  const container = document.getElementById('app');
+  container.textContent = '';
+  container.appendChild(element);
+};
+
+render();
