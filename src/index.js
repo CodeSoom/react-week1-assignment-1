@@ -18,48 +18,19 @@ function createElement(tagName, props = {}, ...children) {
 }
 
 
-function render() {
-  function getCount() {
-    return document.querySelector('#count').textContent;
-  }
-  function addCount(count) {
-    if (typeof count === 'number') {
-      document.querySelector('#count').textContent = count.toString();
-      return;
-    }
-    document.querySelector('#count').textContent = count;
-  }
-  function convert(count) {
-    if (typeof count === 'string') {
-      return parseInt(count, 10);
-    }
-    return count;
-  }
-  function countUp(count) {
-    return count + 1;
-  }
-
-
-  function handleClick(i) {
-    if (typeof i === 'number') {
-      addCount(i);
-    } else {
-      addCount(countUp(convert(getCount())));
-    }
-  }
-
+function render({ count = 0 }) {
   const element = (
     <p>
       <h1>Hello world!</h1>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => render({ count: count + 1 })}>
           Click me!
           (
-          <span id="count">0</span>
+          {count}
           )
         </button>
         <p>
-          {[1, 2, 3].map((i) => <button type="button" onClick={() => handleClick(i)}>{i}</button>)}
+          {[1, 2, 3].map((cnt) => <button type="button" onClick={() => render({ count: cnt })}>{cnt}</button>)}
         </p>
       </p>
     </p>
@@ -69,4 +40,4 @@ function render() {
   document.querySelector('#app').appendChild(element);
 }
 
-render();
+render({ count: 0 });
