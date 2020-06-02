@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-
 function render(count = 0) {
   const handleClick = (prevCount) => {
     render(prevCount + 1);
@@ -29,7 +28,7 @@ function render(count = 0) {
 
 render();
 
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 function createElement(tag, props, ...children) {
   const el = document.createElement(tag);
 
