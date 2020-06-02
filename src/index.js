@@ -21,8 +21,8 @@ function createElement(tagName, props, ...children) {
 }
 
 function handleClick(value = 0) {
-  value += 1;
-  render(value);
+  const sum = value + 1;
+  render(sum);
 }
 
 function render(cnt = 0) {
@@ -33,7 +33,7 @@ function render(cnt = 0) {
         <button type="button" onClick={() => handleClick(cnt)}>
           Click me!
           (
-            {cnt}
+          {cnt}
           )
         </button>
       </p>
