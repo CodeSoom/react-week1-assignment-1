@@ -6,7 +6,7 @@ function handleClick(prevCount) {
 }
 
 function handleClickNumber(number) {
-    render(number);
+  render(number);
 }
 
 function render(count = 0) {
@@ -31,19 +31,19 @@ render();
 
 // eslint-disable-next-line no-unused-vars
 function createElement(tag, props, ...children) {
-  const el = document.createElement(tag);
+  const element = document.createElement(tag);
 
-  Object.entries(props || {}).forEach(([k, v]) => {
-    el[k.toLowerCase()] = v;
+  Object.entries(props || {}).forEach(([key, value]) => {
+    element[key.toLowerCase()] = value;
   });
 
   children.flat().forEach((child) => {
     if (child instanceof Node) {
-      el.appendChild(child);
+      element.appendChild(child);
       return;
     }
-    el.appendChild(document.createTextNode(child));
+    element.appendChild(document.createTextNode(child));
   });
 
-  return el;
+  return element;
 }
