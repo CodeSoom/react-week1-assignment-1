@@ -21,37 +21,31 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const initCountArray = [1, 2, 3];
+const initCounts = [1, 2, 3];
 
-const countObject = {
-  value: 0,
-};
-
-function handleClick() {
-  countObject.value += 1;
+function handleClick(count) {
   // eslint-disable-next-line no-use-before-define
-  render();
+  render(count + 1);
 }
 
 function handleClickNumber(initCountValue) {
-  countObject.value = initCountValue;
   // eslint-disable-next-line no-use-before-define
-  render();
+  render(initCountValue);
 }
 
-function render() {
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(count)}>
           Click me! (
-          {countObject.value}
+          {count}
           )
         </button>
       </p>
       <p>
-        {initCountArray.map((i) => (
+        {initCounts.map((i) => (
           <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
