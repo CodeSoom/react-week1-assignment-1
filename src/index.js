@@ -28,9 +28,9 @@ function handleClick(count) {
   render(count + 1);
 }
 
-function handleClickNumber(initCount) {
+function handleClickNumber(number) {
   // eslint-disable-next-line no-use-before-define
-  render(initCount);
+  render(number);
 }
 
 function render(count = 0) {
