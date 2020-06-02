@@ -1,5 +1,7 @@
+// eslint-disable-next-line no-undef
 Feature('Click me');
 
+// eslint-disable-next-line no-undef
 Scenario('Click me test', (I) => {
   I.amOnPage('/');
   I.see('Click me!');
