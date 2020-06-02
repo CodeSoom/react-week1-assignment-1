@@ -3,8 +3,8 @@
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
-  Object.entries(props || {}).forEach(([key, value]) => {
-    element[key.toLowerCase()] = value;
+  Object.entries(props || {}).forEach(([key, input]) => {
+    element[key.toLowerCase()] = input;
   });
   children.flat().forEach((child) => {
     if (child instanceof Node) {
@@ -15,30 +15,30 @@ function createElement(tagName, props, ...children) {
   });
   return element;
 }
+
 const count = 0;
 
-function handleClick(value) {
-  console.log('Click Me!');
-  render(value + 1);
+function increaseCount(inputNum) {
+  render(inputNum + 1);
 }
-function handleClickNumber(value) {
-    render(value);
+function setCount(inputNum) {
+    render(inputNum);
 }
 
-function render(value) {
+function render(currentNum) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => { handleClick(value);  }}>
+        <button type="button" onClick={() => { increaseCount(currentNum);  }}>
           Click me! (
-          {value}
+          {currentNum}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => { handleClickNumber(i);}}>
+          <button type="button" onClick={() => { setCount(i);}}>
             {i}
           </button>
         ))}
