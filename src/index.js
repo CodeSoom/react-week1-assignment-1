@@ -37,5 +37,5 @@ const createElement = (tagName, props, ...children) => {
       </div>
     </div>));
   document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(root(count));
+  document.getElementById('app').appendChild(root());
 }());
