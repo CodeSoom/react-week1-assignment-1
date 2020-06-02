@@ -3,8 +3,8 @@
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
-  Object.entries(props || {}).forEach(([key, input]) => {
-    element[key.toLowerCase()] = input;
+  Object.entries(props || {}).forEach(([key, value]) => {
+    element[key.toLowerCase()] = value;
   });
   children.flat().forEach((child) => {
     if (child instanceof Node) {
@@ -18,21 +18,21 @@ function createElement(tagName, props, ...children) {
 
 const count = 0;
 
-function increaseCount(inputNum) {
-  render(inputNum + 1);
+function increaseCount(count) {
+  render(count + 1);
 }
-function setCount(inputNum) {
-    render(inputNum);
+function setCount(count) {
+  render(count);
 }
 
-function render(currentNum) {
+function render(currentCount) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => { increaseCount(currentNum);  }}>
+        <button type="button" onClick={() => { increaseCount(currentCount);  }}>
           Click me! (
-          {currentNum}
+          {currentCount}
           )
         </button>
       </p>
