@@ -19,20 +19,12 @@ function createElement(tags, props, ...children) {
   return element;
 }
 
-function handleClick(number) {
-  render({ number: number + 1 });
-}
-
-function handleClickNumber(number) {
-  render({ number });
-}
-
 function render({ number = 0 }) {
   const element = (
     <div id="hello">
       <p className="haha">헬로우</p>
       <p>
-        <button type="button" onClick={() => handleClick(number)}>
+        <button type="button" onClick={() => { render({ number: number + 1 }); }}>
           Click me!(
           {number}
           )
@@ -40,7 +32,7 @@ function render({ number = 0 }) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => { render({ number: i }); }}>
             {i}
           </button>
         ))}
@@ -49,7 +41,7 @@ function render({ number = 0 }) {
   );
 
   document.querySelector('#app').textContent = '';
-  document.querySelector('#app').appendChild(element);
+  document.querySelector('#app').appendChild(createElement('div', null, element));
 }
 
 render({ number: 0 });
