@@ -12,15 +12,22 @@ const createElement = (tagName, props, ...children) => {
   });
 
   propEntries.forEach(([key, value]) => {
-    element[key] = value;
+    element[key.toLowerCase()] = value;
   });
   [...childNodes].forEach((node) => element.appendChild(node));
   return element;
 };
 
+const onClick = () => {
+  console.log('onClick');
+};
+
 const element = (
   <div id="hello-world" className="greeting">
     <p>Hello World!</p>
+    <button type="button" onClick={onClick}>
+      Click, me!
+    </button>
   </div>
 );
 
