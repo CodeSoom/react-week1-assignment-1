@@ -31,6 +31,7 @@ function render() {
     </div>
   );
 
+  document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
 
