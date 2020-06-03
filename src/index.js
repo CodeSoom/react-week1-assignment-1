@@ -20,13 +20,16 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+function plusOne(count) {
+  return count + 1;
+}
+
 function render(count = 0) {
-  const addUp = count + 1;
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(addUp)}>
+        <button type="button" onClick={() => render(plusOne(count))}>
           Click me!
           (
           {count}
@@ -42,7 +45,7 @@ function render(count = 0) {
       </p>
     </div>
   );
-
+  const sum = count + 1;
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
