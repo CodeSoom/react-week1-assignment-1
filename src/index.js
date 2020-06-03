@@ -1,10 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 
 /* @jsx createElement */
-const { log } = console;
-
-let count = 0;
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -23,11 +19,11 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render() {
+function render(count) {
   const element = (
     <div id="main-div">
       <div>{count}</div>
-      <button type="button" onClick={clickHandler}>Click Me</button>
+      <button type="button" onClick={() => clickHandler(count)}>Click Me</button>
     </div>
   );
 
@@ -35,9 +31,8 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-function clickHandler() {
-  count += 1;
-  render();
+function clickHandler(count) {
+  render(count + 1);
 }
 
-render();
+render(0);
