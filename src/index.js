@@ -23,16 +23,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function clickHandler() {
-  count += 1;
-  log(count);
+function render() {
+  const element = (
+    <div id="main-div">
+      <div>{count}</div>
+      <button type="button" onClick={clickHandler}>Click Me</button>
+    </div>
+  );
+
+  document.getElementById('app').appendChild(element);
 }
 
-const element = (
-  <div id="main-div">
-    <div>{count}</div>
-    <button type="button" onClick={clickHandler}>Click Me</button>
-  </div>
-);
+function clickHandler() {
+  count += 1;
+  render();
+}
 
-document.getElementById('app').appendChild(element);
+render();
