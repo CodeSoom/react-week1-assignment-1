@@ -1,11 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 
 /* @jsx createElement */
+const { log } = console;
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
-    element[key] = value;
+    element[key.toLowerCase()] = value;
   });
 
   children.forEach((child) => {
@@ -19,9 +21,14 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+function clickHandler() {
+  log('hello');
+}
+
 const element = (
   <div id="main-div">
     <div>hello</div>
+    <button type="button" onClick={clickHandler}>Click Me</button>
   </div>
 );
 
