@@ -3,6 +3,8 @@
 /* @jsx createElement */
 const { log } = console;
 
+let count = 0;
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -22,12 +24,13 @@ function createElement(tagName, props, ...children) {
 }
 
 function clickHandler() {
-  log('hello');
+  count += 1;
+  log(count);
 }
 
 const element = (
   <div id="main-div">
-    <div>hello</div>
+    <div>{count}</div>
     <button type="button" onClick={clickHandler}>Click Me</button>
   </div>
 );
