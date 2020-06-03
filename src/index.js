@@ -19,32 +19,32 @@ function createElement(tagName, props, ...children) { // eslint-disable-line no-
   return element;
 }
 
-const data = {
+const state = {
   count: 0,
 };
 
 function render() {
-  function handleClick() {
-    data.count += 1;
+  function handleClick(data) {
+    Object.assign(state, data);
     render();
   }
 
   function handleClickNumber(value) {
-    data.count = value;
+    Object.assign(state, value);
     render();
   }
 
   const element = (
     <div id="hello" className="greeting">
       <p>Remove let</p>
-      <button type="button" onClick={() => handleClick()}>
+      <button type="button" onClick={() => handleClick({ count: state.count + 1 })}>
         Click me! (
-        {data.count}
+        {state.count}
         )
       </button>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
+          <button type="button" onClick={() => handleClickNumber({ count: i })}>{i}</button>
         ))}
       </p>
     </div>
