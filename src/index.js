@@ -45,7 +45,7 @@ function render(count = 0) {
       </p>
     </div>
   );
-  const sum = count + 1;
+
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
