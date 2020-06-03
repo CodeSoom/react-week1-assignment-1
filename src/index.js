@@ -11,38 +11,34 @@ function createElement(tagName, props, ...children) {
       newElement.appendChild(child);
       return;
     }
-    newElement.appendChild(document.createTextNode(child)); 
+    newElement.appendChild(document.createTextNode(child));
   });
 
   return newElement;
 }
 
-let count = 0;
-
-function handleClick() {
-  count += 1;
-  render();
+function handleClick(value) {
+  return value + 1;
 }
 
-function handleClickNumber(value) {
-  count = value;
-  render();
+function handleClickNumber(i) {
+  return i;
 }
 
-const render = function(){
-  const element = (
+function render(value = 0) {
+  const element = ( // eslint-disable-line no-unused-vars
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => { render(handleClick(value)); }}>
           Click me! (
-            {count}
+          {value}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick ={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => { render(handleClickNumber(i)); }}>
             {i}
           </button>
         ))}
