@@ -26,7 +26,7 @@ function setElement(count, handleClick, handleClickNumber) {
       <p>hello, world</p>
       <p>hello, world!!!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(count)}>
           Click me!
           (
           {count}
@@ -41,14 +41,13 @@ function setElement(count, handleClick, handleClickNumber) {
 }
 
 function render(count) {
-  const handleClick = () => {
-    const newCount = count + 1;
-    render(newCount);
+  const handleClick = (value) => {
+    const newValue = value + 1;
+    render(newValue);
   };
 
   const handleClickNumber = (value) => {
-    const newCount = value;
-    render(newCount);
+    render(value);
   };
 
   const element = setElement(count, handleClick, handleClickNumber);
