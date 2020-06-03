@@ -2,6 +2,7 @@
 
 /* @jsx createElement */
 
+// eslint-disable-next-line no-unused-vars
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -39,24 +40,21 @@ function setElement(count, handleClick, handleClickNumber) {
   );
 }
 
-const count = {
-  number: 0,
-};
-
-function render() {
+function render(count) {
   const handleClick = () => {
-    count.number += 1;
-    render();
+    const newCount = count + 1;
+    render(newCount);
   };
 
   const handleClickNumber = (value) => {
-    count.number = value;
-    render();
+    const newCount = value;
+    render(newCount);
   };
-  const element = setElement(count.number, handleClick, handleClickNumber);
+
+  const element = setElement(count, handleClick, handleClickNumber);
 
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(0);
