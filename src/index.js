@@ -15,15 +15,16 @@ const createElement = (tagName, props, ...children) => {
   return element;
 };
 
+function handleClick(count) {
+  const result = count + 1;
+  return result;
+}
+
 (function render(count = 0) {
-  function handleClick() {
-    let value = count;
-    render((value += 1));
-  }
   const root = () => createElement('div', null, (
     <div id="wrapper" className="greeting hello">
       <p className="description">Hello, world!</p>
-      <button type="button" onClick={() => handleClick(count)}>
+      <button type="button" onClick={() => render(handleClick(count))}>
         Click me! (
         {count}
         )
@@ -37,5 +38,5 @@ const createElement = (tagName, props, ...children) => {
       </div>
     </div>));
   document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(root());
+  document.getElementById('app').appendChild(root(0));
 }());
