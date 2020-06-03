@@ -29,6 +29,7 @@ function render(count) {
         )
       </div>
       <button type="button" onClick={() => render(count + 1)}>Click me!</button>
+      <button type="button" onClick={() => render(2)}>2</button>
     </div>
   );
 
