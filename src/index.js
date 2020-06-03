@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint no-unused-vars: 0 */
 
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
@@ -23,16 +24,12 @@ function render(count) {
   const element = (
     <div id="main-div">
       <div>{count}</div>
-      <button type="button" onClick={() => clickHandler(count)}>Click Me</button>
+      <button type="button" onClick={() => render(count + 1)}>Click Me</button>
     </div>
   );
 
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
-}
-
-function clickHandler(count) {
-  render(count + 1);
 }
 
 render(0);
