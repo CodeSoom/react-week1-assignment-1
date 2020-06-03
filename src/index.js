@@ -24,27 +24,32 @@ const data = {
 };
 
 function render() {
-  function handleClick(state, newState) {
-    Object.assign(state, newState);
+  function setState(newState) {
+    Object.assign(data, newState);
     render();
   }
 
+  function handleClick(state) {
+    const newState = { ...state, ...{ count: state.count + 1 } };
+    setState(newState);
+  }
+
   function handleClickNumber(state, value) {
-    Object.assign(state, value);
-    render();
+    const newState = { ...state, ...{ count: value } };
+    setState(newState);
   }
 
   const element = (
     <div id="hello" className="greeting">
       <p>Remove let</p>
-      <button type="button" onClick={() => handleClick(data, { count: data.count + 1 })}>
+      <button type="button" onClick={() => handleClick(data)}>
         Click me! (
         {data.count}
         )
       </button>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(data, { count: i })}>{i}</button>
+          <button type="button" onClick={() => handleClickNumber(data, i)}>{i}</button>
         ))}
       </p>
     </div>
