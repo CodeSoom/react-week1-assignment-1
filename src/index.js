@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable no-use-before-define */
 
 /* @jsx createElement */
 function createElement(tagName, props, ...children) { // eslint-disable-line no-unused-vars
@@ -23,28 +24,21 @@ const data = {
   count: 0,
 };
 
-function handleClick(state) {
-  const newState = { ...state, ...{ count: state.count + 1 } };
-  render(newState); // eslint-disable-line no-use-before-define
-}
+const handleClick = (value) => render({ count: value + 1 });
+const handleClickNumber = (value) => render({ count: value });
 
-function handleClickNumber(state, value) {
-  const newState = { ...state, ...{ count: value } };
-  render(newState); // eslint-disable-line no-use-before-define
-}
-
-function render(state) {
+function render({ count }) {
   const element = (
     <div id="hello" className="greeting">
       <p>Remove let</p>
-      <button type="button" onClick={() => handleClick(state)}>
+      <button type="button" onClick={() => handleClick(count)}>
         Click me! (
-        {state.count}
+        {count}
         )
       </button>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(state, i)}>{i}</button>
+          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
         ))}
       </p>
     </div>
