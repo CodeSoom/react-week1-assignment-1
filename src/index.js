@@ -30,7 +30,7 @@ function render({ count = 0 }) {
           )
         </button>
         <p>
-          {[1, 2, 3].map((updateNumber) => <button type="button" onClick={() => render({ count: updateNumber })}>{updateNumber}</button>)}
+          {[1, 2, 3].map((i) => <button type="button" onClick={() => render({ count: i })}>{i}</button>)}
         </p>
       </p>
     </p>
