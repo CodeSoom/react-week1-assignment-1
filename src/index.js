@@ -23,33 +23,28 @@ const data = {
   count: 0,
 };
 
-function render() {
-  function setState(newState) {
-    Object.assign(data, newState);
-    render();
-  }
+function handleClick(state) {
+  const newState = { ...state, ...{ count: state.count + 1 } };
+  render(newState); // eslint-disable-line no-use-before-define
+}
 
-  function handleClick(state) {
-    const newState = { ...state, ...{ count: state.count + 1 } };
-    setState(newState);
-  }
+function handleClickNumber(state, value) {
+  const newState = { ...state, ...{ count: value } };
+  render(newState); // eslint-disable-line no-use-before-define
+}
 
-  function handleClickNumber(state, value) {
-    const newState = { ...state, ...{ count: value } };
-    setState(newState);
-  }
-
+function render(state) {
   const element = (
     <div id="hello" className="greeting">
       <p>Remove let</p>
-      <button type="button" onClick={() => handleClick(data)}>
+      <button type="button" onClick={() => handleClick(state)}>
         Click me! (
-        {data.count}
+        {state.count}
         )
       </button>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(data, i)}>{i}</button>
+          <button type="button" onClick={() => handleClickNumber(state, i)}>{i}</button>
         ))}
       </p>
     </div>
@@ -59,4 +54,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(data);
