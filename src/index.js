@@ -15,16 +15,15 @@ const createElement = (tagName, props, ...children) => {
   return element;
 };
 
-function handleClick(count) {
-  const result = count + 1;
-  return result;
+function countUp(count) {
+  return count + 1;
 }
 
 (function render(count = 0) {
   const root = () => createElement('div', null, (
     <div id="wrapper" className="greeting hello">
       <p className="description">Hello, world!</p>
-      <button type="button" onClick={() => render(handleClick(count))}>
+      <button type="button" onClick={() => render(countUp(count))}>
         Click me! (
         {count}
         )
