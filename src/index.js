@@ -21,20 +21,6 @@ function createElement(tagName, props, ...children) {
 }
 createElement('p', null, 'hello');
 
-const state = {
-  count: 0,
-};
-
-function plusCount() {
-  state.count += 1;
-  render(state.count);
-}
-
-function setCount(number) {
-  state.count = number;
-  render(number);
-}
-
 function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
@@ -42,7 +28,7 @@ function render(count = 0) {
         <button
           type="button"
           onClick={() => {
-            plusCount();
+            render(count + 1);
           }}
         >
           Click me!
@@ -56,7 +42,7 @@ function render(count = 0) {
           <button
             type="button"
             onClick={() => {
-              setCount(i);
+              render(i);
             }}
           >
             {i}
