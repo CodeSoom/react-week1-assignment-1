@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable no-unused-vars, react/react-in-jsx-scope, react/jsx-filename-extension */
 
 /* @jsx createElement */
 
@@ -20,22 +20,25 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(value = 0) {
-  const sum = value + 1;
-  render(sum);
-}
-
-function render(cnt = 0) {
+function render(count = 0) {
+  const addUp = count + 1;
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => handleClick(cnt)}>
+        <button type="button" onClick={() => render(addUp)}>
           Click me!
           (
-          {cnt}
+          {count}
           )
         </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => render(i)}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
