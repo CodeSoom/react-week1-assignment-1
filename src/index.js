@@ -2,26 +2,10 @@
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
-  /*
-  entries 함수
-  {
-    id:1,
-    className: 2,
-  }
-  => [['id',1], ['className', 2]]
-  */
-  Object.entries(props || {}).forEach(([key, value]) => {
-    // props는 객체
-    // obj => const {key, value} = array;
-    // 매개변수에서 destructuring
 
-    // dom 객체의 특징으로 props는 소문자로 들어야 한다.
+  Object.entries(props || {}).forEach(([key, value]) => {
     element[key.toLowerCase()] = value;
   });
-
-  /* flat
-  [1,[2,3]] => [1,2,3]
-   */
 
   children.flat().forEach((child) => {
     if (child instanceof Node) {
@@ -35,25 +19,21 @@ function createElement(tagName, props, ...children) {
 }
 
 
-let count = 0;
-
-function handleClick() {
+function handleClick(count) {
   count += 1;
-  console.log(count);
-  render();
+  render(count);
 }
 
-function handleClickNumer(value) {
-  count = value;
-  render();
+function handleClickNumer(resetNumber) {
+  render(resetNumber);
 }
 
-function render() {
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(count)}>
           click me
           {' '}
           {count}
@@ -71,4 +51,4 @@ function render() {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
-render();
+render(0);
