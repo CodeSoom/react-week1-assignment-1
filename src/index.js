@@ -1,7 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, no-use-before-define */
 /* @jsx createElement */
 
-
 function createElement(tagName, props, ...children) { // eslint-disable-line no-unused-vars
   const element = document.createElement(tagName);
 
@@ -25,7 +24,7 @@ function handleClickNumber(value) {
 }
 
 function handleClick(count) {
-  render(count += 1);
+  render(count + 1);
 }
 
 function render(count) {
@@ -54,4 +53,6 @@ function render(count) {
   document.getElementById('app').appendChild(element);
 }
 
-render(0);
+const count = 0;
+
+render(count);
