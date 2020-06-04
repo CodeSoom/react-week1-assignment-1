@@ -19,7 +19,11 @@ function createElement(tagName, props, ...children) {
     element[key.toLowerCase()] = value;
   });
 
-  children.forEach((child) => {
+  /* flat
+  [1,[2,3]] => [1,2,3]
+   */
+
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
@@ -39,6 +43,11 @@ function handleClick() {
   render();
 }
 
+function handleClickNumer(value) {
+  count = value;
+  render();
+}
+
 function render() {
   const element = (
     <div id="hello" className="greeting">
@@ -49,6 +58,13 @@ function render() {
           {' '}
           {count}
         </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button onClick={() => handleClickNumer(i)}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
