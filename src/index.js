@@ -27,9 +27,23 @@ function createElement(tagName, props, ...children) {
 
   return element;
 }
+
+
+let count = 0;
+
+function handleClick() {
+  count += 1;
+  console.log(count);
+}
+
 const element = (
   <div id="hello" className="greeting">
     <p>Hello, world</p>
+    <p>
+      <button type="button" onClick={handleClick}>
+        click me {count}
+      </button>
+    </p>
   </div>
 );
 document.getElementById('app').appendChild(element);
