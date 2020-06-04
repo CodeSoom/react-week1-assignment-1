@@ -15,15 +15,11 @@ const createElement = (tagName, props, ...children) => {
   return element;
 };
 
-function countUp(count) {
-  return count + 1;
-}
-
 (function render(count = 0) {
   const root = () => createElement('div', null, (
     <div id="wrapper" className="greeting hello">
       <p className="description">Hello, world!</p>
-      <button type="button" onClick={() => render(countUp(count))}>
+      <button type="button" onClick={() => render(count + 1)}>
         Click me! (
         {count}
         )
