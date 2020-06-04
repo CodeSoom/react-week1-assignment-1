@@ -14,7 +14,9 @@ function createElement(tagName, props, ...children) {
     // props는 객체
     // obj => const {key, value} = array;
     // 매개변수에서 destructuring
-    element[key] = value;
+
+    // dom 객체의 특징으로 props는 소문자로 들어야 한다.
+    element[key.toLowerCase()] = value;
   });
 
   children.forEach((child) => {
@@ -34,16 +36,23 @@ let count = 0;
 function handleClick() {
   count += 1;
   console.log(count);
+  render();
 }
 
-const element = (
-  <div id="hello" className="greeting">
-    <p>Hello, world</p>
-    <p>
-      <button type="button" onClick={handleClick}>
-        click me {count}
-      </button>
-    </p>
-  </div>
-);
-document.getElementById('app').appendChild(element);
+function render() {
+  const element = (
+    <div id="hello" className="greeting">
+      <p>Hello, world</p>
+      <p>
+        <button type="button" onClick={handleClick}>
+          click me
+          {' '}
+          {count}
+        </button>
+      </p>
+    </div>
+  );
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
+}
+render();
