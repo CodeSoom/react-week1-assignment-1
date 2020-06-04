@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-function createElement(tagName, props, ...children) {
+function createElement(tagName, props, ...children) { // eslint-disable-line no-unused-vars
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
     element[key.toLowerCase()] = value;
