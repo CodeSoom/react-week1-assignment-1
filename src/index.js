@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define, no-unused-vars */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
@@ -19,21 +19,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(count) {
-  const value = count + 1;
-  render(value);
-}
-
-function handleClickNumer(resetNumber) {
-  render(resetNumber);
-}
-
 function render(count = 0) {
+  const handleClick = () => {
+    const value = count + 1;
+    render(value);
+  };
+  const handleClickNumber = (resetNumber) => {
+    render(resetNumber);
+  };
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world</p>
       <p>
-        <button type="button" onClick={() => handleClick(count)}>
+        <button type="button" onClick={() => handleClick()}>
           Click me! (
           {count}
           )
@@ -41,7 +40,7 @@ function render(count = 0) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumer(i)}>
+          <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
         ))}
@@ -51,4 +50,6 @@ function render(count = 0) {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
+
+
 render(0);
