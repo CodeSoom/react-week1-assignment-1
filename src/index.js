@@ -21,8 +21,7 @@ function createElement(tagName, props, ...children) {
 
 function render(count = 0) {
   const handleClick = () => {
-    const value = count + 1;
-    render(value);
+    render(count + 1);
   };
   const handleClickNumber = (resetNumber) => {
     render(resetNumber);
