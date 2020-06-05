@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
+/* eslint-disable no-unused-vars */
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -19,29 +20,21 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(value) {
-  value += 1;
-  render(value);
-}
-
-function handleClickNumber(value) {
-  render(value);
-}
-
 function render(count) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello,world!</p>
       <p>
-        <button type="button" onClick={() => handleClick(count)}>
+        <button type="button" onClick={() => render(count + 1)}>
           Click me! (
           {count}
           )
         </button>
       </p>
+
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
+          <button type="button" onClick={() => render(i)}>{i}</button>
         ))}
       </p>
     </div>
