@@ -1,9 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 
 /* @jsx createElement */
-
-// MDN Destructuring assignment - Assignment without declaration
-({ count } = { count: 0 });
+const count = { num: 0 };
 
 function createElement(tags, props, ...children) {
   const element = document.createElement(tags);
@@ -21,7 +19,7 @@ function createElement(tags, props, ...children) {
 }
 
 function handleClick() {
-  count = count + 1;
+  count.num = count.num + 1;
   render();
 }
 
@@ -33,7 +31,7 @@ function render() {
         <button type="button" onClick={handleClick}>
           Click me!
           (
-          { count }
+          { count.num }
           )
         </button>
       </p>
