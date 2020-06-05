@@ -1,8 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 
 /* @jsx createElement */
-const count = { num: 0 };
-
 /* eslint-disable no-unused-vars */
 function createElement(tags, props, ...children) {
   const element = document.createElement(tags);
@@ -20,26 +18,23 @@ function createElement(tags, props, ...children) {
 }
 /* eslint-enable no-unused-vars */
 
-function handleClick() {
-  count.num += 1;
-  render();
-}
+function render(count = 0) {
+  function handleClick(number) {
+    render(number + 1);
+  }
 
-function handleClickNumber(value) {
-  count.num = value;
-  render();
-}
+  function handleClickNumber(value) {
+    render(value);
+  }
 
-/* eslint no-use-before-define: ["error", { "functions": false }] */
-function render() {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(count)}>
           Click me!
           (
-          { count.num }
+          { count }
           )
         </button>
       </p>
