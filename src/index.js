@@ -3,6 +3,7 @@
 /* @jsx createElement */
 const count = { num: 0 };
 
+/* eslint-disable no-unused-vars */
 function createElement(tags, props, ...children) {
   const element = document.createElement(tags);
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -17,9 +18,10 @@ function createElement(tags, props, ...children) {
   });
   return element;
 }
+/* eslint-enable no-unused-vars */
 
 function handleClick() {
-  count.num = count.num + 1;
+  count.num += 1;
   render();
 }
 
@@ -28,6 +30,7 @@ function handleClickNumber(value) {
   render();
 }
 
+/* eslint no-use-before-define: ["error", { "functions": false }] */
 function render() {
   const element = (
     <div id="hello" className="greeting">
@@ -43,7 +46,7 @@ function render() {
       <p>
         {[1, 2, 3].map((i) => (
           <button type="button" onClick={() => handleClickNumber(i)}>
-          {i}
+            {i}
           </button>
         ))}
       </p>
