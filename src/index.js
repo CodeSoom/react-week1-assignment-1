@@ -3,6 +3,15 @@
 
 let count = 0;
 
+function createElement(tagName, props, ...children) {
+  const element = document.createElement(tagName);
+  
+  Object.entries(props).forEach(([key, value]) => {
+    element[key] = value;
+  })
+}
+
+
 function handleClick() {
   count = count + 1;
   render();
