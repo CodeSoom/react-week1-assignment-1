@@ -2,15 +2,13 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-const handleCount = (newCount = 0) => {
-  const count = newCount + 1;
-  return count;
-};
-
-function handleClick(CountNumber) {
-  const plusCount = handleCount(CountNumber);
+function handleClick(countNumber) {
+  const plusCount = countNumber + 1;
   render(plusCount);
-  handleCount(plusCount);
+}
+
+function handleClickNumber(value) {
+  render(value);
 }
 
 function render(plusCount = 0) {
@@ -25,6 +23,11 @@ function render(plusCount = 0) {
           )
         </button>
       </p>
+      {[1, 2, 3].map((i) => (
+        <button type="button" onClick={() => handleClickNumber(i)}>
+          {i}
+        </button>
+      ))}
     </div>
   );
 
@@ -34,11 +37,10 @@ function render(plusCount = 0) {
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
-
   Object.entries(props || {}).forEach(([key, value]) => {
     element[key.toLowerCase()] = value;
   });
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
