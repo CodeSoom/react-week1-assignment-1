@@ -16,7 +16,7 @@ function createElement(tagName, props, ...children) {
 
   Object.entries(props || {}).forEach(mapPropsToAttribute);
 
-  children.forEach(appendChild);
+  children.flat().forEach(appendChild);
 
   return element;
 }
@@ -24,6 +24,9 @@ function createElement(tagName, props, ...children) {
 function render(count) {
   const handleClick = () => {
     render(count + 1);
+  };
+  const handleClickNumber = (number) => {
+    render(number);
   };
 
   const element = (
@@ -34,6 +37,13 @@ function render(count) {
           Click me!
           ({count}) {/* eslint-disable-line react/jsx-one-expression-per-line */}
         </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
