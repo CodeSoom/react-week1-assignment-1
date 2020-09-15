@@ -1,8 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-let count = 0;
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   const mapPropsToAttribute = ([key, value]) => {
@@ -23,12 +21,11 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick() {
-  count = count + 1;
-  render();
-}
+function render(count) {
+  const handleClick = () => {
+    render(count + 1);
+  };
 
-function render() {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -45,4 +42,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(0);
