@@ -35,7 +35,7 @@ function render() {
       <p>
         <button type="button" onClick={handleClick}>
           Click me!
-          ({count})
+          ({count}) {/* eslint-disable-line react/jsx-one-expression-per-line */}
         </button>
       </p>
     </div>
