@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
-    "linebreak-style": ['error','windows'],
+    "linebreak-style": ['error','unix'],
     "import/no-extraneous-dependencies": [
       "error",
       { devDependencies: ["codecept.conf.js"] },
