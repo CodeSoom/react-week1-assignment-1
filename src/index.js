@@ -2,6 +2,8 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
+/* eslint linebreak-style: ["error", "windows"] */
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
