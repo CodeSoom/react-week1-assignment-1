@@ -3,6 +3,26 @@
 
 let count = 0;
 
+function createElement(tagName, props, ...children) {
+    const element = document.createElement(tagName);
+    const mapPropsToAttribute = ([key, value]) => {
+        element[key.toLowerCase()] = value;
+    };
+    const appendChild = (child) => {
+        if (child instanceof Node) {
+            element.appendChild(child);
+            return;
+        }
+        element.appendChild(document.createTextNode(child));
+    };
+
+    Object.entries(props || {}).forEach(mapPropsToAttribute);
+
+    children.forEach(appendChild);
+
+    return element;
+}
+
 function handleClick() {
     count = count + 1;
     render();
