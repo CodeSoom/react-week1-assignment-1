@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
@@ -19,28 +20,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const state = {
-  count: 0,
-};
-function handleClick() {
-  state.count += 1;
-  render();
+function handleClick(value) {
+  render(value + 1);
 }
 
 function handleClickNumber(value) {
-  state.count = value;
-  render();
+  render(value);
 }
-function render() {
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
-          Click me!
-          (
-          {state.count}
-          )
+        <button type="button" onClick={() => handleClick(count)}>
+          Click me! ({count})
         </button>
       </p>
       <p>
