@@ -20,52 +20,34 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-class CountComponent {
-  constructor(count = 0) {
-    this._count = count;
-  }
+const counter = {
+  count: 0,
+};
 
-  get count() {
-    return this._count;
-  }
-
-  // Method
-  handleClick() {
-    this._count += 1;
-    this.render();
-  }
-
-  handleClickNumber(value) {
-    this._count = value;
-    this.render();
-  }
-
-  render() {
-    const element = (
-      <div id="hello" className="greeting">
-        <p>Hello, world!</p>
-        <p>by EHOTO</p>
-        <p>
-          <button type="button" onClick={() => this.handleClick()}>
-            Click me! (
-            {this._count}
-            )
+function render() {
+  const element = (
+    <div id="hello" className="greeting">
+      <p>Hello, world!</p>
+      <p>by EHOTO</p>
+      <p>
+        <button type="button" onClick={() => { counter.count += 1; render(); }}>
+          Click me! (
+          {counter.count}
+          )
+        </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => { counter.count = i; render(); }}>
+            {i}
           </button>
-        </p>
-        <p>
-          {[1, 2, 3].map((i) => (
-            <button type="button" onClick={() => this.handleClickNumber(i)}>
-              {i}
-            </button>
-          ))}
-        </p>
-      </div>
-    );
-    // Main Logic
-    document.getElementById('app').textContent = '';
-    document.getElementById('app').appendChild(element);
-  }
+        ))}
+      </p>
+    </div>
+  );
+  // Main Logic
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
-const countUI = new CountComponent(0);
-countUI.render();
+render();
