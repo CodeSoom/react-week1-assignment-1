@@ -4,45 +4,45 @@
 let count = 0;
 
 function createElement(tagName, props, ...children) {
-    const element = document.createElement(tagName);
-    const mapPropsToAttribute = ([key, value]) => {
-        element[key.toLowerCase()] = value;
-    };
-    const appendChild = (child) => {
-        if (child instanceof Node) {
-            element.appendChild(child);
-            return;
-        }
-        element.appendChild(document.createTextNode(child));
-    };
+  const element = document.createElement(tagName);
+  const mapPropsToAttribute = ([key, value]) => {
+    element[key.toLowerCase()] = value;
+  };
+  const appendChild = (child) => {
+    if (child instanceof Node) {
+      element.appendChild(child);
+      return;
+    }
+    element.appendChild(document.createTextNode(child));
+  };
 
-    Object.entries(props || {}).forEach(mapPropsToAttribute);
+  Object.entries(props || {}).forEach(mapPropsToAttribute);
 
-    children.forEach(appendChild);
+  children.forEach(appendChild);
 
-    return element;
+  return element;
 }
 
 function handleClick() {
-    count = count + 1;
-    render();
+  count = count + 1;
+  render();
 }
 
 function render() {
-    const element = (
-        <div id="hello" className="greeting">
-            <p>Hello, world!</p>
-            <p>
-                <button type="button" onClick={handleClick}>
-                    Click me!
+  const element = (
+    <div id="hello" className="greeting">
+      <p>Hello, world!</p>
+      <p>
+        <button type="button" onClick={handleClick}>
+          Click me!
           ({count})
         </button>
-            </p>
-        </div>
-    );
+      </p>
+    </div>
+  );
 
-    document.getElementById('app').textContent = '';
-    document.getElementById('app').appendChild(element);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render();
