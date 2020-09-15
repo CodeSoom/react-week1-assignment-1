@@ -1,5 +1,4 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-/* eslint 'linebreak-style': ["error", "windows"] */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
