@@ -21,42 +21,71 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function getCount() {
-  return parseInt(document.getElementById('count').innerText, 10);
+class CounterModule {
+  constructor(defaultValue = 0) {
+    this.value = defaultValue;
+  }
+
+  get() { return this.value; }
+
+  set(value) { this.value = value; }
+
+  increase(value = 1) { this.value += value; }
 }
 
-function setCount(value) {
-  document.getElementById('count').innerText = value;
+function ClickMeComponent(counter, countElement) {
+  const handleClick = () => {
+    counter.increase();
+    // eslint-disable-next-line no-param-reassign
+    countElement.innerText = counter.get();
+  };
+
+  return (
+    <p>
+      <button type="button" onClick={handleClick}>
+        Click me!({countElement})
+      </button>
+    </p>
+  );
 }
 
-function handleClick() {
-  const count = getCount();
+function SetCountNumberComponent(counter, countElement, numbers) {
+  const handleClick = (value) => {
+    counter.set(value);
+    // eslint-disable-next-line no-param-reassign
+    countElement.innerText = counter.get();
+  };
 
-  setCount(count + 1);
+  return (
+    <p>
+      {numbers.map((i) => (
+        <button type="button" onClick={() => handleClick(i)}>
+          {i}
+        </button>
+      ))}
+    </p>
+  );
 }
 
-function handleClickNumber(value) {
-  setCount(value);
+function CounterContainer() {
+  const counter = new CounterModule();
+  const countElement = createElement('span', {}, counter.get());
+
+  return (
+    <div>
+      {ClickMeComponent(counter, countElement)}
+      {SetCountNumberComponent(
+        counter,
+        countElement,
+        [1, 2, 3, 30, 60, 100],
+      )}
+    </div>
+  );
 }
 
 function render() {
-  const element = (
-    <div id="hello" className="greeting">
-      <p>Hello, World!</p>
-      <p>
-        <button type="button" onClick={handleClick}>
-          Click me!(<span id="count">0</span>)
-        </button>
-      </p>
-      <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
-        ))}
-      </p>
-    </div>
-  );
+  const element = CounterContainer();
 
-  document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
 
