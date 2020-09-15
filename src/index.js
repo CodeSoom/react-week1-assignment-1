@@ -1,22 +1,24 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-const counter = {count: 0};
+const counter = { count: 0 };
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
-    element[key] = value;
+    element[key.toLowerCase()] = value;
   });
 
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
     }
     element.appendChild(document.createTextNode(child));
   });
+
+  return element;
 }
 
 function handleClick() {
@@ -24,8 +26,8 @@ function handleClick() {
   render();
 }
 
-function handleClickNumber(i) {
-  counter.count = i;
+function handleClickNumber(value) {
+  counter.count = value;
   render();
 }
 
@@ -34,7 +36,7 @@ function render() {
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick()}>
+        <button type="button" onClick={() => {handleClick()}}>
           Click me!
           (
           {counter.count}
@@ -43,7 +45,9 @@ function render() {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
+          </button>
         ))}
       </p>
     </div>
