@@ -29,6 +29,5 @@ module.exports = {
       'error',
       { devDependencies: ['codecept.conf.js'] }
     ],
-    'linebreak-style': ["error", "windows"]
   },
 };
