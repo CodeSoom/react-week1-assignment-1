@@ -20,34 +20,49 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(value) {
-  render(value + 1);
-}
+class App {
+  $target = null;
+  data = 0;
 
-function handleClickNumber(value) {
-  render(value);
-}
-function render(count = 0) {
-  const element = (
-    <div id="hello" className="greeting">
-      <p>Hello, world!</p>
-      <p>
-        <button type="button" onClick={() => handleClick(count)}>
-          Click me! ({count})
-        </button>
-      </p>
-      <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
-            {i}
+  constructor($target) {
+
+    this.$target = $target;
+    this.$target.textContent = "";
+    this.render();
+  }
+
+  setCount() {
+    console.log('this.data', this.data);
+    this.data++;
+    this.render();
+  }
+
+  getCount(value) {
+    this.data = value;
+    this.render();
+  }
+
+  render() {
+    const element = (
+      <div id="hello" className="greeting">
+        <p>Hello, world!</p>
+        <p>
+          <button type="button" onClick={() => this.setCount()}>
+            Click me! ({this.data})
           </button>
-        ))}
-      </p>
-    </div>
-  );
-
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+        </p>
+        <p>
+          {[1, 2, 3].map((i) => (
+            <button type="button" onClick={() => this.getCount(i)}>
+              {i}
+            </button>
+          ))}
+        </p>
+      </div>
+    );
+    this.$target.textContent = "";
+    this.$target.appendChild(element);
+  }
 }
 
-render();
+new App(document.getElementById("app"));
