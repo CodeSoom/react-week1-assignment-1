@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/jsx-one-expression-per-line, no-use-before-define */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -21,71 +21,32 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-class CounterModule {
-  constructor(defaultValue = 0) {
-    this.value = defaultValue;
-  }
-
-  get() { return this.value; }
-
-  set(value) { this.value = value; }
-
-  increase(value = 1) { this.value += value; }
+function handleClick(count) {
+  render(count + 1);
 }
 
-function ClickMeComponent(counter, countElement) {
-  const handleClick = () => {
-    counter.increase();
-    // eslint-disable-next-line no-param-reassign
-    countElement.innerText = counter.get();
-  };
-
-  return (
-    <p>
-      <button type="button" onClick={handleClick}>
-        Click me!({countElement})
-      </button>
-    </p>
-  );
+function handleClickNumber(value) {
+  render(value);
 }
 
-function SetCountNumberComponent(counter, countElement, numbers) {
-  const handleClick = (value) => {
-    counter.set(value);
-    // eslint-disable-next-line no-param-reassign
-    countElement.innerText = counter.get();
-  };
-
-  return (
-    <p>
-      {numbers.map((i) => (
-        <button type="button" onClick={() => handleClick(i)}>
-          {i}
+function render(count = 0) {
+  const element = (
+    <div id="hello" className="greet">
+      <p>Hello, World!!</p>
+      <p>
+        <button type="button" onClick={() => handleClick(count)}>
+          Click me!({count})
         </button>
-      ))}
-    </p>
-  );
-}
-
-function CounterContainer() {
-  const counter = new CounterModule();
-  const countElement = createElement('span', {}, counter.get());
-
-  return (
-    <div>
-      {ClickMeComponent(counter, countElement)}
-      {SetCountNumberComponent(
-        counter,
-        countElement,
-        [1, 2, 3, 30, 60, 100],
-      )}
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
+        ))}
+      </p>
     </div>
   );
-}
 
-function render() {
-  const element = CounterContainer();
-
+  document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
 
