@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
@@ -7,14 +8,7 @@ function createElement(tagName, props, ...children) {
   Object.entries(props || {}).forEach(([key, value]) => {
     element[key.toLowerCase()] = value;
   });
-  // {
-  //     id: 1,
-  //     className: 2,
-  // }
-  // >>> [['id', 1], ['className', 2]]
 
-  // [1, [2, 3]]
-  // >>> [1, 2, 3]
   children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
@@ -26,44 +20,52 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
+class CountComponent {
+  constructor(count = 0) {
+    this._count = count;
+  }
 
-function handleClick() {
-  count += 1;
-  render();
-}
+  get count() {
+    return this._count;
+  }
 
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
-// onClick={() => handleClick}, onClick={handleClick()}은 중괄호 안에서 계속 처리하려고 한다. render 계속 일어남
-function render() {
-  const element = (
-    // eslint-disable-next-line react/jsx-filename-extension
-    <div id="hello" className="greeting">
-      <p>Hello, world!</p>
-      <p>by EHOTO</p>
-      <p>
-        <button type="button" onClick={handleClick}>
-          Click me! (
-          {count}
-          )
-        </button>
-      </p>
-      <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
-            {i}
+  // Method
+  handleClick() {
+    this._count += 1;
+    this.render();
+  }
+
+  handleClickNumber(value) {
+    this._count = value;
+    this.render();
+  }
+
+  render() {
+    const element = (
+      <div id="hello" className="greeting">
+        <p>Hello, world!</p>
+        <p>by EHOTO</p>
+        <p>
+          <button type="button" onClick={() => this.handleClick()}>
+            Click me! (
+            {this._count}
+            )
           </button>
-        ))}
-      </p>
-    </div>
-  );
-
-  // Main Logic
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+        </p>
+        <p>
+          {[1, 2, 3].map((i) => (
+            <button type="button" onClick={() => this.handleClickNumber(i)}>
+              {i}
+            </button>
+          ))}
+        </p>
+      </div>
+    );
+    // Main Logic
+    document.getElementById('app').textContent = '';
+    document.getElementById('app').appendChild(element);
+  }
 }
 
-render();
+const countUI = new CountComponent(0);
+countUI.render();
