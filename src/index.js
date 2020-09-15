@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-let count = 0;
+const counter = {count: 0};
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -20,12 +20,12 @@ function createElement(tagName, props, ...children) {
 }
 
 function handleClick() {
-  count = count + 1;
+  counter.count += 1;
   render();
 }
 
-function handleClickNumber() {
-  count = 2;
+function handleClickNumber(i) {
+  counter.count = i;
   render();
 }
 
@@ -34,10 +34,10 @@ function render() {
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={handleClick()}>
           Click me!
           (
-          {count}
+          {counter.count}
           )
         </button>
       </p>
