@@ -22,24 +22,17 @@ function createElement(tagName, props, ...children) {
 
 let count = 0;
 
-function handleClick() {
-  count += 1;
-  render();
-}
-
-function handleClickNumber(i) {
-  count = i;
-  render();
-}
-
 function render() {
   const element = (
     <div>
-      <p>Hello, world {count}</p>
+      <p>
+        Hello, world
+        {count}
+      </p>
       <p>
         <button type="button" onClick={handleClick}>
           click me!
-          </button>
+        </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
@@ -51,9 +44,18 @@ function render() {
     </div>
   );
 
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
+}
+
+function handleClick() {
+  count += 1;
+  render();
+}
+
+function handleClickNumber(i) {
+  count = i;
+  render();
 }
 
 render();
-
