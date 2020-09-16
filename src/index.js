@@ -1,5 +1,4 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-/* eslint no-use-before-define: ["error", { "functions": false}] */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -19,16 +18,11 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(number) {
-  render(number + 1);
-}
-
-function handleClickNumber(number) {
-  render(number);
-}
-
 function render(countNumber) {
   const numbers = [1, 2, 3];
+
+  const handleClick = (number) => render(number + 1);
+  const handleClickNumber = (number) => render(number);
 
   const element = (
     <div id="hello" className="greeting">
