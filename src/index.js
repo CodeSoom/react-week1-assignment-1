@@ -19,8 +19,7 @@ function createElement(tagName, props, ...children) {
 }
 
 function handleClick(count) {
-  const addOne = count + 1;
-  render(addOne);
+  render(count + 1);
 }
 
 function handleClickNumber(count) {
