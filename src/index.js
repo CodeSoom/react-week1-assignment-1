@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-use-before-define */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
@@ -25,14 +23,12 @@ class App {
   data = 0;
 
   constructor($target) {
-
     this.$target = $target;
     this.$target.textContent = "";
     this.render();
   }
 
   setCount() {
-    console.log('this.data', this.data);
     this.data++;
     this.render();
   }
