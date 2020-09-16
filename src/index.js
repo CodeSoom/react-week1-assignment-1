@@ -21,12 +21,10 @@ function createElement(tagName, props, ...children) {
 }
 
 //
-const count = 0;
 
-function handleClick(count) {
-  count = count + 1;
-  console.log(count);
-  render(count);
+function handleClick(value) {
+  value += 1;
+  render(value);
 }
 
 function handleClickNumber(count, value) {
@@ -35,35 +33,13 @@ function handleClickNumber(count, value) {
 }
 
 function render(resultValue) {
-  console.log(`count in render : ${count}`);
-
-  //   const element = (
-  //     <div id='hello' className='greeting'>
-  //       <p>Hello, world!</p>
-  //       <p>
-  //         <button type='button' onClick={handleClick}>
-  //           Click me!
-  //           {count}
-  //         </button>
-  //       </p>
-  //       <p>
-  //         {[1, 2, 3].map((i) => (
-  //           <button type='button' onClick={() => handleClickNumber(i)}>
-  //             {i}
-  //           </button>
-  //         ))}
-  //       </p>
-  //     </div>
-  //   );
-
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(
     <div id='hello' className='greeting'>
       <p>Hello, world!</p>
       <p>
-        <button type='button' onClick={() => handleClick(count)}>
-          Click me!
-          {resultValue}
+        <button type='button' onClick={() => handleClick(resultValue)}>
+          Click me! ({resultValue})
         </button>
       </p>
       <p>
@@ -78,8 +54,6 @@ function render(resultValue) {
       </p>
     </div>
   );
-  console.log(`count2 in render : ${count}`);
-  console.log(`resultValue: ${resultValue}`);
 }
 
-render(count);
+render(0);
