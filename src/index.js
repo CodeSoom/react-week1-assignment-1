@@ -20,13 +20,13 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
-
-function render() {
+function render(count) {
   const element = (
     <div>
       <p>
         Hello, world
+      </p>
+      <p id="count">
         {count}
       </p>
       <p>
@@ -49,13 +49,12 @@ function render() {
 }
 
 function handleClick() {
-  count += 1;
-  render();
+  const count = document.getElementById('count').textContent;
+  render(parseInt(count, 10) + 1);
 }
 
 function handleClickNumber(i) {
-  count = i;
-  render();
+  render(i);
 }
 
-render();
+render(0);
