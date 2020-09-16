@@ -19,12 +19,26 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count = 0) {
+const initial = {
+  count: 0,
+  multiplyCount: 1,
+};
+
+function render(props) {
+  const { count, multiplyCount } = props;
+
+  const makeRenderValue = (key, value) => {
+    render({
+      ...props,
+      [key]: value,
+    });
+  };
+
   const element = (
     <div>
       <p id="greeting">Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(count + 1)}>
+        <button type="button" onClick={() => makeRenderValue('count', count + 1)}>
           Click me! (
           {count}
           )
@@ -32,11 +46,17 @@ function render(count = 0) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(i)}>
+          <button type="button" onClick={() => makeRenderValue('count', i)}>
             {i}
           </button>
         ))}
       </p>
+      <div>
+        <button type="button" onClick={() => makeRenderValue('multiplyCount', multiplyCount * 2)}>곱하기 2</button>
+        <p>
+          {multiplyCount}
+        </p>
+      </div>
     </div>
   );
 
@@ -44,4 +64,4 @@ function render(count = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(initial);
