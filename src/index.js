@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, no-use-before-define */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -20,17 +20,17 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick() {
-  const content = document.getElementById('count').textContent;
-  const number = parseInt(content.match(/[\d]+/)[0], 10);
-  render(number + 1);
-}
-
-function handleClickNumber(i) {
-  render(i);
-}
-
 function render(count) {
+  function handleClick() {
+    const content = document.getElementById('count').textContent;
+    const number = parseInt(content.match(/[\d]+/)[0], 10);
+    render(number + 1);
+  }
+
+  function handleClickNumber(i) {
+    render(i);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>
