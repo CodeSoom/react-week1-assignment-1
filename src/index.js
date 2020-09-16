@@ -21,26 +21,21 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count = 0) {
-  function handleClick(i) {
-    render(i);
-  }
-
   const element = (
     <div id="hello" className="greeting">
       <p>
         Hello, world!
       </p>
       <p>
-        <button id="count" type="button" onClick={() => handleClick(count + 1)}>
-          Click me!
-          (
+        <button id="count" type="button" onClick={() => render(count + 1)}>
+          Click me! (
           {count}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClick(i)}>
+          <button type="button" onClick={() => render(i)}>
             {i}
           </button>
         ))}
