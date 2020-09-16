@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
+const INITIAL_COUNT = 0
 
 const createElement = (tagName, props, ...children) => {
     const element = document.createElement(tagName);
@@ -29,7 +30,7 @@ const handleClickNumber = (value) => {
     render(value);
 }
 
-const render = (count) => {
+const render = (count = 0) => {
     const element = (
         <div id="hello" className="greeting">
             <p>Hello, world!</p>
@@ -53,4 +54,4 @@ const render = (count) => {
     document.getElementById('app').appendChild(element);
 }
 
-render(count = 0);
+render(INITIAL_COUNT);
