@@ -20,18 +20,28 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+function handleClick() {
+  const content = document.getElementById('count').textContent;
+  const number = parseInt(content.match(/[\d]+/)[0], 10);
+  render(number + 1);
+}
+
+function handleClickNumber(i) {
+  render(i);
+}
+
 function render(count) {
   const element = (
-    <div>
+    <div id="hello" className="greeting">
       <p>
-        Hello, world
-      </p>
-      <p id="count">
-        {count}
+        Hello, world!
       </p>
       <p>
-        <button type="button" onClick={handleClick}>
-          click me!
+        <button id="count" type="button" onClick={handleClick}>
+          Click me!
+          (
+          {count}
+          )
         </button>
       </p>
       <p>
@@ -46,15 +56,6 @@ function render(count) {
 
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
-}
-
-function handleClick() {
-  const count = document.getElementById('count').textContent;
-  render(parseInt(count, 10) + 1);
-}
-
-function handleClickNumber(i) {
-  render(i);
 }
 
 render(0);
