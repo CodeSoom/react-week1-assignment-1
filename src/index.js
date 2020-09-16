@@ -18,15 +18,10 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(count) {
-  render(count + 1);
-}
-
-function handleClickNumber(count) {
-  render(count);
-}
-
 function render(count = 0) {
+  const handleClick = (number) => render(number + 1);
+  const handleClickNumber = (number) => render(number);
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
