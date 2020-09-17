@@ -6,7 +6,7 @@ function createElement(tagName, props, ...children) {
 
   Object.entries(props || {}).forEach(([key, value]) => {
     element[key.toLowerCase()] = value;
-    //props로 잡은 애들을 쓸 수 있게 됨
+    // props로 잡은 애들을 쓸 수 있게 됨
   });
 
   children.flat().forEach((child) => {
@@ -20,40 +20,31 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-//
-
-function handleClick(value) {
-  value += 1;
-  render(value);
-}
-
-function handleClickNumber(count, value) {
-  count = value;
-  render(count);
-}
-
 function render(resultValue) {
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(
-    <div id='hello' className='greeting'>
+  const element = (
+    <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type='button' onClick={() => handleClick(resultValue)}>
-          Click me! ({resultValue})
+        <button
+          type="button"
+          onClick={() => {
+            render(resultValue + 1);
+          }}
+        >
+          Click me! (resultValue)
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button
-            type='button'
-            onClick={() => handleClickNumber(resultValue, i)}
-          >
+          <button type="button" onClick={() => render(i)}>
             {i}
           </button>
         ))}
       </p>
     </div>
   );
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render(0);

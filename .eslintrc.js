@@ -3,10 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -21,13 +18,13 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: ['react'],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['codecept.conf.js'] }
-    ]
+      {
+        devDependencies: ['codecept.conf.js'],
+      },
+    ],
   },
 };
