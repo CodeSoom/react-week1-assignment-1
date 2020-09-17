@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-function createElement(tagName, props, ...children) {
+const createElement = (tagName, props, ...children) => {
   const element = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -17,15 +17,15 @@ function createElement(tagName, props, ...children) {
   });
 
   return element;
-}
+};
 
-function render(number) {
+function render(count = 0) {
   const handleClick = () => {
-    render(number ? number + 1 : 1);
+    render(count + 1);
   };
 
-  const handleClickNumber = (value) => {
-    render(value);
+  const handleClickNumber = (number) => {
+    render(number);
   };
 
   const element = (
@@ -34,7 +34,7 @@ function render(number) {
       <p>
         <button type="button" onClick={handleClick}>
           Click me! (
-          {number || 0}
+          {count}
           )
           {' '}
         </button>
