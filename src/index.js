@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-const createElement = (tagName, props, ...children) => {
+function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -17,7 +17,7 @@ const createElement = (tagName, props, ...children) => {
   });
 
   return element;
-};
+}
 
 function render(count = 0) {
   const handleClick = () => {
