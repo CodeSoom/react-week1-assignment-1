@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, no-use-before-define */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -18,11 +18,11 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(count) {
-  render(count);
-}
-
 function render(count = 0) {
+  function handleClick(inputNumber) {
+    render(inputNumber);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
