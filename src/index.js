@@ -18,20 +18,28 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(displayNumber = 0) {
+function incrementCount(count) {
+  return count + 1;
+}
+
+function updateCount(value) {
+  return value;
+}
+
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(displayNumber + 1)}>
+        <button type="button" onClick={() => render(incrementCount(count))}>
           Click me! (
-          {displayNumber}
+          {count}
           )
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(i)}>{i}</button>
+        {[1, 2, 3].map((value) => (
+          <button type="button" onClick={() => render(updateCount(value))}>{value}</button>
         ))}
       </p>
     </div>
