@@ -20,25 +20,21 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const counter = {
-  count: 0,
-};
-
-function render() {
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>by EHOTO</p>
       <p>
-        <button type="button" onClick={() => { counter.count += 1; render(); }}>
+        <button type="button" onClick={() => render(count + 1)}>
           Click me! (
-          {counter.count}
+          {count}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => { counter.count = i; render(); }}>
+          <button type="button" onClick={() => render(i)}>
             {i}
           </button>
         ))}
