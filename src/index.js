@@ -21,8 +21,13 @@ function createElement(tagName, props, ...children) {
 function render(count) {
   const numbers = [1, 2, 3];
 
-  const handleClick = (number) => render(number + 1);
-  const handleClickNumber = (number) => render(number);
+  const handleClick = (number) => {
+    render(number + 1);
+  };
+
+  const handleClickNumber = (number) => {
+    render(number);
+  };
 
   const element = (
     <div id="hello" className="greeting">
