@@ -31,7 +31,9 @@ function render(resultValue) {
             render(resultValue + 1);
           }}
         >
-          Click me! (resultValue)
+          Click me! (
+          {resultValue}
+          )
         </button>
       </p>
       <p>
