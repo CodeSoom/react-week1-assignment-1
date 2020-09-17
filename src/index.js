@@ -19,9 +19,7 @@ const createElement = (tagName, props, ...children) => {
   return element;
 };
 
-function render(pCount = 0) {
-  let count = pCount;
-
+function render(count = 0) {
   const handleClickNumber = (value) => {
     render(value);
   };
@@ -34,7 +32,7 @@ function render(pCount = 0) {
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => { count = handleClick(pCount); }}>
+        <button type="button" onClick={() => { handleClick(count); }}>
           Click me!
           (
           { count }
