@@ -20,8 +20,7 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(data = { count: 0, something: 0 }) {
-  const { count, something } = data;
+function render({ count, something }) {
   const handleClick = () => render({ count: count + 1, something: something - 1 });
   const handleClickNumber = (number) => render({ count: number, something: number - 1 });
 
@@ -49,4 +48,4 @@ function render(data = { count: 0, something: 0 }) {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render({ count: 0, something: 0 });
