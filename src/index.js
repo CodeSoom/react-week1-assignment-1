@@ -19,8 +19,8 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count = 0) {
-  function handleClick(inputNumber) {
-    render(inputNumber);
+  function handleClick(number) {
+    render(number);
   }
 
   const element = (
