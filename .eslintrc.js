@@ -28,6 +28,6 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: ['codecept.conf.js'] }
-    ]
+    ],
   },
 };
