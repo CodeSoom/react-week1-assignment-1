@@ -28,10 +28,18 @@ function render(count = 0) {
         <button type="button" onClick={() => render(counting(count))}>
           Click me!
         </button>
+      </p>
 
-        <button type="button" onClick={() => render(2)}>
-          (2)
-        </button>
+      <p>
+        {
+          [1, 2, 3].map((v) => (
+            <button type="button" onClick={() => render(v)}>
+              (
+              {v}
+              )
+            </button>
+          ))
+        }
       </p>
 
       <p>
