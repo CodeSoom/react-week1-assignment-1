@@ -24,13 +24,25 @@ const initial = {
   multiplyCount: 1,
 };
 
-function render(props) {
-  const { count, multiplyCount } = props;
-
-  const makeRenderValue = (key, value) => {
+function render({ count, multiplyCount }) {
+  const handleClick = () => {
     render({
-      ...props,
-      [key]: value,
+      multiplyCount,
+      count: count + 1,
+    });
+  };
+
+  const hanldeClickNumber = (value) => {
+    render({
+      multiplyCount,
+      count: value,
+    });
+  };
+
+  const handleClickMultiply = () => {
+    render({
+      multiplyCount: multiplyCount * 2,
+      count,
     });
   };
 
@@ -38,7 +50,7 @@ function render(props) {
     <div>
       <p id="greeting">Hello, world!</p>
       <p>
-        <button type="button" onClick={() => makeRenderValue('count', count + 1)}>
+        <button type="button" onClick={handleClick}>
           Click me! (
           {count}
           )
@@ -46,13 +58,13 @@ function render(props) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => makeRenderValue('count', i)}>
+          <button type="button" onClick={() => hanldeClickNumber(i)}>
             {i}
           </button>
         ))}
       </p>
       <div>
-        <button type="button" onClick={() => makeRenderValue('multiplyCount', multiplyCount * 2)}>곱하기 2</button>
+        <button type="button" onClick={handleClickMultiply}>곱하기 2</button>
         <p>
           {multiplyCount}
         </p>
