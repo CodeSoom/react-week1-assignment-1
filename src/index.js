@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, linebreak-style */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -19,28 +19,22 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const state = {
-  count: 0,
-};
-
-function render() {
-  function handleClick() {
-    state.count += 1;
-    render();
+function render(count = 0) {
+  function handleClick(value) {
+    render(value);
   }
 
   function handleClickNumber(value) {
-    state.count = value;
-    render();
+    render(value);
   }
 
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, World!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(count + 1)}>
           Click me! (
-          {state.count}
+          {count}
           )
         </button>
       </p>
@@ -58,4 +52,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(0);
