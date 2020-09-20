@@ -17,18 +17,15 @@ function createElement(tagName, props, ...children) {
 
   return element;
 }
-const count = [0];
 
-function render() {
-  function handleClick() {
-    count[0] += 1;
-    render();
-  }
-
-  function handleClickNumber(value) {
-    count[0] = value;
-    render();
-  }
+function render(count = 0) { // count를 render의 매개변수로 넣어준다.
+  // 초기값을 넣어주지않으면 0이아닌 undefined이기때문에 아무런 연산이 불가능하다.
+  const handleClick = () => { // handleClick 을 호출할때마다 render함수의 매개변수인 count 에 1을 더해준다.
+    render(count + 1);
+  };
+  const handleClickNumber = (number) => { // number로 배열안에 값을 받아온다.
+    render(number); // 렌더함수의 카운트 값이 number 값으로 바뀌게된다.
+  };
 
   const element = (
     <div id="hello" className="greeting">
