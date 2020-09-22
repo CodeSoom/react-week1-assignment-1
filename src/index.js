@@ -20,12 +20,12 @@ function createElement(tagname, props, ...children) {
 
 const counting = (num) => num + 1;
 
-function render(count = 0) {
+function render({ count }) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello,world!</p>
       <p>
-        <button type="button" onClick={() => render(counting(count))}>
+        <button type="button" onClick={() => render({ count: counting(count) })}>
           Click me!
         </button>
       </p>
@@ -33,7 +33,7 @@ function render(count = 0) {
       <p>
         {
           [1, 2, 3].map((v) => (
-            <button type="button" onClick={() => render(v)}>
+            <button type="button" onClick={() => render({ count: v })}>
               (
               {v}
               )
@@ -54,4 +54,4 @@ function render(count = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render({ count: 0 });
