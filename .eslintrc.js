@@ -27,7 +27,7 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['codecept.conf.js'] }
-    ]
+      { devDependencies: ['codecept.conf.js'] },
+    ],
   },
 };
