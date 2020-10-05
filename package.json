@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "test:e2e": "codeceptjs run --steps",
-    "test": "start-server-and-test start http://localhost:8080 test:e2e",
+    "test": "start-server-and-test start http://localhost:9000 test:e2e",
     "lint": "eslint --ext js ."
   },
   "keywords": [],
@@ -27,8 +27,8 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "puppeteer": "^3.2.0",
     "start-server-and-test": "^1.11.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }
 }

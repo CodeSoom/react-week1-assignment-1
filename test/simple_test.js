@@ -1,7 +1,8 @@
 Feature('Click me');
 
 Scenario('Click me test', (I) => {
-  I.amOnPage('/');
+  I.amOnPage('http://127.0.0.1:9000');
+
   I.see('Click me!');
 
   I.click('Click me!');
