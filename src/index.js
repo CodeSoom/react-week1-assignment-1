@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension linebreak-style*/
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension linebreak-style */
 /* eslint linebreak-style: ["error", "windows"] */
 /* @jsx createElement */
 
@@ -39,8 +39,8 @@ function render() {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={() => handleClick(count)}>
-            Click me!
-            ({count.number})
+          Click me!
+          ({count.number})
         </button>
       </p>
       <p>
