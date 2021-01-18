@@ -40,7 +40,9 @@ function render() {
       <p>
         <button type="button" onClick={() => handleClick(count)}>
           Click me!
-          ({count.number})
+          (
+          {count.number}
+          )
         </button>
       </p>
       <p>
