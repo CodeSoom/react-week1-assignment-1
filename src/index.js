@@ -50,4 +50,4 @@ function render(number = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render(0);
+render();
