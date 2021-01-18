@@ -21,18 +21,14 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(number = 0) {
-  const count = { presentNumber: number };
-
-  const { presentNumber } = count;
-
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(presentNumber + 1)}>
+        <button type="button" onClick={() => render(number + 1)}>
           Click me!
           (
-          {presentNumber}
+          {number}
           )
         </button>
       </p>
