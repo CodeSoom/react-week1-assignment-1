@@ -34,8 +34,9 @@ function render(countValue) {
       <p>
         <button type="button" onClick={() => handleClick(countValue)}>
           Click me!
-          {' '}
-          <span id="countValue">{countValue}</span>
+          (
+          {countValue}
+          )
         </button>
       </p>
       <p>
