@@ -1,5 +1,5 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-/* @jsx createElement */
+// /* @jsx createElement */
+
 function createElement(tagName, props, ...children){
     const element = document.createElement(tagName);   
     Object.entries(props || {}).forEach(([key, value]) => {
@@ -16,17 +16,19 @@ function createElement(tagName, props, ...children){
 }
 
 
-const count = [0];
+const clicked = {
+    count: 0
+};
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-function handleClick(count){
+function handleClick(clicked){
     console.log('click!');
-    count.push(1);
-    count = count.reduce(reducer);
-    console.log(count);
+    clicked.count += 1;
+    console.log(clicked.count);
     render();
 }
 function handleClickNumber(value) {
+    clicked.count = value;
     render();
 }
 function render(){
@@ -34,11 +36,11 @@ const element = (
     <div id="hello" className="greeting">
  <p>Hello, world!</p>
  <p>
-     <button type="button" onClick={()=>handleClick(count)}>
+     <button type="button" onClick={()=>handleClick(clicked)}>
         Click me! 
         (
             
-        {count.reduce(reducer)}
+        {clicked.count}
         )
      </button>
  </p>
@@ -57,3 +59,4 @@ document.getElementById('app').appendChild(element);
 }
 
 render();
+
