@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension linebreak-style */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* eslint linebreak-style: ["error", "windows"] */
 /* @jsx createElement */
 
