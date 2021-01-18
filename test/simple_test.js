@@ -1,5 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
-
 Feature('Click me');
 
 Scenario('Click me test', (I) => {

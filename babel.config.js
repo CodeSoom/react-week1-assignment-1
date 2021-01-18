@@ -1,5 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
-
 module.exports = {
   presets: [
     [
