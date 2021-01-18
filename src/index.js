@@ -19,7 +19,7 @@ function createElement(tagName, props, ...children) {
   return paragraph;
 }
 
-function render(count) {
+function render(count = 0) {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(
     <div id="hello" className="greeting">
@@ -36,4 +36,4 @@ function render(count) {
   );
 }
 
-render(0);
+render();
