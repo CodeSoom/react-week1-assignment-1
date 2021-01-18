@@ -26,7 +26,7 @@ function render(count = 0) {
         Hello, world!
       </p>
       <p>
-        <button type="button" onClick={() => render(count)}>
+        <button type="button" onClick={() => render(count + 1)}>
           Click me!
           (
           {count}
@@ -35,7 +35,7 @@ function render(count = 0) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(i + 1)}>{i}</button>
+          <button type="button" onClick={() => render(i)}>{i}</button>
         ))}
       </p>
     </div>
