@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 
 /* @jsx createElement */
@@ -39,7 +41,7 @@ function render() {
           Click me! ({state.count})
         </button>
         {[1, 2, 3].map((i) => (
-          <button key={i} onClick={() => handleClickNumber(i)}>
+          <button type="button" key={i} onClick={() => handleClickNumber(i)}>
             {i}
           </button>
         ))}
@@ -47,8 +49,8 @@ function render() {
     </div>
   );
 
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render();
