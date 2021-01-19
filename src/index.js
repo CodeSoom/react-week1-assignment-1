@@ -25,16 +25,16 @@ const state = {
   count: 0,
 };
 
-function handleClick() {
-  state.count += 1;
-  render(state.count);
-}
-
-function handleClickNumber(value) {
-  render(value);
-}
-
 function render(count) {
+  function handleClick() {
+    state.count += 1;
+    render(state.count);
+  }
+
+  function handleClickNumber(value) {
+    render(value);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
