@@ -43,4 +43,4 @@ function render(count = 0) {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
-render(0);
+render();
