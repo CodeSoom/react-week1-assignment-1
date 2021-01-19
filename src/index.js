@@ -16,24 +16,30 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const clicked = {
-  count: 0,
-};
-
-function render() {
+function render(count) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => handleClick(clicked)}>
+        <button
+          type="button"
+          onClick={() => {
+            render(count + 1);
+          }}
+        >
           Click me!(
-          {clicked.count}
+          {count}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
+          <button
+            type="button"
+            onClick={() => {
+              render(i);
+            }}
+          >
             {i}
           </button>
         ))}
@@ -44,15 +50,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-function handleClick(click) {
-  console.log('click!');
-  click.count += 1;
-  console.log(click.count);
-  render();
-}
-
-function handleClickNumber(value) {
-  clicked.count = value;
-  render();
-}
-render();
+render(0);
