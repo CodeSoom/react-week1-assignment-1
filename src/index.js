@@ -1,8 +1,7 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, no-use-before-define */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
-  console.log(tagName, props, ...children);
   const element = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -39,8 +38,10 @@ function render() {
       <p>
         <button type="button" onClick={handleClick}>
           Click Me!
-          ({outputData.number})
-          </button>
+          (
+          {outputData.number}
+          )
+        </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
