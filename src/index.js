@@ -20,11 +20,11 @@ function createElement(name, props, ...children) {
 
 localStorage.setItem('count', '0');
 
-function handleClick() {
+function handleClick(num) {
   if (!localStorage.getItem('count')) {
     localStorage.setItem('count', '0');
   }
-  localStorage.setItem('count', `${parseInt(localStorage.getItem('count'), 10) + 1}`);
+  localStorage.setItem('count', `${parseInt(localStorage.getItem('count'), 10) + num}`);
 }
 
 function render() {
@@ -35,7 +35,7 @@ function render() {
         <button
           type="button"
           onClick={() => {
-            handleClick();
+            handleClick(1);
             render();
           }}
         >
@@ -43,6 +43,15 @@ function render() {
           (
           {localStorage.getItem('count')}
           )
+        </button>
+        <button 
+            type="button"
+            onClick={() => {
+                localStorage.setItem('count', '0');
+                handleClick(2)
+                render();
+            }}>
+            2
         </button>
       </p>
     </div>
