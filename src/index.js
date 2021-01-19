@@ -22,7 +22,7 @@ function createElement(tagName, props, ...children) {
 function render(i = 0) {
   const element = (
     <div id="hello" className="greeting">
-      <p>Hello, world!</p>
+      <p>Hello, world</p>
       <p>
         <button type="button" onClick={() => render(i + 1)}>
           Click me!(
