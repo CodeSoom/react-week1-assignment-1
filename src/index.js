@@ -44,14 +44,15 @@ function render() {
           {localStorage.getItem('count')}
           )
         </button>
-        <button 
-            type="button"
-            onClick={() => {
-                localStorage.setItem('count', '0');
-                handleClick(2)
-                render();
-            }}>
-            2
+        <button
+          type="button"
+          onClick={() => {
+            localStorage.setItem('count', '0');
+            handleClick(2);
+            render();
+          }}
+        >
+          2
         </button>
       </p>
     </div>
