@@ -37,7 +37,7 @@ function render() {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={handleClick}>
-          Click Me!
+          Click me!
           (
           {outputData.number}
           )
