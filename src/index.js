@@ -9,7 +9,7 @@ function createElement(tagName, props, ...children) {
     element[key.toLowerCase()] = value;
   });
 
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
@@ -29,9 +29,13 @@ function render(i = 0) {
           {i}
           )
         </button>
-        <button type="button" onClick={() => render(2)}>
-          2
-        </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((v) => (
+          <button type="button" onClick={() => render(i)}>
+            {v}
+          </button>
+        ))}
       </p>
     </div>
   );
