@@ -17,51 +17,39 @@ const createElement = (tagName, props, ...children) => {
 
   return element;
 };
-const countChange = {
-  state: {
-    count: 0,
-    setState(key, value) {
-      const oldState = countChange.state;
-      if (oldState[key] === value) {
+function render(count) {
+  function handleClick() {
+    return render(count + 1);
+  }
+  function handleClickNumber(currentCount, nextCount) {
+    return () => {
+      if (currentCount === nextCount) {
         return;
       }
 
-      countChange.state[key] = value;
-      countChange.methods.render();
-    },
-  },
-  methods: {
-    handleClick() {
-      const newCount = countChange.state.count + 1;
-      countChange.state.setState('count', newCount);
-    },
-    handleClickNumber(value) {
-      countChange.state.setState('count', value);
-    },
-    render() {
-      const { count } = countChange.state;
-      const { handleClick, handleClickNumber } = countChange.methods;
-      const element = (
-        <div id="hello" className="gree">
-          <p>헬로월드</p>
-          <p>
-            <button type="button" onClick={handleClick}>
-              Click me! ({count})
-            </button>
-          </p>
-          <p>
-            {[1, 2, 3].map((i) => (
-              <button type="button" onClick={() => handleClickNumber(i)}>
-                {i}
-              </button>
-            ))}
-          </p>
-        </div>
-      );
-      document.getElementById('app').textContent = '';
-      document.getElementById('app').appendChild(element);
-    },
-  },
-};
+      render(nextCount);
+    };
+  }
 
-countChange.methods.render();
+  const element = (
+    <div id="hello" className="gree">
+      <p>헬로월드</p>
+      <p>
+        <button type="button" onClick={handleClick}>
+          Click me! ({count})
+        </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={handleClickNumber(count, i)}>
+            {i}
+          </button>
+        ))}
+      </p>
+    </div>
+  );
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
+}
+
+render(0);
