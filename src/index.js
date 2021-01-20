@@ -24,10 +24,9 @@ function render(count) {
   function handleClickNumber(currentCount, nextCount) {
     return () => {
       if (currentCount === nextCount) {
-        return;
+        return false;
       }
-
-      render(nextCount);
+      return render(nextCount);
     };
   }
 
