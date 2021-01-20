@@ -19,7 +19,9 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count = 0) {
+const initialCount = 0;
+
+function render(count) {
   const handleClick = () => {
     render(count + 1);
   };
@@ -53,4 +55,4 @@ function render(count = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(initialCount);
