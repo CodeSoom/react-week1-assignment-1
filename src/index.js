@@ -32,7 +32,7 @@ function render(i = 0) {
       </p>
       <p>
         {[1, 2, 3].map((v) => (
-          <button type="button" onClick={() => render(i)}>
+          <button type="button" onClick={() => render(v)}>
             {v}
           </button>
         ))}
