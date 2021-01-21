@@ -16,7 +16,7 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count) {
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -50,4 +50,4 @@ function render(count) {
   document.getElementById('app').appendChild(element);
 }
 
-render(0);
+render();
