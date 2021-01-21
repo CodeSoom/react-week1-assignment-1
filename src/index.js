@@ -18,39 +18,31 @@ function createElement(name, props, ...children) {
   return elem;
 }
 
-localStorage.setItem('count', '0');
-
-function handleClick(num) {
-  if (!localStorage.getItem('count')) {
-    localStorage.setItem('count', '0');
+function render(count) {
+  function handleClickCount() {
+    render(count + 1);
   }
-  localStorage.setItem('count', `${parseInt(localStorage.getItem('count'), 10) + num}`);
-}
 
-function render() {
+  function handleClickNumber() {
+    render(2);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
         <button
           type="button"
-          onClick={() => {
-            handleClick(1);
-            render();
-          }}
+          onClick={handleClickCount}
         >
           Click me!
           (
-          {localStorage.getItem('count')}
+          {count}
           )
         </button>
         <button
           type="button"
-          onClick={() => {
-            localStorage.setItem('count', '0');
-            handleClick(2);
-            render();
-          }}
+          onClick={handleClickNumber}
         >
           2
         </button>
@@ -62,4 +54,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(0);
