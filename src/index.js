@@ -5,7 +5,7 @@ function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
-    element[key.toLowerCase] = value;
+    element[key.toLowerCase()] = value;
   });
 
   children.flat().forEach((child) => {
@@ -37,7 +37,7 @@ function render() {
     <div id="hello" className="greeting">
       <p>Hello, world</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick()}>
           Click Me! ({count})
         </button>
       </p>
