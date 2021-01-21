@@ -21,8 +21,8 @@ function render(count = 0) {
   function handleCountUp() {
     return render(count + 1);
   }
-  function handleClickNumber(nextCount) {
-    return render(nextCount);
+  function handleClickNumber(numberToChange) {
+    return render(numberToChange);
   }
 
   const element = (
