@@ -30,11 +30,9 @@ const btn = {
   counter: 0,
   handleClick: () => {
     btn.counter += 1;
-    render();
   },
-  handleClickNumber: function (value) {
+  handleClickNumber(value) {
     btn.counter = value;
-    render();
   },
 };
 
@@ -44,15 +42,29 @@ function render() {
       <p>Hello world!</p>
       <p>
         {/* <button type="button" onClick={handleClick}> */}
-        <button type="button" onClick={btn.handleClick}>
+        <button
+          type="button"
+          onClick={() => {
+            btn.handleClick();
+            render();
+          }}
+        >
           {/* Click me! ({count}) */}
-          Click me! ({btn.counter})
+          Click me! (
+          {btn.counter}
+          )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
           // <button type="button" onClick={() => handleClickNumber(i)}>
-          <button type="button" onClick={() => btn.handleClickNumber(i)}>
+          <button
+            type="button"
+            onClick={() => {
+              btn.handleClickNumber(i);
+              render();
+            }}
+          >
             {i}
           </button>
         ))}
@@ -60,8 +72,8 @@ function render() {
     </div>
   );
 
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render();
