@@ -19,14 +19,9 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const state = {
-  count: 0,
-};
-
-function render(count) {
+function render(count = 0) {
   function handleClick() {
-    state.count += 1;
-    render(state.count);
+    render(count + 1);
   }
 
   function handleClickNumber(value) {
@@ -57,4 +52,4 @@ function render(count) {
   document.getElementById('app').appendChild(element);
 }
 
-render(state.count);
+render();
