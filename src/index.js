@@ -17,31 +17,26 @@ const createElement = (tagName, props, ...children) => {
 
   return element;
 };
-function render(count) {
-  function handleClick() {
+function render(count = 0) {
+  function handleCountUp() {
     return render(count + 1);
   }
-  function handleClickNumber(currentCount, nextCount) {
-    return () => {
-      if (currentCount === nextCount) {
-        return false;
-      }
-      return render(nextCount);
-    };
+  function handleClickNumber(nextCount) {
+    return render(nextCount);
   }
 
   const element = (
     <div id="hello" className="gree">
       <p>헬로월드</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={handleCountUp}>
           Click me! ({count})
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={handleClickNumber(count, i)}>
-            {i}
+        {[1, 2, 3].map((number) => (
+          <button type="button" onClick={() => handleClickNumber(number)}>
+            {number}
           </button>
         ))}
       </p>
@@ -51,4 +46,4 @@ function render(count) {
   document.getElementById('app').appendChild(element);
 }
 
-render(0);
+render();
