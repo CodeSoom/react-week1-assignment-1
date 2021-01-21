@@ -19,34 +19,22 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const outputData = { number: 0 };
-
-function handleClick() {
-  outputData.number += 1;
-  render();
-}
-
-function handleClickNumber(value) {
-  outputData.number = value;
-  render();
-}
-
-function render() {
+function render(displayNumber = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => render(displayNumber + 1)}>
           Click me!
           (
-          {outputData.number}
+          {displayNumber}
           )
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
-            {i}
+        {[1, 2, 3].map((displayNumber) => (
+          <button type="button" onClick={() => render(displayNumber)}>
+            {displayNumber}
           </button>
         ))}
       </p>
