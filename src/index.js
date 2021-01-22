@@ -2,8 +2,6 @@
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
-  // console.log(tagName, props, ...children);
-
   const element = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -21,48 +19,35 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-// function handleClickNumber(value) {
-//   count = value;
-//   render();
-// }
+function render(num) {
+  const counter = num;
 
-const btn = {
-  counter: 0,
-  handleClick: () => {
-    btn.counter += 1;
-  },
-  handleClickNumber(value) {
-    btn.counter = value;
-  },
-};
+  const handleClick = (n) => {
+    const clickCounter = n + 1;
+    render(clickCounter);
+  };
 
-function render() {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello world!</p>
       <p>
-        {/* <button type="button" onClick={handleClick}> */}
         <button
           type="button"
           onClick={() => {
-            btn.handleClick();
-            render();
+            handleClick(counter);
           }}
         >
-          {/* Click me! ({count}) */}
           Click me! (
-          {btn.counter}
+          {counter}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          // <button type="button" onClick={() => handleClickNumber(i)}>
           <button
             type="button"
             onClick={() => {
-              btn.handleClickNumber(i);
-              render();
+              render(i);
             }}
           >
             {i}
@@ -76,4 +61,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(0);
