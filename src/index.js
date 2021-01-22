@@ -20,13 +20,6 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(num) {
-  const counter = num;
-
-  const handleClick = (n) => {
-    const clickCounter = n + 1;
-    render(clickCounter);
-  };
-
   const element = (
     <div id="hello" className="greeting">
       <p>Hello world!</p>
@@ -34,11 +27,11 @@ function render(num) {
         <button
           type="button"
           onClick={() => {
-            handleClick(counter);
+            render(num + 1);
           }}
         >
           Click me! (
-          {counter}
+          {num}
           )
         </button>
       </p>
