@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -8,7 +8,7 @@ function createElement(tagName, props, ...children) {
     element[key.toLowerCase()] = value;
   });
 
-  children.flat().forEach(child => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
@@ -19,13 +19,13 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(value) {
-  value++;
-  render(value);
+function handleClick(plusNum) {
+  plusNum += 1;
+  render(plusNum);
 }
 
-function handleClickNumber(value) {
-  render(value);
+function handleClickNumber(number) {
+  render(number);
 }
 
 function render(count = 0) {
@@ -34,11 +34,13 @@ function render(count = 0) {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={() => handleClick(count)}>
-          Click me! ({count})
+          Click me! (
+          {count}
+          )
         </button>
       </p>
       <p>
-        {[1, 2, 3].map(i => (
+        {[1, 2, 3].map((i) => (
           <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
@@ -49,7 +51,6 @@ function render(count = 0) {
 
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
-
-};
+}
 
 render();
