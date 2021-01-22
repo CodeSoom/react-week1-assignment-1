@@ -8,7 +8,7 @@ function createElement(name, props, ...children) {
     elem[key.toLowerCase()] = value;
   });
 
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       elem.appendChild(child);
       return;
@@ -23,8 +23,8 @@ function render(count) {
     render(count + 1);
   }
 
-  function handleClickNumber() {
-    render(2);
+  function handleClickNumber(n) {
+    render(n);
   }
 
   const element = (
@@ -40,12 +40,16 @@ function render(count) {
           {count}
           )
         </button>
-        <button
-          type="button"
-          onClick={handleClickNumber}
-        >
-          2
-        </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button
+            type="button"
+            onClick={() => { handleClickNumber(i); }}
+          >
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
