@@ -20,7 +20,7 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count = 0) {
-  function handleClickMe() {
+  function handleClickCount() {
     render(count + 1);
   }
 
@@ -32,7 +32,7 @@ function render(count = 0) {
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => handleClickMe()}>
+        <button type="button" onClick={() => handleClickCount()}>
           Click me!
           (
           {count}
