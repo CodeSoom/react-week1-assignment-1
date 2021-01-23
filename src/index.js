@@ -20,28 +20,21 @@ function createElement(tagName, props, ...children) {
 
 //
 
-function render(count) {
-  function handleClick() {
-    render(count + 1);
-  }
-
-  function handleClickNumber(value) {
-    render(value);
-  }
-
+function render(count = 0){
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world</p>
       <p>
-        <button type="button" onClick={() => handleClick()}>
-          Click Me! (
+        <button type="button" onClick={() => render(count + 1)}>
+          Click Me!
+          (
           {count}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => render(i)}>
             {i}
           </button>
         ))}
@@ -52,4 +45,4 @@ function render(count) {
   document.getElementById('app').appendChild(element);
 }
 
-render(0);
+render();
