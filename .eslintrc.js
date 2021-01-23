@@ -10,6 +10,9 @@ module.exports = {
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    actor: 'readonly',
+    Feature: 'readonly',
+    Scenario: 'readonly',
   },
   parserOptions: {
     ecmaFeatures: {
