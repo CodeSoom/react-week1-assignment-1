@@ -1,7 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-// let count = 0;
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -19,19 +18,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(i = 0) {
+const numbers = [1, 2, 3];
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(i + 1)}>
+        <button type="button" onClick={() => render(count + 1)}>
           Click me!(
-          {i}
+          {count}
           )
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((v) => (
+        {numbers.map((v) => (
           <button type="button" onClick={() => render(v)}>
             {v}
           </button>
