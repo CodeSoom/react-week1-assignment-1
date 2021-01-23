@@ -20,13 +20,13 @@ function createElement(tagName, props, ...children) {
 
 //
 
-function render(count = 0){
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world</p>
       <p>
         <button type="button" onClick={() => render(count + 1)}>
-          Click Me!
+          Click me!
           (
           {count}
           )
