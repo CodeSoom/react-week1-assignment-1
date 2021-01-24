@@ -23,7 +23,7 @@ function render(count = 0) {
     <div id="hello" className="greeting">
       <p>Hello, world</p>
       <p>
-        <button type="button" onClick={() => render(count = 1)}>
+        <button type="button" onClick={() => render(count + 1)}>
           Click me!
           (
           {count}
