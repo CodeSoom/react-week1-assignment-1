@@ -45,7 +45,7 @@ function render(count) {
         {[1, 2, 3].map((i) => (
           <button
             type="button"
-            onClick={() => { handleClickNumber(i); }}
+            onClick={() => handleClickNumber(i)}
           >
             {i}
           </button>
