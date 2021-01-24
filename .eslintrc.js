@@ -25,7 +25,6 @@ module.exports = {
     'react',
   ],
   rules: {
-    // 'linebreak-style': 0,
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: ['codecept.conf.js'] }
