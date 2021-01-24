@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 Feature('Click me');
 
 Scenario('Click me test', (I) => {
