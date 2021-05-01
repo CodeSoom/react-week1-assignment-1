@@ -1,6 +1,6 @@
 Feature('Click me');
 
-Scenario('Click me test', (I) => {
+Scenario('Click me test', ({ I }) => {
   I.amOnPage('/');
   I.see('Click me!');
 
