@@ -2,7 +2,7 @@
   "name": "assignment-1-1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "start": "webpack serve",
     "test:e2e": "codeceptjs run --steps",
