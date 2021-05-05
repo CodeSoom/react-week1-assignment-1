@@ -15,7 +15,6 @@ function createElement(tagName, props = {}, ...children) {
     }
     element.appendChild(document.createTextNode(child));
   });
-
   return element;
 }
 
@@ -24,22 +23,17 @@ function render(valueRender) {
     <div id="hello" className="greeting">
       <p>hello World</p>
       <p>
-
         <button
           id="button"
           type="button"
-          value={valueRender}
-          onClick={() => render(parseInt(document.getElementById('button').value, 10) + 1)}
+          onClick={() => render(`Click me! (${parseInt((document.getElementById('button').innerText.split(' ')[2]).split('').slice(1, -1), 10) + 1})`)}
         >
-          Click me!
-          (
           {valueRender}
-          )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(i)}>
+          <button type="button" onClick={() => render(`Click me! (${i})`)}>
             {i}
           </button>
         ))}
@@ -49,4 +43,4 @@ function render(valueRender) {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
-render(0);
+render('Click me! (0)');
