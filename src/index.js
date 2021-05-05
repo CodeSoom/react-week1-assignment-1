@@ -20,30 +20,31 @@ function createElement(tagName, props = {}, ...children) {
 }
 
 function clickCount(value) {
-  const value2 = parseInt(value, 10) + 1;
-  document.getElementById('button').innerText = `click Me ${value2}`;
-  document.getElementById('button').value = value2;
+  const valueInt = parseInt(value, 10) + 1;
+  render(valueInt);
 }
 
-function handlerClick(valueI) {
-  document.getElementById('button').innerText = `click Me ${valueI}`;
-  document.getElementById('button').value = valueI;
+function handlerClick(ValueClick) {
+  render(ValueClick);
 }
 
-function render() {
+function render(valueRender) {
   const element = (
     <div id="hello" className="greeting">
       <p>hello World</p>
       <p>
+
         <button
           id="button"
           type="button"
-          value="0"
+          value={valueRender}
           onClick={() => clickCount(document.getElementById('button').value)}
         >
-          click Me 0
+          Click me!
+          (
+          {valueRender}
+          )
         </button>
-        {/* <input style={{ display: 'none' }} id="dataSaver" value="0" /> */}
       </p>
       <p>
         {[1, 2, 3].map((i) => (
@@ -54,9 +55,8 @@ function render() {
       </p>
     </div>
   );
-
-  //   document.getElementById('app').textContent = '';
+  document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(0);
