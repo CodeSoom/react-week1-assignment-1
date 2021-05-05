@@ -24,6 +24,10 @@ module.exports = {
     Feature: 'readonly',
     Scenario: 'readonly',
   },
-  rules: {
+  settings: {
+    react: {
+      version: 'latest',
+    },
   },
+  rules: {},
 };
