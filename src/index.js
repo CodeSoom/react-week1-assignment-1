@@ -18,7 +18,7 @@ function createElement(tagName, props = {}, ...children) {
   return element;
 }
 
-function render(valueRender) {
+function render(count) {
   const element = (
     <div id="hello" className="greeting">
       <p>hello World</p>
@@ -26,11 +26,11 @@ function render(valueRender) {
         <button
           id="button"
           type="button"
-          onClick={() => render(`${parseInt(valueRender, 10) + 1}`)}
+          onClick={() => render(`${parseInt(count, 10) + 1}`)}
         >
           Click me!
           (
-          {valueRender}
+          {count}
           )
         </button>
       </p>
