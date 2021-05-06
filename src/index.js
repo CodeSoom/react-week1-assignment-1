@@ -26,14 +26,17 @@ function render(valueRender) {
         <button
           id="button"
           type="button"
-          onClick={() => render(`Click me! (${parseInt((document.getElementById('button').innerText.split(' ')[2]).split('').slice(1, -1), 10) + 1})`)}
+          onClick={() => render(`${parseInt(valueRender, 10) + 1}`)}
         >
+          Click me!
+          (
           {valueRender}
+          )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(`Click me! (${i})`)}>
+          <button type="button" onClick={() => render(`${i}`)}>
             {i}
           </button>
         ))}
@@ -43,4 +46,4 @@ function render(valueRender) {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
-render('Click me! (0)');
+render(0);
