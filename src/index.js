@@ -1,7 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
-  console.log(children);
   const element = document.createElement(tagName);
 
   // props가 null일 경우가 있는데 그럴 땐 {}로 대체합니다
