@@ -27,7 +27,7 @@ function createElement(tagName, props , ...children){
     return element;
 }
 
-let count = 0;
+count = 0;
 
 function handleClick(){
     count += 1;
@@ -40,7 +40,7 @@ function handleClickNumber(value){
     render() 
 }
 
-// className이라고 입력해줘도, class로 포함됨. 자바스크립트에서 class 와 className에 대해서 이해가 필요할듯. css도 관련있음 
+// todo : 추가로 공부할 것 : JS class -> div속성에 className이라고 입력해줘도, class로 포함됨. 자바스크립트에서 class 와 className에 대해서 이해가 필요할듯. css도 관련있음 
 function render(){
     const element =(
         <div id="hello" className="greeting"> 
