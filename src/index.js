@@ -28,11 +28,11 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const handleClick = (count) => {
-  render(count);
-};
-
 const render = (state = 0) => {
+  const handleClick = (count) => {
+    render(count);
+  };
+
   const count = state;
   // babel에 의해서 className으로 넣어줘도 알아서 class로 먹는 모습을 볼 수 있습니다.
   const element = (
