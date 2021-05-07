@@ -25,14 +25,13 @@ const render = (state = 0) => {
     render(count);
   };
 
-  const count = state;
   const element = (
     <div id="hello" className="greeting">
       <p>
         <span>Hello World!</span>
       </p>
       <p>
-        <button type="button" onClick={() => handleClick(count + 1)}>
+        <button type="button" onClick={() => handleClick(state + 1)}>
           Click me!!
           (
           {state}
