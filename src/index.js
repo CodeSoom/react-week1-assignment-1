@@ -24,10 +24,6 @@ const render = (state = 0) => {
     render(count);
   };
 
-  const handleClickNumber = (value) => {
-    render(value);
-  };
-
   const element = (
     <div id="hello" className="greeting">
       <p>
@@ -42,7 +38,7 @@ const render = (state = 0) => {
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => (<button type="button" onClick={() => handleClickNumber(i)}>{i}</button>))}
+        {[1, 2, 3].map((i) => (<button type="button" onClick={() => handleClick(i)}>{i}</button>))}
       </p>
     </div>
   );
