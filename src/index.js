@@ -19,30 +19,21 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-// const handleClick = (count) => render(count + 1);
-
 function render(count = 0) {
+  const handleClick = (value) => render(value + 1);
+  const handleClickNumber = (value) => render(value);
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, wordl!!</p>
       <p>
-        <button
-          type="button"
-          onClick={
-            () => render(count + 1)
-            // handleClick
-          }
-        >
+        <button type="button" onClick={() => handleClick(count)}>
           Click me!
-          {' '}
           {`(${count})`}
         </button>
       </p>
       {[1, 2, 3].map((i) => (
-        <button
-          type="button"
-          onClick={() => render(i)}
-        >
+        <button type="button" onClick={() => handleClickNumber(i)}>
           {i}
         </button>
       ))}
