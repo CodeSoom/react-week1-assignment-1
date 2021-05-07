@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-<<<<<<< HEAD
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -61,5 +60,3 @@ function render() {
 }
 
 render();
-=======
->>>>>>> e7c215545b31805e4c22fa0005429d51a5a54b32
