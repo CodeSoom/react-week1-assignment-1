@@ -1,12 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-/** DSL 활용하기
- * 
- * DSL은 자바스크립트에서도 HTML처럼 구성요소를 코딩할 수 있게 도와줌. 자바스크립트를 한번더 해석해주는 기능
- * 
- * 우리는 바벨 Bable을 사용할 것이다
- */
 function createElement(tagName, props , ...children){
     //console.log(tagName,props,...children)
 
