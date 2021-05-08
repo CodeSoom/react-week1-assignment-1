@@ -6,21 +6,22 @@
 // eslint console.log 사용금지에 대하여 : https://eslint.org/docs/rules/no-console.html
 // 원인 :  일반적으로 사용 console중인 통화 는 프로덕션으로 푸시되기 전에 제거되어야합니다.
 
-// 1-1 과제 제출 2차
+// 1-1 과제 제출 3차
 /** 피드백 메모 & 생각정리 & 목표
  *
  * 1) count값을 객체로 관리한다고 해서 재할당이 불가능한 것은 아니다.
- *    => count 값에 접근할 수 있는 자격을 가진자를 별도로 분리해야 할것 같다 : 그런데 아직 어떻게 해결해야 할지 잘 모르겠음
- *
+ *    => count 값에 접근할 수 있는 자격을 가진자를 별도로 분리해야 할것 같다
+ *    ==> 과제 해설 강의를 본 후 생각 : count값이 변경된다는 것은 '결과적으로' 버튼 텍스트 값을 다시 그리는 일이다.
+ *       그러므로 count값을 제어하는 주체는 render()함수인것 같다.
+ *    ===> 다른 분들의 코드나, 과제 해설을 보기 전까지는 render()안에 파라미터로 count를 넘겨줘서 해결할 수 있다는 생각을 하지 못했다 (ㅠㅠ)
  *
  * 2) onClick 구현시 별도의 핸들러 함수를 만들어 사용하자 (완료)
  *    =>  기존 handler함수 구현에서 render 호출시 'use-before-define' EeLint 오류가 있음
  *    => handler 함수를 별도 구현 하면서, use-before-define 해결도 할 수 있는 방법을 찾아야함 : 함수안에 함수를 선언함.
  *
  * 3) 변수명에 명확하게 의도를 담을 것 (완료)
- *    =>  resetVal 수정하기 : 수정 완료  
+ *    =>  resetVal 수정하기 : 수정 완료
  */
-const data = { count: 0 };
 
 function createElement(tagName, props, ...children) {
   // console.log(tagName,props,...children)
@@ -39,18 +40,16 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render() {
+function render(countValue) {
   function handleClickNumber(newValue) {
     return () => {
-      data.count = newValue;
-      render();
+      render(newValue);
     };
   }
 
-  function handleClick() {
-    data.count += 1;
-    console.log(`${data.count} times clicked`);
-    render(data.count);
+  function handleClick(oldValue) {
+    console.log(`${oldValue + 1} times clicked`);
+    render(oldValue + 1);
   }
 
   const element = (
@@ -60,11 +59,13 @@ function render() {
         <button
           id="clickButton"
           type="button"
-          onClick={handleClick}
+          onClick={() => {
+            handleClick(countValue);
+          }}
           value={0}
         >
           Click me! (
-          {data.count}
+          {countValue}
           )
         </button>
       </p>
