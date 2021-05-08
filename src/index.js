@@ -29,15 +29,15 @@ const render = (count) => {
   };
 
   const element = (
-    <div id='hello'>
+    <div id="hello">
       <p>Hello World</p>
-      <button type='button' onClick={() => handleClick()}>
-        Click me! ({count})
+      <button type="button" onClick={() => handleClick()}>
+        {`Click me! (${count})`}
       </button>
       <p />
       <p>
         {[1, 2, 3].map((i) => (
-          <button type='button' onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
         ))}
