@@ -2,9 +2,7 @@
 /* eslint no-console: "off" */
 /* @jsx createElement */
 
-
 // 1-1 과제 제출 4차 + 개인 메모용 주석 삭제
-
 
 function createElement(tagName, props, ...children) {
   // console.log(tagName,props,...children)
@@ -61,8 +59,8 @@ function render({ count }) {
     </div>
   );
 
-  document.getElementById('app').textContent = ''; 
-  document.getElementById('app').appendChild(element); 
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render({ count: 0 });
