@@ -20,14 +20,14 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count = 0) {
-  const handleClick = (value) => render(value + 1);
+  const handleClick = () => render(count + 1);
   const handleClickNumber = (value) => render(value);
 
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, wordl!!</p>
       <p>
-        <button type="button" onClick={() => handleClick(count)}>
+        <button type="button" onClick={() => handleClick()}>
           Click me!
           {`(${count})`}
         </button>
