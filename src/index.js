@@ -19,20 +19,23 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
-
-const handleClick = () => {
-  count += 1;
-  console.log(count);
-  render();
+const log = (msg) => {
+  // eslint-disable-next-line no-console
+  console.log(msg);
 };
 
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
+function render(count) {
+  const handleClick = () => {
+    const newCount = count + 1;
 
-function render() {
+    log(newCount);
+    render(newCount);
+  };
+
+  const handleClickNumber = (value) => {
+    render(value);
+  };
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello World!</p>
@@ -57,4 +60,6 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+const INIT_COUNT = 0;
+
+render(INIT_COUNT);
