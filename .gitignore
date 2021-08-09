@@ -18,6 +18,3 @@ coverage
 
 ## Prettier
 .prettierignore
-
-## Yarn
-yarn.lock
