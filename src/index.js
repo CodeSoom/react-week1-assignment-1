@@ -20,10 +20,11 @@ function createElement(tagName, props, ...children) {
 
 //
 
-function render(count = 0) {
+const initCount = 0;
+
+function render(count) {
   function handleClick() {
-    const updatedCount = parseInt(document.getElementById('count').textContent, 10) + 1;
-    render(updatedCount);
+    render(count + 1);
   }
 
   function handleClickNumber(value) {
@@ -37,7 +38,7 @@ function render(count = 0) {
         <button type="button" onClick={handleClick}>
           Click me!
           (
-          <span id="count">{count}</span>
+          {count}
           )
         </button>
       </p>
@@ -55,4 +56,4 @@ function render(count = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(initCount);
