@@ -17,17 +17,6 @@ module.exports = {
   plugins: [
     'react',
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-    actor: 'readonly',
-    Feature: 'readonly',
-    Scenario: 'readonly',
+  rules: {
   },
-  settings: {
-    react: {
-      version: 'latest',
-    },
-  },
-  rules: {},
 };
