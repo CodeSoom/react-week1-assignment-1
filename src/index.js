@@ -5,7 +5,7 @@ const initialState = {
   count: 0,
 };
 
-const App = document.getElementById('app');
+const app = document.getElementById('app');
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -54,8 +54,8 @@ function render({ count }) {
     </div>
   );
 
-  App.textContent = '';
-  App.appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render(initialState);
