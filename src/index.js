@@ -23,8 +23,8 @@ function createElement(tagName, props, ...children) {
 
 function render(count = 0) {
   function handleClick() {
-    const newCount = count + 1;
-    render(newCount);
+    const stack = count + 1;
+    render(stack);
   }
 
   function handleClickNumber(value) {
@@ -49,8 +49,10 @@ function render(count = 0) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  const app = document.getElementById('app');
+
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render();
