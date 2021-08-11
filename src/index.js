@@ -5,6 +5,8 @@ const CONSTANT = {
   INIT_COUNT: 0,
 };
 
+const App = document.getElementById('app');
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -52,8 +54,8 @@ function render(count) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  App.textContent = '';
+  App.appendChild(element);
 }
 
 render(CONSTANT.INIT_COUNT);
