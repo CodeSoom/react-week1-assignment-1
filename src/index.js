@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-// /* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/jsx-one-expression-per-line */
 
 /* @jsx createElement */
 
@@ -36,7 +36,7 @@ function render(count = 0) {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={() => handleClick()}>
-          {`Click me! (${count})`}
+          Click me! ({count})
         </button>
       </p>
       <p>
