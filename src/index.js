@@ -23,13 +23,9 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const { log } = console;
-
 function render(count) {
   const handleClick = () => {
     const newCount = count + 1;
-
-    log(newCount);
     render(newCount);
   };
 
