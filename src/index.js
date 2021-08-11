@@ -19,10 +19,7 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const log = (msg) => {
-  // eslint-disable-next-line no-console
-  console.log(msg);
-};
+const { log } = console;
 
 function render(count) {
   const handleClick = () => {
