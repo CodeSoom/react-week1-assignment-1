@@ -25,8 +25,7 @@ function createElement(tagName, props, ...children) {
 
 function render(count) {
   const handleClick = () => {
-    const newCount = count + 1;
-    render(newCount);
+    render(count + 1);
   };
 
   const handleClickNumber = (value) => {
