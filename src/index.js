@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
@@ -19,32 +20,36 @@ function createElement(tagName, props, ...childrend) {
   return element;
 }
 
-const count = 0;
+function render(element, container) {
+  container.textContent = '';
+  container.appendChild(element);
+}
 
-function render(value) {
-  const element = (
+const CountElement = (count) => {
+  function rerender(nextCount) {
+    return render(CountElement(nextCount), document.getElementById('app'));
+  }
+
+  return (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(value + 1)}>
+        <button type="button" onClick={() => rerender(count + 1)}>
           Click me!
           (
-          {value}
+          {count}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(i)}>
+          <button type="button" onClick={() => rerender(i)}>
             {i}
           </button>
         ))}
       </p>
     </div>
   );
+};
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
-}
-
-render(count);
+render(CountElement(0), document.getElementById('app'));
