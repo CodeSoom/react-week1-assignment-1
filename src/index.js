@@ -18,13 +18,12 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-//
-
 const initCount = 0;
 
 function render(count) {
   function handleClick() {
-    render(count + 1);
+    const increasedCount = count + 1;
+    render(increasedCount);
   }
 
   function handleClickNumber(value) {
@@ -52,8 +51,9 @@ function render(count) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  const app = document.getElementById('app');
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render(initCount);
