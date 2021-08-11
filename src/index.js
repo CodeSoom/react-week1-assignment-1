@@ -1,9 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-const CONSTANT = {
-  INIT_COUNT: 0,
-};
+const INIT_COUNT = 0;
 
 const App = document.getElementById('app');
 
@@ -25,13 +23,13 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count) {
+function render({ count }) {
   const handleClick = () => {
-    render(count + 1);
+    render({ count: count + 1 });
   };
 
   const handleClickNumber = (value) => {
-    render(value);
+    render({ count: value });
   };
 
   const element = (
@@ -58,4 +56,8 @@ function render(count) {
   App.appendChild(element);
 }
 
-render(CONSTANT.INIT_COUNT);
+const initialState = {
+  count: INIT_COUNT,
+};
+
+render(initialState);
