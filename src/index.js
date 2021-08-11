@@ -1,6 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
+const CONSTANT = {
+  INIT_COUNT: 0,
+};
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -57,6 +61,4 @@ function render(count) {
   document.getElementById('app').appendChild(element);
 }
 
-const INIT_COUNT = 0;
-
-render(INIT_COUNT);
+render(CONSTANT.INIT_COUNT);
