@@ -1,7 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-const INIT_COUNT = 0;
+const initialState = {
+  count: 0,
+};
 
 const App = document.getElementById('app');
 
@@ -55,9 +57,5 @@ function render({ count }) {
   App.textContent = '';
   App.appendChild(element);
 }
-
-const initialState = {
-  count: INIT_COUNT,
-};
 
 render(initialState);
