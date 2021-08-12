@@ -1,32 +1,56 @@
-function createElement(tagName, ...children) {
+/* @jsx createElement */
+
+function createElement(tagName, props, ...children) {
     const element = document.createElement(tagName);
 
-    children.forEach((child) => {
-        element.appendChild(child);
+    Object.entries(props || {}).forEach(([key, value]) => {
+        element[key.toLowerCase()] = value;
+    })
+
+    children.flat().forEach((child) => {
+        if (child instanceof Node) {
+            element.appendChild(child);
+            return;
+        }
+        element.appendChild(document.createTextNode(child));
     });
     return element;
 }
 
-const paragraph1 = createElement(
-    'p', 
-    document.createTextNode('Hello, future1!'),
-    document.createTextNode('Hello, future2!')
-);
+function setElement(count, handleClick, handleClickNumber) {
+    return (
+        <div id="hello" className="greeting">
+            <p>hello, world!</p>
+            <p>hello, world!!!</p>
+            <p>
+                <button type="button" onclick={() => handleClick(count)}>
+                    Click me!
+                    (
+                        {count}
+                    )
+                </button>
+            </p>
+            <p>
+                {[1, 2, 3].map((i) => (<button type="button" onClick={() => handleClickNumber(i)}>{i}</button>))}
+            </p>
+        </div>
+    );
+}
 
-const paragraph2 = createElement(
-    'p',
-    ...[1, 2, 3].map((i) => ( 
-    document.createTextNode(`Hello, Hi! ${i} | `)
-    ))
-);
+function render(count) {
+    const handleClick = (value) => {
+        const newValue = value + 1;
+        render(newValue);
+    };
 
-const root = createElement(
-    'div',
-    paragraph1,
-    paragraph2
-);
+    const handleClickNumber = (value) => {
+        render(value);
+    };
 
-const container = document.getElementById('app');
+    const element = setElement(count, handleClick, handleClickNumber);
 
-container.appendChild(paragraph1);
-container.appendChild(paragraph2);
+    document.getElementById('app').textContent = '';
+    document.getElementById('app').appendChild(element);
+}
+
+render(0);
