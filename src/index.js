@@ -5,24 +5,24 @@ const BUTTON_NUMBERS = [1, 2, 3];
 const INITIAL_STATE = { count: 0 };
 
 function render({ count }) {
-  const handleClickMeClick = (prevCount) => {
+  const handleClickMeButtonClick = (prevCount) => {
     render({ count: prevCount + 1 });
   };
 
-  const handleClickNumber = (number) => {
+  const handleNumberButtonClick = (number) => {
     render({ count: number });
   };
 
   const element = (
     <div id="hello" className="greeting">
       <p>
-        <button type="button" onClick={() => handleClickMeClick(count)}>
+        <button type="button" onClick={() => handleClickMeButtonClick(count)}>
           Click me! (
           {count}
           )
         </button>
       </p>
-      <p>{BUTTON_NUMBERS.map((number) => (<button type="button" onClick={() => handleClickNumber(number)}>{number}</button>))}</p>
+      <p>{BUTTON_NUMBERS.map((number) => (<button type="button" onClick={() => handleNumberButtonClick(number)}>{number}</button>))}</p>
     </div>
   );
 
