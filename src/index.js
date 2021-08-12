@@ -1,23 +1,28 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-let count = 0;
+const BUTTON_NUMBERS = [1, 2, 3];
+const INITIAL_STATE = { count: 0 };
 
-function handleClick() {
-  count += 1;
-  render();
-}
+function render({ count }) {
+  const handleClickMeClick = (prevCount) => {
+    render({ count: prevCount + 1 });
+  };
 
-function render() {
+  const handleClickNumber = (number) => {
+    render({ count: number });
+  };
+
   const element = (
     <div id="hello" className="greeting">
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClickMeClick(count)}>
           Click me! (
           {count}
           )
         </button>
       </p>
+      <p>{BUTTON_NUMBERS.map((number) => (<button type="button" onClick={() => handleClickNumber(number)}>{number}</button>))}</p>
     </div>
   );
 
@@ -25,7 +30,7 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(INITIAL_STATE);
 
 function createElement(tag, props, ...children) {
   const element = document.createElement(tag);
