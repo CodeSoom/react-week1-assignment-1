@@ -23,8 +23,8 @@ function render(count = 0) {
     render(count + 1);
   }
 
-  function handleClickNumber(value) {
-    render(value);
+  function handleClickNumber(number) {
+    render(number);
   }
 
   const element = (
