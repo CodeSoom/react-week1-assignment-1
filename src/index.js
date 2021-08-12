@@ -14,7 +14,7 @@ function render({ count }) {
   };
 
   const element = (
-    <div id="hello" className="greeting">
+    <div>
       <p>
         <button type="button" onClick={() => handleClickMeButtonClick(count)}>
           Click me! (
