@@ -5,7 +5,7 @@ const BUTTON_NUMBERS = [1, 2, 3];
 const INITIAL_STATE = { count: 0 };
 
 function render({ count }) {
-  const handleClickMeButtonClick = (prevCount) => {
+  const handleClickMeClick = (prevCount) => {
     render({ count: prevCount + 1 });
   };
 
@@ -16,7 +16,7 @@ function render({ count }) {
   const element = (
     <div>
       <p>
-        <button type="button" onClick={() => handleClickMeButtonClick(count)}>
+        <button type="button" onClick={() => handleClickMeClick(count)}>
           Click me! (
           {count}
           )
@@ -26,8 +26,10 @@ function render({ count }) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  const app = document.getElementById('app');
+
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render(INITIAL_STATE);
