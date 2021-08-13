@@ -32,13 +32,13 @@ class Element {
 
 const appElement = new Element(document.getElementById('app'));
 
-function countElement(count) {
+function countElement(count, parentElement) {
   function handleClick() {
-    appElement.setChild(countElement(count + 1));
+    parentElement.setChild(countElement(count + 1, parentElement));
   }
 
   function handleClickNumber(value) {
-    appElement.setChild(countElement(value));
+    parentElement.setChild(countElement(value, parentElement));
   }
 
   return (
@@ -63,4 +63,4 @@ function countElement(count) {
   );
 }
 
-appElement.setChild(countElement(0));
+appElement.setChild(countElement(0, appElement));
