@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
@@ -20,21 +19,33 @@ function createElement(tagName, props, ...childrend) {
   return element;
 }
 
-function render(element, container) {
-  container.textContent = '';
-  container.appendChild(element);
+class Element {
+  constructor(element) {
+    this.element = element;
+  }
+
+  setChild(child) {
+    this.element.textContent = '';
+    this.element.appendChild(child);
+  }
 }
 
-const CountElement = (count) => {
-  function rerender(nextCount) {
-    return render(CountElement(nextCount), document.getElementById('app'));
+const appElement = new Element(document.getElementById('app'));
+
+function countElement(count) {
+  function handleClick() {
+    appElement.setChild(countElement(count + 1));
+  }
+
+  function handleClickNumber(value) {
+    appElement.setChild(countElement(value));
   }
 
   return (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => rerender(count + 1)}>
+        <button type="button" onClick={handleClick}>
           Click me!
           (
           {count}
@@ -43,13 +54,13 @@ const CountElement = (count) => {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => rerender(i)}>
+          <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
         ))}
       </p>
     </div>
   );
-};
+}
 
-render(CountElement(0), document.getElementById('app'));
+appElement.setChild(countElement(0));
