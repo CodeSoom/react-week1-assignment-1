@@ -1,5 +1,4 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-/* eslint-disable react/jsx-one-expression-per-line */
 
 /* @jsx createElement */
 
@@ -23,8 +22,7 @@ function createElement(tagName, props, ...children) {
 
 function render(count = 0) {
   function handleClick() {
-    const stack = count + 1;
-    render(stack);
+    render(count + 1);
   }
 
   function handleClickNumber(value) {
@@ -36,7 +34,9 @@ function render(count = 0) {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={handleClick}>
-          Click me! ({count})
+          Click me! (
+          {count}
+          )
         </button>
       </p>
       <p>
