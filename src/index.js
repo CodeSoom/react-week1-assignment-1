@@ -1,11 +1,15 @@
 /* @jsx createElement */
 
+const INIT_COUNT = 0;
+const INCREASE = 1;
+const BUTTON = [1, 2, 3];
+
 function createElement(tagName, props, ...children) {
     const element = document.createElement(tagName);
 
     Object.entries(props || {}).forEach(([key, value]) => {
         element[key.toLowerCase()] = value;
-    })
+    });
 
     children.flat().forEach((child) => {
         if (child instanceof Node) {
@@ -14,43 +18,40 @@ function createElement(tagName, props, ...children) {
         }
         element.appendChild(document.createTextNode(child));
     });
+    
     return element;
 }
 
-function setElement(count, handleClick, handleClickNumber) {
-    return (
+function render(count) {
+    const handleClick = () => {
+        render(count + INCREASE);
+    }
+
+    const handleClickNumberBtn = (number) => {
+        render(number);
+    };
+
+    const element = (
         <div id="hello" className="greeting">
-            <p>hello, world!</p>
-            <p>hello, world!!!</p>
+            <p>hello, Olive!</p>
             <p>
                 <button type="button" onclick={() => handleClick(count)}>
-                    Click me!
-                    (
-                        {count}
-                    )
+                    Click me!({count})
                 </button>
             </p>
+
             <p>
-                {[1, 2, 3].map((i) => (<button type="button" onClick={() => handleClickNumber(i)}>{i}</button>))}
+                {BUTTON.map((number) => (<button type="button" onClick={() => handleClickNumberBtn(number)}>
+                    {number}
+                </button>
+                ))}
             </p>
         </div>
     );
+
+    const app = document.getElementById('app');
+    app.textContent = '';
+    app.appendChild(element);
 }
 
-function render(count) {
-    const handleClick = (value) => {
-        const newValue = value + 1;
-        render(newValue);
-    };
-
-    const handleClickNumber = (value) => {
-        render(value);
-    };
-
-    const element = setElement(count, handleClick, handleClickNumber);
-
-    document.getElementById('app').textContent = '';
-    document.getElementById('app').appendChild(element);
-}
-
-render(0);
+render(INIT_COUNT);
