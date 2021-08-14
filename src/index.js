@@ -27,7 +27,7 @@ function render(count) {
     render(count + INCREASE);
   };
 
-  const handleClickNumberBtn = (number) => {
+  const handleClickNumberButton = (number) => {
     render(number);
   };
 
@@ -44,7 +44,7 @@ function render(count) {
 
       <p>
         {BUTTON.map((number) => (
-          <button type="button" onClick={() => handleClickNumberBtn(number)}>
+          <button type="button" onClick={() => handleClickNumberButton(number)}>
             {number}
           </button>
         ))}
