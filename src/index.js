@@ -2,7 +2,7 @@
 
 const INIT_COUNT = 0;
 const INCREASE = 1;
-const BUTTON = [1, 2, 3];
+const BUTTONS = [1, 2, 3];
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -43,7 +43,7 @@ function render(count) {
       </p>
 
       <p>
-        {BUTTON.map((number) => (
+        {BUTTONS.map((number) => (
           <button type="button" onClick={() => handleClickNumberButton(number)}>
             {number}
           </button>
