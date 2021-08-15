@@ -23,7 +23,7 @@ const initialState = { count: 0 };
 
 function render({ count }) {
   function handleClickButton(newCount) {
-    render({ count: newCount });
+    return () => render({ count: newCount });
   }
 
   const app = document.getElementById('app');
@@ -33,7 +33,7 @@ function render({ count }) {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={handleClickButton(count + 1)}>
-          Click Me!
+          Click me!
           (
           {count}
           )
