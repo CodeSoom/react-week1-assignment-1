@@ -26,7 +26,7 @@ function render({ count }) {
     render({ count: newCount });
   }
 
-  const root = document.getElementById('app');
+  const app = document.getElementById('app');
 
   const element = (
     <div id="hello" className="greeting">
@@ -45,8 +45,8 @@ function render({ count }) {
     </div>
   );
 
-  root.textContent = '';
-  root.appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render(initialState);
