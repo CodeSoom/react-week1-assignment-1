@@ -20,13 +20,13 @@ function createElement(tagName, props, ...children) {
 
 //
 
-function render(count = 0) {
+function render({ count }) {
   function handleClick() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
 
   function handleClickNumber(value) {
-    render(value);
+    render({ count: value });
   }
 
   const element = (
@@ -55,4 +55,4 @@ function render(count = 0) {
   app.appendChild(element);
 }
 
-render();
+render({ count: 0 });
