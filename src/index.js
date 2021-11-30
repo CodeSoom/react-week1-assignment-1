@@ -2,6 +2,7 @@
 /* @jsx createElement */
 
 const INIT_COUNT = 0;
+const App = document.getElementById('app');
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -27,22 +28,21 @@ const render = (count) => {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={() => render(count + 1)}>
-          Click Me!
+          Click me! (
+          {count}
+          )
         </button>
       </p>
       <p>
         {
-          [1, 2, 3].map((i) => <button type="button" onClick={() => render(count + i)}>{i}</button>)
+          [1, 2, 3].map((i) => <button type="button" onClick={() => render(i)}>{i}</button>)
         }
-      </p>
-      <p>
-        {count}
       </p>
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  App.textContent = '';
+  App.appendChild(element);
 };
 
 render(INIT_COUNT);
