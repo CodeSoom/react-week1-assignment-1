@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, linebreak-style */
 /* @jsx createElement */
 function createElement(tagName, props = {}, ...children) {
   const element = document.createElement(tagName);
@@ -7,7 +7,7 @@ function createElement(tagName, props = {}, ...children) {
     element[key.toLowerCase()] = value;
   });
 
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
@@ -24,6 +24,11 @@ function handleClick() {
   render();
 }
 
+function handleClickNumber(value) {
+  count = value;
+  render();
+}
+
 function render() {
   const element = (
     <div id="hello" className="greeting">
@@ -34,6 +39,13 @@ function render() {
           {count}
           )
         </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
