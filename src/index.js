@@ -1,47 +1,38 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/jsx-one-expression-per-line */
 /* @jsx createElement */
+const INIT_COUNT = 0;
+const App = document.getElementById('app');
+
 function createElement(tagName, props, ...children) {
-  const element = document.createElement(tagName);
+  const element = children.flat().reduce((parent, child) => {
+    if (child instanceof Node) {
+      parent.appendChild(child);
+      return parent;
+    }
+    parent.appendChild(document.createTextNode(child));
+    return parent;
+  }, document.createElement(tagName));
 
   Object.entries(props || {}).forEach(([key, value]) => {
     element[key.toLowerCase()] = value;
   });
 
-  children.flat().forEach((child) => {
-    if (child instanceof Node) {
-      element.appendChild(child);
-      return;
-    }
-    element.appendChild(document.createTextNode(child));
-  });
-
   return element;
 }
 
-let count = 0;
-
-function handleClick(/* e */) {
-  count += 1;
-  render();
-}
-
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
-
-function render() {
+function render(count) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello World!</p>
       <p>
-        <button type="button" onclick={handleClick}>
+        <button type="button" onClick={() => render(count + 1)}>
           Click me! ({count})
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onclick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => render(i)}>
             {i}
           </button>
         ))}
@@ -49,8 +40,8 @@ function render() {
     </div>
   );
 
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  App.textContent = '';
+  App.appendChild(element);
 }
 
-render();
+render(INIT_COUNT);
