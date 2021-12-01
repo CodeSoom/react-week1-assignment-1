@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-use-before-define */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
@@ -30,44 +29,30 @@ function createElement(tagName, props, ...children) {
 }
 
 /**
- * 상태 객체
- * @type {{ count: number}}
- */
-const state = { count: 0 };
-
-/**
- * 클릭 이벤트가 발생하면 count를 +1 해주고 렌더링한다.
- * @return {void}
- */
-function handleClick() {
-  state.count += 1;
-  render();
-}
-
-/**
- * 클릭 이벤트가 발생하면 count를 바꿔주고 렌더링한다.
- * @return {void}
- */
-function handleClickNumber(value) {
-  state.count = value;
-  render();
-}
-
-/**
  * count app을 새로 렌더링한다.
  * @return {void}
  */
-function render() {
+function render(initialState = { count: 0 }) {
+  const state = { count: 0, ...initialState };
+
+  function setState(newState) {
+    render({ ...state, ...newState });
+  }
+
+  function increaseCount() {
+    setState({ count: state.count + 1 });
+  }
+
   /** @type {HTMLElement} */
   const element = (
     <section id="hello" className="greeting">
       <h1>Hello, world!</h1>
-      <button type="button" onClick={handleClick}>
+      <button type="button" onClick={increaseCount}>
         Click me! ({state.count})
       </button>
       <p>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => handleClickNumber(number)}>
+          <button type="button" onClick={() => setState({ count: number })}>
             {number}
           </button>
         ))}
