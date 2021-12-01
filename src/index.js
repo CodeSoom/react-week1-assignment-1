@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, linebreak-style */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 function createElement(tagName, props = {}, ...children) {
   const element = document.createElement(tagName);
@@ -17,32 +17,23 @@ function createElement(tagName, props = {}, ...children) {
   return element;
 }
 
-let count = 0;
-
-function handleClick() {
-  count += 1;
-  render();
-}
-
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
+const span = document.createElement('span');
+span.innerText = 0;
 
 function render() {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => { const value = Number(span.innerText); span.innerText = value + 1; render(); }}>
           Click me!(
-          {count}
+          {span}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => { span.innerText = i; render(); }}>
             {i}
           </button>
         ))}
