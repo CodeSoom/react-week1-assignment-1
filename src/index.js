@@ -43,6 +43,10 @@ function render(initialState = { count: 0 }) {
     setState({ count: state.count + 1 });
   }
 
+  function updateCount(count) {
+    setState({ count });
+  }
+
   /** @type {HTMLElement} */
   const element = (
     <section id="hello" className="greeting">
@@ -52,7 +56,7 @@ function render(initialState = { count: 0 }) {
       </button>
       <p>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => setState({ count: number })}>
+          <button type="button" onClick={() => updateCount(number)}>
             {number}
           </button>
         ))}
