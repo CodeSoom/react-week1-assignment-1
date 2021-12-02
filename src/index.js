@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-function createElement(tagName, props, ...children) { // array 안에 또 array 있으면 이상하게 나옴
+function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
     element[key.toLowerCase()] = value;
@@ -11,13 +11,13 @@ function createElement(tagName, props, ...children) { // array 안에 또 array 
       element.appendChild(child);
       return;
     }
-    element.appendChild(document.createTextNode(child)); // 노드 안에 노드 들어가는 경우는 이상하게 나옴
+    element.appendChild(document.createTextNode(child));
   });
   return element;
 }
 
 const counter = {
-	count: 0,
+  count: 0,
 };
 
 // clickCounter 구현
