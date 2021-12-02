@@ -8,8 +8,6 @@
 
 /* @jsx createElement */
 
-const count = { number: 0 };
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -29,17 +27,19 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick() {
-  count.number += 1;
-  render();
-}
-
-function handleClickNumber(number) {
-  count.number = number;
-  render();
-}
-
 function render() {
+  const count = { number: 0 };
+
+  const handleClick = () => {
+    count.number += 1;
+    render();
+  };
+
+  const handleClickNumber = (number) => {
+    count.number = number;
+    render();
+  };
+
   const element = (
     <div id="hello" className="world">
       <p>Hello, React</p>
