@@ -16,17 +16,19 @@ function createElement(tagName, props, ...children) { // array 안에 또 array 
   return element;
 }
 
-let count = 0;
+const counter = {
+	count: 0,
+};
 
 // clickCounter 구현
 function handleClick() {
-  count += 1;
+  counter.count += 1;
   render();
 }
 
 // clickNumber 구현
 function handleClickNumber(value) {
-  count = value;
+  counter.count = value;
   render();
 }
 
@@ -38,7 +40,7 @@ function render() {
       <p>
         <button type="button" onClick={handleClick}>
           click me! (
-          {count}
+          {counter.count}
           )
         </button>
       </p>
