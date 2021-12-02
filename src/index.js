@@ -10,9 +10,9 @@ function handleClick() {
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
-    element[key] = value;
+    element[key.toLowerCase()] = value;
   });
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
