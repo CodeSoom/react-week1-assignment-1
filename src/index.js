@@ -1,5 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
+const app = document.getElementById('app');
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -34,8 +36,8 @@ function render(count = 0) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render();
