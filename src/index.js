@@ -3,7 +3,6 @@
 
 
 function createElement(tagName, props, ...children) {
-  console.log(children)
   const element = document.createElement(tagName);
 
   // props가 없는 null 이면 {}로서 처리
@@ -13,7 +12,7 @@ function createElement(tagName, props, ...children) {
   });
 
   children.flat().forEach((child) => {
-    //텍스트가 아니라 노드면
+    // 텍스트가 아니라 노드면
     if (child instanceof Node) {
       element.appendChild(child);
       return;
@@ -23,24 +22,22 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
+const iniCount = 0;
 
-function onClickHandle(i) {
-  count = i;
-  render();
+function handleClick(cur) {
+  render(cur+1);
 }
 
-function handleClick() {
-  count += 1; 
-  render();
+function onClickHandle(ini) {
+  render(ini);
 }
 
-function render() {
+function render(count) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(count)}>
           click me!
           (
             {count}
@@ -58,4 +55,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(iniCount);
