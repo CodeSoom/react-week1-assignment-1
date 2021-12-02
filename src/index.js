@@ -2,11 +2,6 @@
 /* @jsx createElement */
 let count = 0;
 
-function handleClick() {
-  count += 1;
-  render();
-}
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -23,6 +18,11 @@ function createElement(tagName, props, ...children) {
 }
 
 function render() {
+  function handleClick() {
+    count += 1;
+    render();
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
