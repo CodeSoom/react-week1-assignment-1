@@ -16,12 +16,12 @@ function createElement(tagName, props, ...children) {
 }
 
 const render = (child) => {
-  const App = document.getElementById('app');
-  if (!App) {
+  const app = document.getElementById('app');
+  if (!app) {
     return;
   }
-  App.textContent = '';
-  App.appendChild(child);
+  app.textContent = '';
+  app.appendChild(child);
 };
 
 const component = (count = 0) => {
