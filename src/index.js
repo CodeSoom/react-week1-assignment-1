@@ -17,6 +17,8 @@ function createElement(tagName, props = {}, ...children) {
   return element;
 }
 
+const app = document.getElementById('app');
+
 const count = {
   value: 0,
   setCount: (v) => { count.value = v; },
@@ -43,8 +45,8 @@ function render() {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render();
