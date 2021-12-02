@@ -4,9 +4,23 @@
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
+  const properties = {};
+  const dataset = {};
   Object.entries(props || {}).forEach(([key, value]) => {
+    if (key.startsWith('data-')) {
+      const dataKey = key.replace('data-', '');
+      dataset[dataKey] = value;
+      return;
+    }
     const property = key === 'className' ? key : key.toLowerCase();
-    element[property] = value;
+    properties[property] = value;
+  });
+
+  Object.entries(properties).forEach(([key, value]) => {
+    element[key] = value;
+  });
+  Object.entries(dataset).forEach(([key, value]) => {
+    element.dataset[key] = value;
   });
 
   children.flat().forEach((child) => {
@@ -21,16 +35,12 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const state = {
-  count: 0,
-};
-
 function handleClick(event) {
   const { target } = event;
   const root = target.closest('#root');
   const { dataset: { id } } = root;
 
-  render({ count: id + 1 });
+  render({ count: Number(id) + 1 });
 }
 
 function handleClickNumber(i) {
@@ -45,7 +55,7 @@ function render({ count }) {
         <button type="button" onClick={(event) => handleClick(event)}>
           Click Me!
           (
-          {state.count}
+          {count}
           )
         </button>
       </p>
