@@ -17,23 +17,25 @@ function createElement(tagName, props = {}, ...children) {
   return element;
 }
 
-const span = document.createElement('span');
-span.innerText = 0;
+const count = {
+  value: 0,
+  setCount: (v) => { count.value = v; },
+};
 
 function render() {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => { const value = Number(span.innerText); span.innerText = value + 1; render(); }}>
+        <button type="button" onClick={() => { count.setCount(count.value + 1); render(); }}>
           Click me!(
-          {span}
+          {count.value}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => { span.innerText = i; render(); }}>
+          <button type="button" onClick={() => { count.setCount(i); render(); }}>
             {i}
           </button>
         ))}
