@@ -32,39 +32,38 @@ function createElement(tagName, props, ...children) {
  * count app을 새로 렌더링한다.
  * @return {void}
  */
-function render(initialState = { count: 0 }) {
-  const state = { count: 0, ...initialState };
-
+function render({ count = 0 } = { count: 0 }) {
   function setState(newState) {
-    render({ ...state, ...newState });
+    render({ ...newState });
   }
 
-  function increaseCount() {
-    setState({ count: state.count + 1 });
+  function handleClickIncreaseCount() {
+    setState({ count: count + 1 });
   }
 
-  function updateCount(count) {
-    setState({ count });
+  function handleClickUpdateCount(newCount) {
+    setState({ count: newCount });
   }
 
   /** @type {HTMLElement} */
   const element = (
     <section id="hello" className="greeting">
       <h1>Hello, world!</h1>
-      <button type="button" onClick={increaseCount}>
-        Click me! ({state.count})
+      <button type="button" onClick={handleClickIncreaseCount}>
+        Click me! ({count})
       </button>
       <p>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => updateCount(number)}>
+          <button type="button" onClick={() => handleClickUpdateCount(number)}>
             {number}
           </button>
         ))}
       </p>
     </section>
   );
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  const app = document.getElementById('app');
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render();
