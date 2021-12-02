@@ -24,26 +24,28 @@ const render = (child) => {
   App.appendChild(child);
 };
 
-const clickHandler = (html) => {
-  render(html);
-};
+const component = (count = 0) => {
+  const clickHandler = (i) => {
+    render(component(i));
+  };
 
-const component = (count = 0) => (
-  <div>
-    <button type="button" onClick={() => clickHandler(component(count + 1))}>
-      Click me!
-      (
-      {count}
-      )
-    </button>
-    <p>
-      {[1, 2, 3].map((i) => (
-        <button type="button" onClick={() => clickHandler(component(i))}>
-          {i}
-        </button>
-      ))}
-    </p>
-  </div>
-);
+  return (
+    <div>
+      <button type="button" onClick={() => clickHandler(count + 1)}>
+        Click me!
+        (
+        {count}
+        )
+      </button>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => clickHandler(i)}>
+            {i}
+          </button>
+        ))}
+      </p>
+    </div>
+  );
+};
 
 render(component());
