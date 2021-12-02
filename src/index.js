@@ -53,7 +53,7 @@ function render({ count }) {
       <p>Hello, World!</p>
       <p>
         <button type="button" onClick={(event) => handleClick(event)}>
-          Click Me!
+          Click me!
           (
           {count}
           )
@@ -73,4 +73,4 @@ function render({ count }) {
   document.getElementById('app').appendChild(element);
 }
 
-render({ count: 1 });
+render({ count: 0 });
