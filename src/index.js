@@ -1,5 +1,15 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/*
+  eslint-disable react/react-in-jsx-scope,
+  react/jsx-filename-extension,
+  react/jsx-one-expression-per-line,
+  quotes,
+  no-param-reassign
+*/
+
 /* @jsx createElement */
+
+const count = { number: 0 };
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -19,30 +29,28 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
-
 function handleClick() {
-  count += 1;
+  count.number += 1;
   render();
 }
 
 function handleClickNumber(number) {
-  count = number;
+  count.number = number;
   render();
 }
 
 function render() {
   const element = (
-    <div id='hello' className='world'>
+    <div id="hello" className="world">
       <p>Hello, React</p>
       <p>
-        <button type='button' onClick={handleClick}>
-          Click me! ({count})
+        <button type="button" onClick={() => handleClick()}>
+          Click me! ({count.number})
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type='button' onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
         ))}
@@ -50,8 +58,8 @@ function render() {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  document.getElementById("app").textContent = "";
+  document.getElementById("app").appendChild(element);
 }
 
 render();
