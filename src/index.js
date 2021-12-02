@@ -1,6 +1,6 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-
 
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
@@ -15,7 +15,6 @@ function createElement(tagName, props, ...children) {
     // 텍스트가 아니라 노드면
     if (child instanceof Node) {
       element.appendChild(child);
-      return;
     } else element.appendChild(document.createTextNode(child));
   });
 
@@ -24,15 +23,13 @@ function createElement(tagName, props, ...children) {
 
 const iniCount = 0;
 
-function handleClick(cur) {
-  render(cur+1);
-}
-
-function onClickHandle(ini) {
-  render(ini);
-}
-
 function render(count) {
+  function handleClick(cur) {
+    render(cur + 1);
+  }
+  function onClickHandle(ini) {
+    render(ini);
+  }
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -40,12 +37,12 @@ function render(count) {
         <button type="button" onClick={() => handleClick(count)}>
           click me!
           (
-            {count}
+          { count }
           )
         </button>
       </p>
       <p>
-        {[1,2,3].map((i)=> (
+        {[1, 2, 3].map((i) => (
           <button type="button" onClick={() => onClickHandle(i)}>{i}</button>
         ))}
       </p>
