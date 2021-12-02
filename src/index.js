@@ -1,7 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-let count = 0;
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
@@ -17,10 +15,9 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render() {
+function render(count = 0) {
   function handleClick() {
-    count += 1;
-    render();
+    render(count + 1);
   }
 
   const element = (
