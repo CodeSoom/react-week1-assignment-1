@@ -7,6 +7,8 @@
 
 /* @jsx createElement */
 
+const count = { number: 0 };
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -26,16 +28,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render() {
-  const count = { number: 0 };
+function getAppElement() {
+  return document.getElementById('app');
+}
 
+function render() {
   const handleClick = () => {
     count.number += 1;
+
     render();
   };
 
   const handleClickNumber = (number) => {
     count.number = number;
+
     render();
   };
 
@@ -43,7 +49,7 @@ function render() {
     <div id="hello" className="world">
       <p>Hello, React</p>
       <p>
-        <button type="button" onClick={() => handleClick()}>
+        <button type="button" onClick={handleClick}>
           Click me! ({count.number})
         </button>
       </p>
@@ -57,8 +63,8 @@ function render() {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  getAppElement().textContent = '';
+  getAppElement().appendChild(element);
 }
 
 render();
