@@ -21,7 +21,7 @@ function createElement(tagName, props, ...children) {
 
 const rootElement = document.getElementById('app');
 
-function render(count) {
+function render(count = 0) {
   function onClickCount() {
     return render(count + 1);
   }
