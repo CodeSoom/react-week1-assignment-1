@@ -25,8 +25,8 @@ function handleClick() {
   render();
 }
 
-function handleClickNumber(value) {
-  counter.count = value;
+function handleClickNumber(clickedNumber) {
+  counter.count = clickedNumber;
   render();
 }
 
