@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension no-unused-vars */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -20,19 +20,16 @@ const counter = {
   count: 0,
 };
 
-// clickCounter 구현
 function handleClick() {
   counter.count += 1;
   render();
 }
 
-// clickNumber 구현
 function handleClickNumber(value) {
   counter.count = value;
   render();
 }
 
-// render 함수 구현
 function render() {
   const element = (
     <div id="hello" className="greeting">
@@ -58,5 +55,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-// 실행부
 render();
