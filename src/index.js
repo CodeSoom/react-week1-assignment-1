@@ -19,16 +19,30 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
+class Counter {
+  constructor() {
+    this.count = 0;
+  }
+
+  increase() {
+    this.count += 1;
+  }
+
+  setCount(value) {
+    this.count = value;
+  }
+}
+
+const counter = new Counter();
 
 function render() {
   function handleClick() {
-    count += 1;
+    counter.increase();
     render();
   }
 
   function handleClickNumber(value) {
-    count = value;
+    counter.setCount(value);
     render();
   }
 
@@ -38,7 +52,7 @@ function render() {
       <p>
         <button type="button" onClick={handleClick}>
           Click me! (
-          {count}
+          {counter.count}
           )
         </button>
       </p>
