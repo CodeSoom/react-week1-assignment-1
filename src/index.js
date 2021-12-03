@@ -17,9 +17,9 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count = 0) {
+function render({ count }) {
   function handleClick() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
 
   const element = (
@@ -40,4 +40,4 @@ function render(count = 0) {
   app.appendChild(element);
 }
 
-render();
+render({ count: 0 });
