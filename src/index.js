@@ -7,8 +7,6 @@
 
 /* @jsx createElement */
 
-const count = { number: 0 };
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -28,29 +26,35 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function getAppElement() {
-  return document.getElementById('app');
+function getElement(id) {
+  return document.getElementById(id);
+}
+
+function update(cmd, number = 0) {
+  const resultElem = getElement('result');
+
+  if (cmd === 'add') {
+    resultElem.textContent = Number(resultElem.textContent) + 1;
+  } else {
+    resultElem.textContent = number;
+  }
+}
+
+function handleClick() {
+  update('add');
+}
+
+function handleClickNumber(number) {
+  update('set', number);
 }
 
 function render() {
-  const handleClick = () => {
-    count.number += 1;
-
-    render();
-  };
-
-  const handleClickNumber = (number) => {
-    count.number = number;
-
-    render();
-  };
-
   const element = (
     <div id="hello" className="world">
       <p>Hello, React</p>
       <p>
         <button type="button" onClick={handleClick}>
-          Click me! ({count.number})
+          Click me! (<span id="result">0</span>)
         </button>
       </p>
       <p>
@@ -63,8 +67,8 @@ function render() {
     </div>
   );
 
-  getAppElement().textContent = '';
-  getAppElement().appendChild(element);
+  getElement('app').textContent = '';
+  getElement('app').appendChild(element);
 }
 
 render();
