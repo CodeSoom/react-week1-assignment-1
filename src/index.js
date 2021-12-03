@@ -15,20 +15,22 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
 
-function handleClick() {
-  count += 1;
-  render();
+
+
+function handleClick(value) {
+  value += 1;
+  render(value);
 }
 
 // const element = createElement("p", null, "안녕");
-function render() {
+function render(value) {
+  const count = value;
   const element = (
     <div>
       <p>count : {count}</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => { handleClick(count) }}>
           Push me and then touch me til i can get my satisfaction
         </button>
       </p>
@@ -37,4 +39,4 @@ function render() {
   document.getElementById("app").textContent = "";
   document.getElementById("app").appendChild(element);
 }
-render();
+render(0);
