@@ -19,8 +19,8 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count = 0) {
-  function handleClick() { count += 1; render(count); }
-  function handleClickNumber(value) { count = value; render(count); }
+  function handleClick() { render(count + 1); }
+  function handleClickNumber(value) { render(value); }
 
   const element = (
     <div id="hello" className="greeting">
