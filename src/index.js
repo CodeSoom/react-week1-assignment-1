@@ -49,18 +49,18 @@ function render() {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
-      <p>
+      <div>
         <button type="button" onClick={handleClick}>
           Click me! (
           {counter.count}
           )
         </button>
-      </p>
-      <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
+      </div>
+      <div>
+        {[1, 2, 3].map((number) => (
+          <button type="button" onClick={() => handleClickNumber(number)}>{number}</button>
         ))}
-      </p>
+      </div>
     </div>
   );
 
