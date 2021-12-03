@@ -19,12 +19,18 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClickNumber(value) {
-  render(value);
+function renderTemplate(element) {
+  const app = document.getElementById('app');
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 function render(count = 0) {
-  const element = (
+  function handleClickNumber(value) {
+    render(value);
+  }
+
+  renderTemplate((
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
@@ -43,10 +49,7 @@ function render(count = 0) {
         ))}
       </p>
     </div>
-  );
-
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  ));
 }
 
 render();
