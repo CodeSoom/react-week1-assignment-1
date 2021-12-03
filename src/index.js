@@ -1,9 +1,8 @@
 /*
-  eslint-disable react/react-in-jsx-scope,
+  eslint-disable
+  react/react-in-jsx-scope,
   react/jsx-filename-extension,
   react/jsx-one-expression-per-line,
-  quotes,
-  no-param-reassign
 */
 
 /* @jsx createElement */
@@ -58,8 +57,8 @@ function render() {
     </div>
   );
 
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render();
