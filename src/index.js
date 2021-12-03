@@ -37,24 +37,24 @@ function render({ count = 0 } = { count: 0 }) {
     render({ ...newState });
   }
 
-  function handleClickIncreaseCount() {
+  function handleClickButton() {
     setState({ count: count + 1 });
   }
 
-  function handleClickUpdateCount(newCount) {
-    setState({ count: newCount });
+  function handleClickNumber(number) {
+    setState({ count: number });
   }
 
   /** @type {HTMLElement} */
   const element = (
     <section id="hello" className="greeting">
       <h1>Hello, world!</h1>
-      <button type="button" onClick={handleClickIncreaseCount}>
+      <button type="button" onClick={handleClickButton}>
         Click me! ({count})
       </button>
       <p>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => handleClickUpdateCount(number)}>
+          <button type="button" onClick={() => handleClickNumber(number)}>
             {number}
           </button>
         ))}
