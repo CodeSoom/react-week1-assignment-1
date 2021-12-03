@@ -19,6 +19,8 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+const rootElement = document.getElementById('app');
+
 function render(count) {
   function onClickCount() {
     return render(count + 1);
@@ -48,8 +50,8 @@ function render(count) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  rootElement.textContent = '';
+  rootElement.appendChild(element);
 }
 
 render(0);
