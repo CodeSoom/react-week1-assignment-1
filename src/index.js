@@ -25,8 +25,8 @@ const render = (child) => {
 };
 
 const component = (count = 0) => {
-  const clickHandler = (i) => {
-    render(component(i));
+  const clickHandler = (num) => {
+    render(component(num));
   };
 
   return (
@@ -38,9 +38,9 @@ const component = (count = 0) => {
         )
       </button>
       <p>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => clickHandler(i)}>
-            {i}
+        {[1, 2, 3].map((num) => (
+          <button type="button" onClick={() => clickHandler(num)}>
+            {num}
           </button>
         ))}
       </p>
