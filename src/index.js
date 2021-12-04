@@ -21,13 +21,13 @@ function createElement(tagName, props, ...children) {
 
 const rootElement = document.getElementById('app');
 
-function render(count = 0) {
+function render({ count = 0 }) {
   function onClickCount() {
-    return render(count + 1);
+    return render({ count: count + 1 });
   }
 
   function onClickNumber(num) {
-    return render(num);
+    return render({ count: num });
   }
 
   const element = (
@@ -54,4 +54,4 @@ function render(count = 0) {
   rootElement.appendChild(element);
 }
 
-render(0);
+render({ count: 0 });
