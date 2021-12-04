@@ -33,16 +33,12 @@ function createElement(tagName, props, ...children) {
  * @return {void}
  */
 function render({ count = 0 } = { count: 0 }) {
-  function setState(newState) {
-    render({ ...newState });
-  }
-
   function handleClickButton() {
-    setState({ count: count + 1 });
+    render({ count: count + 1 });
   }
 
   function handleClickNumber(number) {
-    setState({ count: number });
+    render({ count: number });
   }
 
   /** @type {HTMLElement} */
@@ -66,4 +62,4 @@ function render({ count = 0 } = { count: 0 }) {
   app.appendChild(element);
 }
 
-render();
+render({ count: 0 });
