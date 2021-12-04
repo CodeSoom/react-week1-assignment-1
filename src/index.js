@@ -1,5 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
+
+const app = document.getElementById('app');
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);//해당 태그 생성
   Object.entries(props || {}).map(([key, value]) => {
@@ -17,12 +20,13 @@ function createElement(tagName, props, ...children) {
 
 function render(value) {
 
+  const count = value;
+
   function handleClick() {
     const newValue = count + 1;
     render(newValue);
   }
 
-  const count = value;
   const element = (
     <div>
       <p>count : {count}</p>
@@ -33,7 +37,8 @@ function render(value) {
       </p>
     </div>
   );
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+
+  app.textContent = "";
+  app.appendChild(element);
 }
 render(0);
