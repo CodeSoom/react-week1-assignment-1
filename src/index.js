@@ -17,9 +17,9 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count) {
+function render({ count }) {
   function handleClick(clickedNumber) {
-    render(clickedNumber);
+    render({ count: clickedNumber });
   }
 
   const element = (
@@ -47,4 +47,6 @@ function render(count) {
   app.appendChild(element);
 }
 
-render(0);
+render({
+  count: 0,
+});
