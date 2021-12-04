@@ -2,6 +2,8 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
+const initialCount = 0;
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -20,8 +22,6 @@ function createElement(tagName, props, ...children) {
 
   return element;
 }
-
-const iniCount = 0;
 
 function render(count) {
   function handleClick(cur) {
@@ -52,4 +52,4 @@ function render(count) {
   document.getElementById('app').appendChild(element);
 }
 
-render(iniCount);
+render(initialCount);
