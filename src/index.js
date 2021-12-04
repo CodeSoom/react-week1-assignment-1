@@ -30,11 +30,15 @@ function render(count = 0) {
     render(value);
   }
 
+  function handleClickCount() {
+    render(count + 1);
+  }
+
   renderTemplate((
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => handleClickNumber(count + 1)}>
+        <button type="button" onClick={() => handleClickCount()}>
           Click me!
           (
           {count}
