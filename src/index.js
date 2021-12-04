@@ -15,19 +15,19 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(value) {
-  const newValue = value + 1;
-  render(newValue);
-}
-
-// const element = createElement("p", null, "안녕");
 function render(value) {
+
+  function handleClick() {
+    const newValue = count + 1;
+    render(newValue);
+  }
+
   const count = value;
   const element = (
     <div>
       <p>count : {count}</p>
       <p>
-        <button type="button" onClick={() => { handleClick(count) }}>
+        <button type="button" onClick={handleClick}>
           Push me and then touch me til i can get my satisfaction
         </button>
       </p>
