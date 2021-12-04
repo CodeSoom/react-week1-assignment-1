@@ -2,8 +2,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-const initialCount = 0;
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -23,15 +21,18 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count) {
-  function handleClick() {
-    render(count + 1);
+function render({ count = 0 }) {
+  function handleClickNumber() {
+    render({ count: count + 1 });
+  }
+  function handleClickInitialization(i) {
+    render({ count: i });
   }
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={handleClickNumber}>
           Click me!
           (
           { count }
@@ -40,7 +41,7 @@ function render(count) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => onClickHandle(i)}>{i}</button>
+          <button type="button" onClick={() => handleClickInitialization(i)}>{i}</button>
         ))}
       </p>
     </div>
@@ -50,4 +51,4 @@ function render(count) {
   app.appendChild(element);
 }
 
-render(initialCount);
+render({ count: 0 });
