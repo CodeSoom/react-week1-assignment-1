@@ -15,9 +15,6 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-
-
-
 function handleClick(value) {
   value += 1;
   render(value);
