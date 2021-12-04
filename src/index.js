@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension no-unused-vars */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension, no-unused-vars */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -16,15 +16,11 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(count) {
-  render(count);
-}
-
-function handleClickNumber(clickedNumber) {
-  render(clickedNumber);
-}
-
 function render(count) {
+  function handleClick(clickedNumber) {
+    render(clickedNumber);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -37,7 +33,7 @@ function render(count) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => handleClick(i)}>
             {i}
           </button>
         ))}
