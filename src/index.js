@@ -22,13 +22,13 @@ function createElement(tagName, props, ...children) {
   return $element;
 }
 
-function render(count = 0) {
+function render({ count = 0 }) {
   function handleIncreaseCount() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
 
   function handleClickNumber(number) {
-    render(number);
+    render({ count: number });
   }
 
   const element = (
@@ -56,4 +56,4 @@ function render(count = 0) {
   app.appendChild(element);
 }
 
-render(START_COUNT);
+render({ count: START_COUNT });
