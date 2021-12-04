@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
+// eslint-disable-next-line no-unused-vars
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -18,57 +19,43 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-class App {
-  constructor() {
-    this.state = {
-      count: 0,
-    };
+function render({ count }) {
+  function handleClick() {
+    render({ count: count + 1 });
   }
 
-  setCount(newValue) {
-    this.state.count = newValue;
-    this.render();
+  function handleClickNumber(clickedNumber) {
+    render({ count: clickedNumber });
   }
 
-  handleClick() {
-    const count = this.state.count + 1;
-    this.setCount(count);
-  }
-
-  handleClickNumber(value) {
-    const count = value;
-    this.setCount(count);
-  }
-
-  render() {
-    const element = (
-      <div id="hello">
-        <p className="greeting">Hello world!</p>
-        <p>
-          <button type="button" onClick={() => this.handleClick()}>
-            Click Me! (
-            {this.state.count}
-            )
+  const element = (
+    <div id="hello">
+      <p className="greeting">Hello world!</p>
+      <p>
+        <button type="button" onClick={() => handleClick()}>
+          Click me! (
+          {count}
+          )
+        </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button
+            type="button"
+            onClick={() => {
+              handleClickNumber(i);
+            }}
+          >
+            {i}
           </button>
-        </p>
-        <p>
-          {[1, 2, 3].map((i) => (
-            <button
-              type="button"
-              onClick={() => {
-                this.handleClickNumber(i);
-              }}
-            >
-              {i}
-            </button>
-          ))}
-        </p>
-      </div>
-    );
-    document.getElementById('app').textContent = '';
-    document.getElementById('app').appendChild(element);
-  }
+        ))}
+      </p>
+    </div>
+  );
+
+  const app = document.getElementById('app');
+  app.textContent = '';
+  app.appendChild(element);
 }
 
-const app = new App();
-app.render();
+render({ count: 0 });
