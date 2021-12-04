@@ -2,7 +2,6 @@
   eslint-disable
   react/react-in-jsx-scope,
   react/jsx-filename-extension,
-  react/jsx-one-expression-per-line,
 */
 
 /* @jsx createElement */
@@ -30,31 +29,23 @@ function getElement(id) {
   return document.getElementById(id);
 }
 
-function update(cmd, number = 0) {
-  const resultElem = getElement('result');
+function render({ count }) {
+  const handleClick = () => {
+    render({ count: count + 1 });
+  };
 
-  if (cmd === 'add') {
-    resultElem.textContent = Number(resultElem.textContent) + 1;
-  } else {
-    resultElem.textContent = number;
-  }
-}
+  const handleClickNumber = (i) => {
+    render({ count: i });
+  };
 
-function handleClick() {
-  update('add');
-}
-
-function handleClickNumber(number) {
-  update('set', number);
-}
-
-function render() {
   const element = (
     <div id="hello" className="world">
       <p>Hello, React</p>
       <p>
         <button type="button" onClick={handleClick}>
-          Click me! (<span id="result">0</span>)
+          Click me! (
+          { count }
+          )
         </button>
       </p>
       <p>
@@ -71,4 +62,4 @@ function render() {
   getElement('app').appendChild(element);
 }
 
-render();
+render({ count: 0 });
