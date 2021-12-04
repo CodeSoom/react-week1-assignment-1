@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* @jsx createElement */
 const INIT_COUNT = 0;
-const App = document.getElementById('app');
+const app = document.getElementById('app');
 
 function createElement(tagName, props, ...children) {
   const element = children.flat().reduce((parent, child) => {
@@ -21,18 +21,38 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count) {
+function setCounter({ count }) {
+  return {
+    count,
+  };
+}
+
+function increaseCounterClickHandler({ count }) {
+  return setCounter({ count: count + 1 });
+}
+
+function setCounterClickHandler({ count }) {
+  return setCounter({ count });
+}
+
+function render({ count }) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello World!</p>
       <p>
-        <button type="button" onClick={() => render(count + 1)}>
+        <button
+          type="button"
+          onClick={() => render(increaseCounterClickHandler({ count }))}
+        >
           Click me! ({count})
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(i)}>
+          <button
+            type="button"
+            onClick={() => render(setCounterClickHandler({ count: i }))}
+          >
             {i}
           </button>
         ))}
@@ -40,8 +60,8 @@ function render(count) {
     </div>
   );
 
-  App.textContent = '';
-  App.appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
-render(INIT_COUNT);
+render({ count: INIT_COUNT });
