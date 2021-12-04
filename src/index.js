@@ -20,7 +20,9 @@ function createElement(tagName, props, ...children) {
     element[key] = value;
   });
   Object.entries(dataset).forEach(([key, value]) => {
-    element.dataset[key] = value;
+    if (typeof value === 'string') {
+      element.dataset[key] = value;
+    }
   });
 
   children.flat().forEach((child) => {
@@ -35,24 +37,22 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(event) {
-  const { target } = event;
-  const root = target.closest('#root');
-  const { dataset: { id } } = root;
-
-  render({ count: Number(id) + 1 });
-}
-
-function handleClickNumber(i) {
-  render({ count: i });
-}
+const $app = document.getElementById('app');
 
 function render({ count }) {
+  function handleClick(num) {
+    render({ count: Number(num) + 1 });
+  }
+
+  function handleClickNumber(i) {
+    render({ count: i });
+  }
+
   const element = (
-    <div id="root" className="hello" data-id={count}>
+    <div id="root" className="hello">
       <p>Hello, World!</p>
       <p>
-        <button type="button" onClick={(event) => handleClick(event)}>
+        <button type="button" onClick={() => handleClick(count)}>
           Click me!
           (
           {count}
@@ -69,8 +69,8 @@ function render({ count }) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  $app.textContent = '';
+  $app.appendChild(element);
 }
 
 render({ count: 0 });
