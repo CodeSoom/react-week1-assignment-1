@@ -16,8 +16,8 @@ function createElement(tagName, props, ...children) {
 }
 
 function handleClick(value) {
-  value += 1;
-  render(value);
+  const newValue = value + 1;
+  render(newValue);
 }
 
 // const element = createElement("p", null, "안녕");
