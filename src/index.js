@@ -18,9 +18,7 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(countValue = 0) {
-  const count = countValue;
-
+function render(count = 0) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
