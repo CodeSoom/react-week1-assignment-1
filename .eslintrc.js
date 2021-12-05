@@ -29,5 +29,6 @@ module.exports = {
       version: 'latest',
     },
   },
-  rules: {},
+  rules: {
+  },
 };
