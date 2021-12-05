@@ -20,16 +20,13 @@ function createElement(tagName, props, ...children) {
 
 function render(value) {
 
-  const count = value;
-
   function handleClick() {
-    const newValue = count + 1;
-    render(newValue);
+    render(value + 1);
   }
 
   const element = (
     <div>
-      <p>count : {count}</p>
+      <p>count : {value}</p>
       <p>
         <button type="button" onClick={handleClick}>
           Push me and then touch me til i can get my satisfaction
