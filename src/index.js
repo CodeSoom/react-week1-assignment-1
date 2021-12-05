@@ -18,15 +18,15 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(value) {
+function render({ count: count }) {
 
   function handleClick() {
-    render(value + 1);
+    render({ count: count + 1 });
   }
 
   const element = (
     <div>
-      <p>count : {value}</p>
+      <p>count : {count}</p>
       <p>
         <button type="button" onClick={handleClick}>
           Push me and then touch me til i can get my satisfaction
@@ -38,4 +38,6 @@ function render(value) {
   app.textContent = "";
   app.appendChild(element);
 }
-render(0);
+render({
+  count: 0
+});
