@@ -21,29 +21,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function setCounter({ count }) {
-  return {
-    count,
-  };
-}
-
-function increaseCounterClickHandler({ count }) {
-  return setCounter({ count: count + 1 });
-}
-
-function setCounterClickHandler({ count }) {
-  return setCounter({ count });
-}
-
 function render({ count }) {
+  function handleClick({ prevCount }) {
+    return render({ count: prevCount + 1 });
+  }
+
+  function handleClickNumber({ toBeCount }) {
+    return render({ count: toBeCount });
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello World!</p>
       <p>
-        <button
-          type="button"
-          onClick={() => render(increaseCounterClickHandler({ count }))}
-        >
+        <button type="button" onClick={() => handleClick({ prevCount: count })}>
           Click me! ({count})
         </button>
       </p>
@@ -51,7 +42,7 @@ function render({ count }) {
         {[1, 2, 3].map((i) => (
           <button
             type="button"
-            onClick={() => render(setCounterClickHandler({ count: i }))}
+            onClick={() => handleClickNumber({ toBeCount: i })}
           >
             {i}
           </button>
