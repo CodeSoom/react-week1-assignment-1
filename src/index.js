@@ -4,49 +4,40 @@
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
+  Object.entries(props || {}).forEach(([key, value]) => {
+    element[key.toLowerCase()] = value;
+  });
+
   children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
     }
-
     element.appendChild(document.createTextNode(child));
-  });
-
-  // className이 셋팅이 안된다...머지??
-  Object.entries(props || {}).forEach(([key, value]) => {
-    element[key.toLowerCase()] = value;
   });
 
   return element;
 }
 
-//  머지...let을 사용하지 말라니...
-// const count = {} 객체 안에서 데이터를 재할당해야 하나??
-let count = 0;
-
-function render() {
+function render(count = 0) {
   function handleClick() {
-    count += 1;
-    render();
+    render(count + 1);
   }
 
-  function handleClickNumber(value) {
-    count = value;
-    render();
+  function handleClickNumber(count) {
+    render(count);
   }
 
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, World!</p>
       <p>
-        <button type="button" onClick={() => handleClick()}>
-          Click me!
-          {count}
+        <button type="button" onClick={handleClick}>
+          Click me! : {count}
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3, 4, 5, 6].map((i) => (
           <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
         ))}
       </p>
