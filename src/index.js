@@ -18,16 +18,12 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
-
-function render() {
+function render(count = 0) {
   function handleClick() {
-    count += 1;
-    render();
+    render(count + 1);
   }
   function hanldeClickNumber(number) {
-    count = number;
-    render();
+    render(number);
   }
 
   const element = (
