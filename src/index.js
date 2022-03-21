@@ -20,12 +20,12 @@ function createElement(tagName, props, ...children) {
 
 let count = 0;
 
-function handleClick() {
-  count += 1;
-  render();
-}
-
 function render() {
+  function handleClick() {
+    count += 1;
+    render();
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
