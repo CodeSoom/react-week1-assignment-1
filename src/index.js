@@ -1,6 +1,5 @@
-/* eslint-disable quotes */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable  */
+/* react/react-in-jsx-scope, react/jsx-one-expression-per-line, react/jsx-filename-extension, quotes */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
