@@ -24,8 +24,8 @@ function render(count = 0) {
     render(count + 1);
   }
 
-  function handleClickNumber(count) {
-    render(count);
+  function handleClickNumber(value) {
+    render(value);
   }
 
   const element = (
@@ -33,11 +33,14 @@ function render(count = 0) {
       <p>Hello, World!</p>
       <p>
         <button type="button" onClick={handleClick}>
-          Click me! : {count}
+          Click me!
+          (
+          {count}
+          )
         </button>
       </p>
       <p>
-        {[1, 2, 3, 4, 5, 6].map((i) => (
+        {[1, 2, 3].map((i) => (
           <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
         ))}
       </p>
@@ -48,4 +51,4 @@ function render(count = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render()
+render();
