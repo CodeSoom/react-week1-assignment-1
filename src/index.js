@@ -7,7 +7,7 @@ function createElement(tagName, props, ...children) {
     element[key.toLowerCase()] = value;
   });
 
-  children.forEach((child) => {
+  children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
       return;
@@ -36,6 +36,9 @@ function render() {
           {count}
           )
         </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => <p>{i}</p>)}
       </p>
     </div>
   );
