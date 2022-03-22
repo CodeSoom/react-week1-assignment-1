@@ -19,12 +19,20 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count) {
+function render({ count }) {
+  function countUp(value) {
+    return render({ count: value + 1 });
+  }
+
+  function setCount(value) {
+    return render({ count: value });
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(count + 1)}>
+        <button type="button" onClick={() => countUp(count)}>
           Click me!
           (
           {count}
@@ -33,7 +41,7 @@ function render(count) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => render(i)}>
+          <button type="button" onClick={() => setCount(i)}>
             {i}
           </button>
         ))}
@@ -41,8 +49,9 @@ function render(count) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  const app = document.getElementById('app');
+  app.textContent = '';
+  app.appendChild(element);
 }
 
-render(0);
+render({ count: 0 });
