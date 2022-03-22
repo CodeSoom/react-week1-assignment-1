@@ -18,12 +18,12 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count = 0) {
+function render({ count = 0 }) {
   function handleClick() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
   function hanldeClickNumber(number) {
-    render(number);
+    render({ count: number });
   }
 
   const element = (
@@ -48,4 +48,4 @@ function render(count = 0) {
   app.appendChild(element);
 }
 
-render();
+render({});
