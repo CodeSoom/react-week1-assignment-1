@@ -20,8 +20,8 @@ function createElement(tagName, props, ...children) {
 }
 
 function render({ count }) {
-  function countUp(value) {
-    return render({ count: value + 1 });
+  function countUp() {
+    return render({ count: count + 1 });
   }
 
   function setCount(value) {
@@ -32,7 +32,7 @@ function render({ count }) {
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => countUp(count)}>
+        <button type="button" onClick={() => countUp()}>
           Click me!
           (
           {count}
