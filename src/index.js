@@ -18,27 +18,31 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
+const counter = {
+  currentCount: 0,
+};
 
-function handleClick() {
-  count += 1;
-  render();
-}
-
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
+const app = document.getElementById('app');
 
 function render() {
+  function handleClick() {
+    counter.currentCount += 1;
+    render();
+  }
+
+  function handleClickNumber(value) {
+    counter.currentCount = value;
+    render();
+  }
+
   const element = (
     <div id="hello" className="hi">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick()}>
           Click me!
           (
-          {count}
+          {counter.currentCount}
           )
         </button>
       </p>
@@ -53,8 +57,8 @@ function render() {
 
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render();
