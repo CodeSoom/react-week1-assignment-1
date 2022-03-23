@@ -48,4 +48,4 @@ function render({ count = 0 }) {
   app.appendChild(element);
 }
 
-render(0);
+render({ count: 0 });
