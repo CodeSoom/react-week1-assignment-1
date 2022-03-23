@@ -21,8 +21,13 @@ function createElement(tagName, props, ...children) {
 }
 
 function render({ count = 0 }) {
-  const increaseCount = () => render({ count: count + 1 });
-  const setCount = (newCount) => render({ count: newCount });
+  function increaseCount() {
+    render({ count: count + 1 });
+  }
+
+  function setCount(newCount) {
+    render({ count: newCount });
+  }
 
   const element = (
     <div id="hello" className="greeting">
@@ -42,8 +47,10 @@ function render({ count = 0 }) {
     </div>
   );
 
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  const $app = document.getElementById("app");
+
+  $app.textContent = "";
+  $app.appendChild(element);
 }
 
 render(0);
