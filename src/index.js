@@ -17,35 +17,32 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-class Counter {
-  constructor(count) {
-    this.count = count || 0;
+function counter(count = 0) {
+
+  function handleClickCounter() {
+    count += 1;
+    render();
   }
 
-  handleClickCounter() {
-    this.count += 1;
-    this.render();
+  function handleClickNumber(number) {
+    count = number;
+    render();
   }
 
-  handleClickNumber(number) {
-    this.count = number;
-    this.render();
-  }
-
-  countElement() {
+  function countElement() {
     return (
       <div id="hello" className="greeting">
         <p>Hello, world!</p>
         <p>
-          <button type="button" onClick={() => this.handleClickCounter()}>
+          <button type="button" onClick={handleClickCounter}>
             Click me! (
-            {this.count}
+            {count}
             )
           </button>
         </p>
         <p>
           {[1, 2, 3].map((i) => (
-            <button type="button" onClick={() => this.handleClickNumber(i)}>
+            <button type="button" onClick={() => handleClickNumber(i)}>
               {i}
             </button>
           ))}
@@ -54,12 +51,13 @@ class Counter {
     );
   }
 
-  render() {
+  function render() {
     const app = document.getElementById('app');
     app.textContent = '';
-    app.appendChild(this.countElement());
+    app.appendChild(countElement());
   }
+
+  render();
 }
 
-const counter = new Counter();
-counter.render();
+counter();
