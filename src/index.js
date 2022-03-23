@@ -54,4 +54,5 @@ function render({ count }) {
   app.appendChild(element);
 }
 
-render({ count: 0 });
+const initial = { count: 0 };
+render(initial);
