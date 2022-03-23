@@ -1,5 +1,4 @@
-/* eslint-disable  */
-/* react/react-in-jsx-scope, react/jsx-one-expression-per-line, react/jsx-filename-extension, quotes */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -34,7 +33,10 @@ function render({ count = 0 }) {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={increaseCount}>
-          Click me! ({count})
+          Click me!
+          (
+          {count}
+          )
         </button>
       </p>
       <p>
@@ -47,9 +49,9 @@ function render({ count = 0 }) {
     </div>
   );
 
-  const $app = document.getElementById("app");
+  const $app = document.getElementById('app');
 
-  $app.textContent = "";
+  $app.textContent = '';
   $app.appendChild(element);
 }
 
