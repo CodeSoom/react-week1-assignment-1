@@ -18,46 +18,37 @@ function createElement(tagName, props, ...children) {
 }
 
 function counter(count = 0) {
-
-  function handleClickCounter() {
-    count += 1;
-    render();
+  function handleClickCounter(number) {
+    counter(number + 1);
   }
 
   function handleClickNumber(number) {
-    count = number;
-    render();
+    counter(number);
   }
 
-  function countElement() {
-    return (
-      <div id="hello" className="greeting">
-        <p>Hello, world!</p>
-        <p>
-          <button type="button" onClick={handleClickCounter}>
-            Click me! (
-            {count}
-            )
+  const countElement = (
+    <div id="hello" className="greeting">
+      <p>Hello, world!</p>
+      <p>
+        <button type="button" onClick={() => handleClickCounter(count)}>
+          Click me! (
+          {count}
+          )
+        </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
           </button>
-        </p>
-        <p>
-          {[1, 2, 3].map((i) => (
-            <button type="button" onClick={() => handleClickNumber(i)}>
-              {i}
-            </button>
-          ))}
-        </p>
-      </div>
-    );
-  }
+        ))}
+      </p>
+    </div>
+  );
 
-  function render() {
-    const app = document.getElementById('app');
-    app.textContent = '';
-    app.appendChild(countElement());
-  }
-
-  render();
+  const app = document.getElementById('app');
+  app.textContent = '';
+  app.appendChild(countElement);
 }
 
 counter();
