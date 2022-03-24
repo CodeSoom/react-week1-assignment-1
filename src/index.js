@@ -19,6 +19,7 @@ function createElement(tagName, props, ...chlidren) {
   return element;
 }
 
+//
 function render() {
   const element = (
     <div id="hello" className="greeting">
@@ -47,7 +48,6 @@ function render() {
   container.appendChild(element);
 }
 
-//
 function handleClick() {
   this.count += 1;
 
@@ -60,10 +60,11 @@ function handleClickNumber(value) {
   this.render();
 }
 
-const counting = {};
-counting.count = 0;
-counting.handleClick = handleClick;
-counting.handleClickNumber = handleClickNumber;
-counting.render = render;
+const counting = {
+  count: 0,
+  handleClick,
+  handleClickNumber,
+  render,
+};
 
 counting.render();
