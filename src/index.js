@@ -19,36 +19,21 @@ function createElement(tagName, props, ...chlidren) {
   return element;
 }
 
-//
-let count = 0;
-
-function handleClick() {
-  count += 1;
-
-  render();
-}
-
-function handleClickNumber(value) {
-  count = value;
-
-  render();
-}
-
-function render() {
+function render(props) {
   const element = (
     <div id="hello" className="greeting">
       <p>hell worlod</p>
       <p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => props.handleClick()}>
           Click me!
           (
-          {count.slice().pop()}
+          {props.count}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3, 4, 5].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => props.handleClickNumber(i)}>
             {i}
           </button>
         ))}
@@ -62,4 +47,22 @@ function render() {
   container.appendChild(element);
 }
 
-render();
+//
+function handleClick() {
+  this.count += 1;
+
+  render(this);
+}
+
+function handleClickNumber(value) {
+  this.count = value;
+
+  render(this);
+}
+
+const props = {};
+props.count = 0;
+props.handleClick = handleClick;
+props.handleClickNumber = handleClickNumber;
+
+render(props);
