@@ -60,10 +60,10 @@ function handleClickNumber(value) {
   this.render();
 }
 
-const element = {};
-element.count = 0;
-element.handleClick = handleClick;
-element.handleClickNumber = handleClickNumber;
-element.render = render;
+const counting = {};
+counting.count = 0;
+counting.handleClick = handleClick;
+counting.handleClickNumber = handleClickNumber;
+counting.render = render;
 
-element.render();
+counting.render();
