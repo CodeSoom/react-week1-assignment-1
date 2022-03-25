@@ -19,6 +19,8 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+const app = document.getElementById('app');
+
 const defaultValue = { count: 0 };
 
 function render({ count }) {
@@ -51,7 +53,6 @@ function render({ count }) {
     </div>
   );
 
-  const app = document.getElementById('app');
   app.textContent = '';
   app.appendChild(element);
 }
