@@ -19,13 +19,13 @@ function createElement(tagName, props, ...chlidren) {
   return element;
 }
 
-function render(count = 0) {
+function render({ count = 0 }) {
   function handleClick() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
 
   function handleClickNumber(value) {
-    render(value);
+    render({ count: value });
   }
 
   const element = (
@@ -55,4 +55,4 @@ function render(count = 0) {
   container.appendChild(element);
 }
 
-render();
+render({ count: 0 });
