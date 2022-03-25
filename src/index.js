@@ -20,15 +20,15 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(event) {
-  render(Number((event.target.textContent).replace(/[^0-9]/g, '')) + Number(1));
-}
+function render({ count = 0 }) {
+  function handleClick() {
+    render({ count: count + 1 });
+  }
 
-function handleClickNumber(value) {
-  render(value);
-}
+  function handleClickNumber(selectedNumber) {
+    render({ count: selectedNumber });
+  }
 
-function render(count) {
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -53,5 +53,4 @@ function render(count) {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }
-
-render(0);
+render({ count: 0 });
