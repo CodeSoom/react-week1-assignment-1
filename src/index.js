@@ -19,6 +19,8 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+const defaultValue = { count: 0 };
+
 function render({ count }) {
   function countUp() {
     render({ count: count + 1 });
@@ -54,5 +56,4 @@ function render({ count }) {
   app.appendChild(element);
 }
 
-const defaultValue = { count: 0 };
 render(defaultValue);
