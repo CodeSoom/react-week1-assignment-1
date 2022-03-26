@@ -32,7 +32,7 @@ function render({ count = 0 }) {
     <div id="hello" className="greeting">
       <p>hell worlod</p>
       <p>
-        <button type="button" onClick={() => handleClick()}>
+        <button type="button" onClick={handleClick}>
           Click me!
           (
           {count}
