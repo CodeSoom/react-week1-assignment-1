@@ -48,4 +48,8 @@ function render({ count = 0 }) {
   app.appendChild(element);
 }
 
-render({});
+const defaultValue = {
+  count: 0,
+};
+
+render(defaultValue);
