@@ -17,13 +17,13 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function counter(count = 0) {
+function counter({ count }) {
   function handleClickCounter() {
-    counter(count + 1);
+    counter({ count: count + 1 });
   }
 
   function handleClickNumber(number) {
-    counter(number);
+    counter({ count: number });
   }
 
   const countElement = (
@@ -51,4 +51,4 @@ function counter(count = 0) {
   app.appendChild(countElement);
 }
 
-counter();
+counter({ count: 0 });
