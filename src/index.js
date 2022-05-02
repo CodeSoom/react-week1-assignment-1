@@ -17,7 +17,8 @@ function createElement(tagName, props, ...children) {
 
   return element;
 }
-// TODO: let을 const로 바꾼다.
+
+
 const initialCount = 0;
 
 function render(count) {
