@@ -24,7 +24,5 @@ module.exports = {
       version: 'latest',
     },
   },
-  rules: {
-    'jsx-quotes': ['error', 'prefer-single'],
-  },
+  rules: {},
 };
