@@ -18,7 +18,7 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count) {
+function render(count = 0) {
   document.getElementById('app').textContent = '';
   const handleClick = () => {
     render(count + 1);
@@ -49,4 +49,4 @@ function render(count) {
   );
 }
 
-render(0);
+render();
