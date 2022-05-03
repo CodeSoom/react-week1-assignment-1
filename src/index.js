@@ -23,9 +23,10 @@ function render(count) {
   function handleClick() {
     render(count + 1);
   }
+
   function handleClickNumber(value) {
     if (Number.isNaN(Number(value))) {
-      return false;
+      return 'Not a Number!';
     }
     return render(value);
   }
