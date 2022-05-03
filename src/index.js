@@ -18,19 +18,21 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-
 const initialCount = 0;
 
 function render(count) {
   function handleClick() {
     render(count + 1);
   }
+
   function handleClickNumber(value) {
     if (Number.isNaN(Number(value))) {
-      return false;
+      const { assert } = console;
+      return assert(false, { value, message: '숫자가 아닙니다.' });
     }
     return render(value);
   }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello World</p>
