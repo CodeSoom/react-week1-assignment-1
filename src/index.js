@@ -34,7 +34,8 @@ function render(count) {
       <p>Hello World</p>
       <p>
         <button type="button" onClick={handleClick}>
-          Click me! ({count})
+          Click me!
+          {count}
         </button>
       </p>
       <p>
@@ -47,7 +48,6 @@ function render(count) {
     </div>
   );
   document.getElementById('app').textContent = '';
-
   document.getElementById('app').appendChild(element);
 }
 
