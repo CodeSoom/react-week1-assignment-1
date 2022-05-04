@@ -20,6 +20,7 @@ function createElement(tagName, props, ...children) {
 
 function render(count = 0) {
   document.getElementById('app').textContent = '';
+
   const handleClick = () => {
     render(count + 1);
   };
