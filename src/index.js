@@ -28,7 +28,8 @@ function render(count) {
   function handleClickNumber(value) {
     if (Number.isNaN(Number(value))) {
       const { assert } = console;
-      return assert(false, { value, message: '숫자가 아닙니다.' });
+      assert(false, { value, message: '숫자가 아닙니다.' });
+      return
     }
     return render(value);
   }
