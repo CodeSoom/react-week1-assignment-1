@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
@@ -26,7 +27,8 @@ function render(count) {
 
   function handleClickNumber(value) {
     if (Number.isNaN(Number(value))) {
-      return 'Not a Number!';
+      const errorMsg = 'Not Numbers';
+      return console.assert(false, { Number: value, errorMsg });
     }
     return render(value);
   }
