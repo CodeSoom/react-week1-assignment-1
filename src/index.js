@@ -24,9 +24,9 @@ function render(count = 0) {
     render(count + 1);
   }
 
-  function handleClickNumber(number) {
+  const handleClickNumber = (number) => () => {
     render(number);
-  }
+  };
 
   const element = (
     <div id="hello" className="greeting">
@@ -40,7 +40,7 @@ function render(count = 0) {
       </p>
       <p>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => handleClickNumber(number)}>
+          <button type="button" onClick={handleClickNumber(number)}>
             {number}
           </button>
         ))}
