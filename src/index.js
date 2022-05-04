@@ -1,37 +1,54 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-// let count = 0;
+function createElement(tagName, props, ...children) {
+  const element = document.createElement(tagName);
 
-// function handleClick() {
-//   count = count + 1;
-//   render();
-// }
+  Object.entries(props || {}).forEach(([key, value]) => {
+    element[key.toLowerCase()] = value;
+  });
 
-const counter = {
-  count: 0,
-  handleClick() {
-    this.count += 1;
-    render();
-  },
-};
+  children.flat().forEach((child) => {
+    if (child instanceof Node) {
+      element.append(child);
+      return;
+    }
+    element.append(document.createTextNode(child));
+  });
 
-const container = document.getElementById("app");
+  return element;
+}
 
-function render() {
+//
+
+function render(count = 0) {
+  function handleClick() {
+    render(count + 1);
+  }
+
+  function handleClickNumber(value) {
+    render(value);
+  }
+
   const element = (
     <div id="hello" className="greeting">
-      <p>Hello, world!</p>
+      <p>Hello, world</p>
       <p>
-        <button type="button" onClick={counter.handleClick}>
-          Click me! ({counter.count})
+        <button type="button" onClick={handleClick}>
+          Click me! ({count})
         </button>
+      </p>
+      <p>
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
-
-  container.textContent = "";
-  container.appendChild(element);
+  document.getElementById("app").textContent = "";
+  document.getElementById("app").append(element);
 }
 
 render();
