@@ -54,17 +54,20 @@ function render(num = 0) {
   const element = (
     <div>
       <p id="hello" className="title">hello world</p>
-      <button type="button" onClick={handleClick}>click!{num}</button>
+      <button type="button" onClick={handleClick}>
+        click!
+        {num}
+      </button>
       {
-        [1, 2 ,3].map((i) => (
+        [1, 2, 3].map((i) => (
           <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
         ))
       }
     </div>
-  )
+  );
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(
-    element
+    element,
   );
 }
 
