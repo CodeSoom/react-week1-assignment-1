@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension,
 react/jsx-one-expression-per-line */
 /* @jsx createElement */
@@ -21,30 +20,28 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-let count = 0;
-
-function handleClick() {
-  count += 1;
-  render();
-}
-
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
-
-function render() {
+function render(count = 0) {
   const element = (
     <div id="hello" className="test">
       <p>Hi</p>
       <p>
-        <button type="button" onClick={handleClick}>
-          Click me! {count}
+        <button
+          type="button"
+          onClick={() => {
+            render(count + 1);
+          }}
+        >
+          Click me! ({count})
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>
+          <button
+            type="button"
+            onClick={() => {
+              render(i);
+            }}
+          >
             {i}
           </button>
         ))}
