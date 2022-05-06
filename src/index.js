@@ -29,7 +29,7 @@ function render(count) {
     if (Number.isNaN(Number(value))) {
       const { assert } = console;
       assert(false, { value, message: '숫자가 아닙니다.' });
-      return
+      return null;
     }
     return render(value);
   }
