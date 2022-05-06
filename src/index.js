@@ -26,37 +26,23 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const count = 0;
-const copyCount = count;
-const countNum = [copyCount];
+const countInit = 0;
 
-function handleClick() {
-  if (countNum[0] === 0) {
-    countNum.pop();
-    countNum.push(1);
-  } else {
-    const resultCount = countNum[0] + 1;
-    countNum.pop();
-    countNum.push(resultCount);
+function render(count) {
+  function handleClick() {
+    render(count + 1);
   }
 
-  render(countNum[0]);
-}
+  function handleClickNumber(num) {
+    render(num);
+  }
 
-function handleClickNumber(num) {
-  countNum.pop();
-  countNum.push(num);
-
-  render(countNum[0]);
-}
-
-function render(num = 0) {
   const element = (
     <div>
       <p id="hello" className="title">hello world</p>
       <button type="button" onClick={handleClick}>
         click!
-        {num}
+        {count}
       </button>
       {
         [1, 2, 3].map((i) => (
@@ -71,4 +57,4 @@ function render(num = 0) {
   );
 }
 
-render();
+render(countInit);
