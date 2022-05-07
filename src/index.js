@@ -26,35 +26,35 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const countInit = 0;
-
-function render(count) {
+function render({ count }) {
   function handleClick() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
 
   function handleClickNumber(num) {
-    render(num);
+    render({ count: num });
   }
 
   const element = (
     <div>
-      <p id="hello" className="title">hello world</p>
+      <p id="hello" className="title">
+        hello world
+      </p>
       <button type="button" onClick={handleClick}>
         click!
         {count}
       </button>
-      {
-        [1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
-        ))
-      }
+      {[1, 2, 3].map((i) => (
+        <button type="button" onClick={() => handleClickNumber(i)}>
+          {i}
+        </button>
+      ))}
     </div>
   );
   document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(
-    element,
-  );
+  document.getElementById('app').appendChild(element);
 }
 
-render(countInit);
+render({
+  count: 0,
+});
