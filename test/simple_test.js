@@ -1,3 +1,6 @@
+const Feature = () => {};
+const Scenario = () => {};
+
 Feature('Click me');
 
 Scenario('Click me test', ({ I }) => {
