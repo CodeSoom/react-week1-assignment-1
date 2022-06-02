@@ -1,11 +1,30 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-// ...
-let count = 0;
+function createElement(tagname, ...children) {
+  const element = document.createElement(tagname);
 
-function handleClick() {
-  count = count + 1;
-  render();
+  children.forEach((child) => {
+    element.appendChild(child);
+  });
+
+  return element;
 }
-// ...
+
+//
+
+document.getElementById('app').appendChild(
+  createElement(
+    'div',
+    createElement(
+      'p',
+      ...[1, 2, 3].map((i) => (
+        document.createTextNode(`Hello, world! + ${i} | `)
+      )),
+    ),
+    createElement(
+      'p',
+      document.createTextNode('Hi!'),
+    ),
+  ),
+);
