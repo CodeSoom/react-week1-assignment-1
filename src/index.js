@@ -9,12 +9,3 @@ function handleClick() {
   render();
 }
 // ...
-
-// ...
-let count = 0;
-
-function handleClick() {
-  count = count + 1;
-  render();
-}
-// ...
