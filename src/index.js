@@ -93,8 +93,9 @@ function render(count = 0) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  const appHandler = document.getElementById('app');
+  appHandler.textContent = '';
+  appHandler.appendChild(element);
 }
 
 render();
