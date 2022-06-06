@@ -93,6 +93,7 @@ function render(count = 0) {
     </div>
   );
 
+  // 불필요한 중복 제거
   const appHandler = document.getElementById('app');
   appHandler.textContent = '';
   appHandler.appendChild(element);
