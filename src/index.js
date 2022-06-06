@@ -22,19 +22,15 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(value) {
-  render(value);
-}
-
-function handleClickNumber(value) {
-  render(value);
-}
-
 const render = (count = 0) => {
-  // 안녕하세요
-  // 질문을 이렇게 주석으로 남기는게 맞는지 모르겠네요 처음에 인수를 count 로 넘기다가
-  // NaN이 뜨길래 count = 0으로 바꿨더니 코드가 정상적으로 돌아가는데 count는 계속 handleClick에서 ++ 1 되는 값으로
-  // 넘어오는데 count = 0으로 바뀌어서 들어오지않는 이유를 모르겠습니다..!! 계속 count 가 1이 되어야하지않나~?라는 게 저의 궁금증이에요!
+  function handleClick(value) {
+    render(value);
+  }
+
+  function handleClickNumber(value) {
+    render(value);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, React!</p>
