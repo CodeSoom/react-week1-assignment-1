@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/jsx-indent, no-use-before-define */
 /* @jsx createElement */
 function createElement(tagName, props, ...children) {
     const element = document.createElement(tagName);
@@ -8,12 +9,12 @@ function createElement(tagName, props, ...children) {
     });
 
     children.flat().forEach((child) => {
-        if(child instanceof Node){
+        if (child instanceof Node) {
             element.appendChild(child);
-            return
+            return;
         }
         element.appendChild(document.createTextNode(child));
-    })
+    });
 
     return element;
 }
@@ -41,16 +42,16 @@ function render(count) {
             </p>
             <p>
                 {
-                    [1,2,3].map((i) => (
+                    [1, 2, 3].map((i) => (
                         <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>
                     ))
                 }
             </p>
         </div>
-    )
+    );
 
-    document.getElementById("app").textContent = '';
-    document.getElementById("app").appendChild(element);
+    document.getElementById('app').textContent = '';
+    document.getElementById('app').appendChild(element);
 }
 
 // 최초 랜더링시 default count = 0으로 설정.
