@@ -9,7 +9,7 @@ function createElement(tagName, props, ...children) {
   });
 
   if (children.length) {
-    children.forEach((child) => {
+    children.flat().forEach((child) => {
       if (child instanceof Node) {
         element.appendChild(child);
       } else {
@@ -35,15 +35,27 @@ function render(count = 0) {
     render(count + 1);
   }
 
+  function handleClickNumber(value) {
+    if (typeof value === 'number') render(value);
+  }
+
   const container = (
     <div id="container" className="container">
-      <p>
-        Count:
-        {count}
-      </p>
       <button type="button" onClick={() => handleClick()}>
         Click me!
+
+        (
+        {count}
+        )
       </button>
+
+      <div>
+        {[0, 1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            { i }
+          </button>
+        ))}
+      </div>
     </div>
   );
 
