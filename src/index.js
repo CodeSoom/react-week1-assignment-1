@@ -51,8 +51,9 @@ const render = (count = 0) => {
       </p>
     </div>
   );
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  const container = document.getElementById('app');
+  container.textContent = '';
+  container.appendChild(element);
 };
 
 render();
