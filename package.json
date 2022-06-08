@@ -1,7 +1,7 @@
 {
   "name": "assignment-1-1",
   "version": "1.0.0",
-  "description": "",
+  "description": "- 강의를 듣고 index.js를 완성합니다.\r - let을 사용하지 않고 기존과 동일한 동작이 가능해야 합니다. 즉 변수에 값을 재할당 하지 않고 문제를 해결해야 합니다.",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
@@ -29,5 +29,16 @@
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeSoom/react-week1-assignment-1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeSoom/react-week1-assignment-1/issues"
+  },
+  "homepage": "https://github.com/CodeSoom/react-week1-assignment-1#readme"
 }
