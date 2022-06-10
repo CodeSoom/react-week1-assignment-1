@@ -14,7 +14,7 @@ function render() {
   function createElement(tagName, props, ...children) {
     const element = document.createElement(tagName);
     Object.entries(props || {}).forEach(([key, value]) => {
-      if (key === "className") {
+      if (key === 'className') {
         element[key] = value;
         return;
       }
@@ -39,12 +39,16 @@ function render() {
         type="button"
         onClick={handleClick}
       >
-        you clicked {count.value} times!
+        you clicked
+        {' '}
+        {count.value}
+        {' '}
+        times!
       </button>
     </div>
   );
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(root);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(root);
 }
 
 render();
