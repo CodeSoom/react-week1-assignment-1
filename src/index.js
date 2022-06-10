@@ -1,6 +1,7 @@
 /* eslint linebreak-style: ["error", "windows"] */
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
+// React codesum 1 과제
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
   Object.entries(props || {}).forEach(([key, value]) => {
