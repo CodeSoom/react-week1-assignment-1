@@ -20,57 +20,43 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function app1Render() {
+function render(count = 0) {
   const root = (
     <div>
-      <p className="description">if you press button, it counts times</p>
+      <div>
+        <p className="description">if you press button, it counts times</p>
+      </div>
+      <button
+        className="clickButton"
+        type="button"
+        onClick={() => {
+          render(+count + 1);
+        }}
+      >
+        Click me!
+        {' '}
+        (
+        {count}
+        )
+        {' '}
+      </button>
+      <p>
+        {['1', '2', '3', '4'].map((i) => (
+          <button
+            type="button"
+            onClick={() => {
+              render(i);
+            }}
+          >
+            {i}
+          </button>
+        ))}
+      </p>
     </div>
   );
-  document.getElementById('app1').textContent = '';
-  document.getElementById('app1').appendChild(root);
-}
-function app2Render(count = 0) {
-  const root = (
-    <button
-      className="clickButton"
-      type="button"
-      onClick={() => {
-        app2Render(+count + 1);
-      }}
-    >
-      Click me!
-      {' '}
-      (
-      {count}
-      )
-      {' '}
-    </button>
-  );
 
-  document.getElementById('app2').textContent = '';
-  document.getElementById('app2').appendChild(root);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(root);
 }
 
-function app3Render() {
-  const root = (
-    <p>
-      {['1', '2', '3', '4'].map((i) => (
-        <button
-          type="button"
-          onClick={() => {
-            app2Render(i);
-          }}
-        >
-          {i}
-        </button>
-      ))}
-    </p>
-  );
-
-  document.getElementById('app3').textContent = '';
-  document.getElementById('app3').appendChild(root);
-}
-
-app1Render();
-app2Render(0);
-app3Render();
+render(0);
