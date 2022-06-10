@@ -28,8 +28,7 @@ function app1Render() {
   );
   document.getElementById('app1').textContent = '';
   document.getElementById('app1').appendChild(root);
-
-
+}
 function app2Render(count = 0) {
   const root = (
     <button
