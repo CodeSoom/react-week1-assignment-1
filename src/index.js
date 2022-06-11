@@ -21,6 +21,12 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count = 0) {
+  function handlerClick() {
+    render(count + 1);
+  }
+  function handlerClickNumber(buttonNumber) {
+    render(buttonNumber);
+  }
   const root = (
     <div>
       <div>
@@ -30,7 +36,7 @@ function render(count = 0) {
         className="clickButton"
         type="button"
         onClick={() => {
-          render(+count + 1);
+          handlerClick();
         }}
       >
         Click me!
@@ -41,11 +47,11 @@ function render(count = 0) {
         {' '}
       </button>
       <p>
-        {['1', '2', '3', '4'].map((i) => (
+        {[1, 2, 3, 4].map((i) => (
           <button
             type="button"
             onClick={() => {
-              render(i);
+              handlerClickNumber(i);
             }}
           >
             {i}
