@@ -29,5 +29,8 @@ module.exports = {
       version: 'latest',
     },
   },
-  rules: {},
+  rules: {
+    'linebreak-style': 0,
+    indent: 'off',
+  },
 };
