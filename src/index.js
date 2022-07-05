@@ -4,14 +4,22 @@ import { AppRerender, createElement } from './module';
 import { store, setStore } from './store';
 
 function render() {
+
+  const setFixedNumber = () => {
+    setStore({ count: val });
+    render();
+  };
+
+  const setIncreaseNumber = () => {
+    setStore({ count: store.count + 1 });
+    render();
+  };
+
   const element = (
     <p>
       <button
         type="button"
-        onClick={() => {
-          setStore({ count: store.count + 1 });
-          render();
-        }}
+        onClick={setIncreaseNumber}
       >
         Click me!
         {` (${store.count})`}
@@ -20,10 +28,7 @@ function render() {
         {[1, 2, 3].map((val) => (
           <button
             type="button"
-            onClick={() => {
-              setStore({ count: val });
-              render();
-            }}
+            onClick={setFixedNumber}
           >
             {val}
           </button>
