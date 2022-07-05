@@ -16,7 +16,7 @@ export function createElement(tagName, props, ...children) {
   return element;
 }
 
-export function AppRerender(element) {
+export function appRender(element) {
   document.getElementById('app').textContent = '';
   document.getElementById('app').appendChild(element);
 }

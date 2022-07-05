@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-import { AppRerender, createElement } from './module';
+import { appRender, createElement } from './module';
 import { store, setStore } from './store';
 
 function render() {
@@ -37,7 +37,7 @@ function render() {
     </p>
   );
 
-  AppRerender(element);
+  appRender(element);
 }
 
 render();
