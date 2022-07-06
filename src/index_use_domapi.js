@@ -17,22 +17,27 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+let count = 1;
+
 function handleClickNumber(value) {
   count = value;
   render();
 }
 
-function handleClick(value) {
-  render(value);
+function handleClick(e) {
+  count += 1;
+  e.target.textContent = Number(e.target.innerText.slice(-2, -3));
+  render();
+  console.log(e.target);
 }
 
-function render(count = 0) {
+function render() {
   const element = (
     <div id='ih'>
       <p>Hello World</p>
       <p>
-        <button type='button' onClick={() => handleClick(count + 1)}>
-          Click! ({count})
+        <button type='button' onClick={handleClick}>
+          Click! (1)
         </button>
       </p>
       <p>
