@@ -30,13 +30,13 @@ function render(count = 0) {
     <div id="'hi'">
       <p>Hello World</p>
       <p>
-        <button type='button' onClick={() => handleClick(count + 1)}>
-          Click! ({count})
+        <button type="button" onClick={() => handleClick(count + 1)}>
+          {`Click me! (${count})`}
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type='button' onClick={() => handleClickNumber(i)}>
+          <button type="button" onClick={() => handleClickNumber(i)}>
             {i}
           </button>
         ))}
