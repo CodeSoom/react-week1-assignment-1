@@ -1,17 +1,19 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 import { appRender, createElement } from './module';
-import { store, setStore } from './store';
+import { setStorage, getStorage } from './store';
 
 function render() {
 
-  const setFixedNumber = () => {
-    setStore({ count: val });
+  const data = getStorage('count');
+
+  const setFixedNumber = (e) => {
+    setStorage({key: 'count', value: e.target.textContent });
     render();
   };
 
   const setIncreaseNumber = () => {
-    setStore({ count: store.count + 1 });
+    setStorage({key: 'count', value: Number(data) + 1 });
     render();
   };
 
@@ -22,7 +24,7 @@ function render() {
         onClick={setIncreaseNumber}
       >
         Click me!
-        {` (${store.count})`}
+        {` (${data})`}
       </button>
       <div>
         {[1, 2, 3].map((val) => (
