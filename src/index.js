@@ -11,24 +11,23 @@ function createElement(tagName, props, ...children) {
     if (child instanceof Node) {
       return element.appendChild(child);
     }
-    element.appendChild(document.createTextNode(child));
+    return element.appendChild(document.createTextNode(child));
   });
 
   return element;
 }
 
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
-
-function handleClick(value) {
-  render(value);
-}
-
 function render(count = 0) {
+  function handleClickNumber(value) {
+    render(value);
+  }
+
+  function handleClick(value) {
+    render(value);
+  }
+
   const element = (
-    <div id='ih'>
+    <div id="'hi'">
       <p>Hello World</p>
       <p>
         <button type='button' onClick={() => handleClick(count + 1)}>
