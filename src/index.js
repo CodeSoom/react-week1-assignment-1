@@ -2,29 +2,62 @@
 /* @jsx createElement */
 
 // 함수 생성
-function creatElement(tagName, ...children) {
-    const element = document.creatElement(tagName);
+function createElement(tagName, props, ...children) {
 
-    children.forEach((child) => {
-        element.appendChild(child);
+    const element = document.createElement(tagName);
+
+    Object.entries(props || {}).forEach(([key, value]) => {
+        element[key.toLowerCase()] = value;
     });
 
-    return element;
+    children.flat().forEach((child) => {
+        if(child instanceof Node){
+            element.appendChild(child);
+            return;
+        }
+        element.appendChild(document.createTextNode(child));
+    });
+
+    return element; // 엘리먼트 리턴
+};
+
+let count = 0; // 카운트 변수
+
+function handleClick() {
+    console.log('click!');
+    count += 1;
+    console.log(count);
+    render();
 }
 
-// 실행문
-document.getElementById('app').appendChild( 
-    creatElement(
-        'div',
-        creatElement(
-            'p',
-            ...[1, 2, 3].map((i) =>(
-                document.createTextNode('Hellow, world!'+ i + '|')
-            ))
-        ),
-        creatElement(
-            'p',
-            document.createTextNode('Hi!'),
-        ),
-    ),
-),
+function handleClickNumber(value){
+    count = value;
+    render();
+}
+
+function render() {
+    const element = (
+        <div id="hellow" className="greeting">
+            <p>Hellow,  world</p>
+            <p>Hi</p>
+            <p>
+                <button tyle="button" onClick={() =>handleClick()}>
+                    Click me! ({count})
+                </button>
+            </p>
+            <p>
+                {[1, 2, 3].map((i) =>(
+                    <button type="button" onClick={() => handleClickNumber(i)}>
+                        {i}
+                    </button>
+                ))};
+            </p>
+        </div>
+    );
+
+    // 실행문 
+    document.getElementById('app').textContent = '';
+    document.getElementById('app').appendChild(element);
+}
+
+render();
