@@ -1,7 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-/* @jsx createElement */
-
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-enable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -21,22 +18,19 @@ function createElement(tagName, props, ...children) {
 
     return element;
 }
-  
-let count = 0;
 
-function handleClick() {
-    count = count + 1;
-    render();
+function handleClick(count = 1) {    
+    render(count);
 }
 
-function render() {
+function render(prvCount = 1) {
     const element = (
         <div id="hello" className="greeting">
         <p>Hello, world!</p>
         <p>
-            <button type="button" onClick={handleClick}>
+            <button type="button" onClick={() => handleClick(prvCount + 1)}>
             Click me!
-            ({count})
+            ({prvCount})
             </button>
         </p>
         </div>
