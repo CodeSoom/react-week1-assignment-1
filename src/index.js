@@ -18,30 +18,27 @@ function createElement(tagName, props, ...children) {
         element.appendChild(document.createTextNode(child));
     });
 
-    return element; // 엘리먼트 리턴
-};
+    return element;
+}
   
-let count = 0; // 카운트 변수
+// let count = 0; // 카운트 변수
 
-function handleClick() {
-    console.log('click!');
-    count += 1;
-    console.log(count);
-    render();
-}
+function render({count}) { // 랜더함수안에 매개변수 추가
 
-function handleClickNumber(value){
-    count = value;
-    render();
-}
+    function handleClick(val) { //handleClick에 매개변수 val 선언
+        render({count:val + 1}); // count = val 이고 +1씩 증감
+    }
 
-function render() {
+    function handleClickNumber(val){
+        render({count:val});
+    }
+
     const element = (
         <div id="hellow" className="greeting">
             <p>Hellow,  world</p>
             <p>Hi</p>
             <p>
-                <button tyle="button" onClick={() =>handleClick()}>
+                <button tyle="button" onClick={() => handleClick(count)}>
                     Click me! ({count})
                 </button>
             </p>
@@ -50,7 +47,7 @@ function render() {
                     <button type="button" onClick={() => handleClickNumber(i)}>
                         {i}
                     </button>
-                ))};
+                ))}
             </p>
         </div>
     );
@@ -60,4 +57,4 @@ function render() {
     document.getElementById('app').appendChild(element);
 }
 
-render();
+render({count:0}); // 랜더에 카운터 초기값 0으로 선언
