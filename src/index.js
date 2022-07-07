@@ -17,15 +17,15 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count = 0) {
+function render({ count = 0 }) {
   const appElement = document.getElementById('app');
 
   function handleClickNumber(value) {
-    render(value);
+    render({ count: value });
   }
 
   function handleClick() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
 
   const element = (
@@ -49,4 +49,4 @@ function render(count = 0) {
   appElement.appendChild(element);
 }
 
-render();
+render({});
