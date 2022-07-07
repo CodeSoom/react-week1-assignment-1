@@ -18,19 +18,21 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count = 0) {
+  const appElement = document.getElementById('app');
+
   function handleClickNumber(value) {
     render(value);
   }
 
-  function handleClick(value) {
-    render(value);
+  function handleClick() {
+    render(count + 1);
   }
 
   const element = (
     <div id="'hi'">
       <p>Hello World</p>
       <p>
-        <button type="button" onClick={() => handleClick(count + 1)}>
+        <button type="button" onClick={() => handleClick()}>
           {`Click me! (${count})`}
         </button>
       </p>
@@ -43,8 +45,8 @@ function render(count = 0) {
       </p>
     </div>
   );
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  appElement.textContent = '';
+  appElement.appendChild(element);
 }
 
 render();
