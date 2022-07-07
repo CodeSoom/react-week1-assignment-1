@@ -22,24 +22,24 @@ const createElement = (tagName, props, ...children) => {
 };
 
 const render = ({ count }) => {
-  const handleClickNumber = (value) => {
+  const setCountNumber = (value) => {
     render({ count: value });
   };
 
-  const handleClickButton = () => {
+  const increaseCountOne = () => {
     render({ count: count + 1 });
   };
 
   const element = (
     <div>
       <h1 id="title">Assignment 1 : Remove let</h1>
-      <button type="button" onClick={() => handleClickButton()}>
+      <button type="button" onClick={increaseCountOne}>
         Click me!
         {` (${count})`}
       </button>
       <div>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => handleClickNumber(number)}>
+          <button type="button" onClick={() => setCountNumber(number)}>
             {number}
           </button>
         ))}
@@ -55,4 +55,5 @@ const render = ({ count }) => {
   renderPage();
 };
 
-render({ count: 0 });
+const defaultValue = { count: 0 };
+render(defaultValue);
