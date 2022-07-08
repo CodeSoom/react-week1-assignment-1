@@ -16,39 +16,41 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const state = {
-  count: 0,
-};
+function render(count = 0) {
+  function handleClickMe() {
+    render(count + 1);
+  }
 
-function render() {
+  function handleNumberClick(clickedNumber) {
+    render(clickedNumber);
+  }
+
+  function renderNumberButtons(array) {
+    return array.map((i) => (
+      <button
+        type="button"
+        onClick={() => handleNumberClick(i)}
+      >
+        {i}
+      </button>
+    ));
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
         <button
           type="button"
-          onClick={() => {
-            state.count += 1;
-            render();
-          }}
+          onClick={() => handleClickMe()}
         >
           Click me! (
-          {state.count}
+          {count}
           )
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => (
-          <button
-            type="button"
-            onClick={() => {
-              state.count = i;
-              render();
-            }}
-          >
-            {i}
-          </button>
-        ))}
+        {renderNumberButtons([1, 2, 3])}
       </p>
     </div>
   );
