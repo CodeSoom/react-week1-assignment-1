@@ -20,14 +20,13 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const count = {
-  countValue: 0,
-};
-
 function render({ countValue = 0 }) {
   function handleClick(newCountValue) {
-    count.countValue = newCountValue;
-    render(count);
+    render({ countValue: newCountValue });
+  }
+
+  function handleClickNumber(number) {
+    render({ countValue: number });
   }
 
   const element = (
@@ -40,6 +39,13 @@ function render({ countValue = 0 }) {
           )
         </button>
       </p>
+      <p>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
+          </button>
+        ))}
+      </p>
     </div>
   );
 
@@ -47,4 +53,4 @@ function render({ countValue = 0 }) {
   document.getElementById('app').appendChild(element);
 }
 
-render(count);
+render({});
