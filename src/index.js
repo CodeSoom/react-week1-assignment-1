@@ -1,38 +1,28 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 import { appRender, createElement } from './module';
-import { setStorage, getStorage } from './store';
 
-function render() {
-
-  const data = getStorage('count');
+function render(val = 0) {
+  const data = val;
 
   const setFixedNumber = (e) => {
-    setStorage({key: 'count', value: e.target.textContent });
-    render();
+    render(data + Number(e.target.value));
   };
 
   const setIncreaseNumber = () => {
-    setStorage({key: 'count', value: Number(data) + 1 });
-    render();
+    render(data + 1);
   };
 
   const element = (
     <p>
-      <button
-        type="button"
-        onClick={setIncreaseNumber}
-      >
+      <button type="button" onClick={setIncreaseNumber}>
         Click me!
         {` (${data})`}
       </button>
       <div>
-        {[1, 2, 3].map((val) => (
-          <button
-            type="button"
-            onClick={setFixedNumber}
-          >
-            {val}
+        {[1, 2, 3].map((num) => (
+          <button type="button" onClick={setFixedNumber} value={num}>
+            {num}
           </button>
         ))}
       </div>
