@@ -19,6 +19,10 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+const initState = {
+  count: 0,
+};
+
 function render({ count }) {
   function handleClick() {
     render({ count: count + 1 });
@@ -53,8 +57,4 @@ function render({ count }) {
   app.appendChild(element);
 }
 
-const initValue = {
-  count: 0,
-};
-
-render(initValue);
+render(initState);
