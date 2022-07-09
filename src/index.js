@@ -53,8 +53,8 @@ function render({ count }) {
   app.appendChild(element);
 }
 
-const init = {
+const initValue = {
   count: 0,
 };
 
-render(init);
+render(initValue);
