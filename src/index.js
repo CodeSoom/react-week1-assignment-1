@@ -2,22 +2,20 @@
 /* @jsx createElement */
 import { appRender, createElement } from './module';
 
-function render(val = 0) {
-  const data = val;
-
+function render({ count }) {
   const handleIncreaseNum = () => {
-    render(data + 1);
+    render({ count: count + 1 });
   };
 
   const handleAddNum = (e) => {
-    render(data + Number(e.target.value));
+    render({ count: Number(e.target.value) });
   };
 
   const element = (
     <p>
       <button type="button" onClick={handleIncreaseNum}>
         Click me!
-        {` (${data})`}
+        {` (${count})`}
       </button>
       <div>
         {[1, 2, 3].map((num) => (
@@ -32,4 +30,4 @@ function render(val = 0) {
   appRender(element);
 }
 
-render();
+render({ count: 0 });
