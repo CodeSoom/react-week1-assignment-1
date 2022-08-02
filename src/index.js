@@ -1,4 +1,5 @@
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension  */
+/* eslint no-use-before-define: ["error", { "functions": false }] */
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
@@ -37,7 +38,9 @@ function render() {
       <p>Hello, world!</p>
       <p>
         <button type="button" onClick={() => clickHandler.handleClick()}>
-          Click me! ({clickHandler.count})
+          Click me! (
+          {clickHandler.count}
+          )
         </button>
       </p>
       <p>
@@ -53,8 +56,8 @@ function render() {
     </div>
   );
 
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render();
