@@ -20,35 +20,26 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const clickHandler = {
-  count: 0,
-  handleClick() {
-    this.count += 1;
-    render();
-  },
-  handleClickNumber(value) {
-    this.count = value;
-    render();
-  },
-};
+function handleClick(value) {
+  render(value);
+}
 
-function render() {
+function render(value) {
+  const count = value || 0;
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => clickHandler.handleClick()}>
+        <button type="button" onClick={() => handleClick(count + 1)}>
           Click me! (
-          {clickHandler.count}
+          {count}
           )
         </button>
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button
-            type="button"
-            onClick={() => clickHandler.handleClickNumber(i)}
-          >
+          <button type="button" onClick={() => handleClick(i)}>
             {i}
           </button>
         ))}
