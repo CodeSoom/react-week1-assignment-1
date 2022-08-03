@@ -20,10 +20,6 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(value) {
-  render(value);
-}
-
 function render(value) {
   const count = value || 0;
 
@@ -31,7 +27,7 @@ function render(value) {
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => handleClick(count + 1)}>
+        <button type="button" onClick={() => render(count + 1)}>
           Click me! (
           {count}
           )
@@ -39,7 +35,7 @@ function render(value) {
       </p>
       <p>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClick(i)}>
+          <button type="button" onClick={() => render(i)}>
             {i}
           </button>
         ))}
