@@ -2,14 +2,11 @@
 /* @jsx createElement */
 
 function createElement(tagName, props, ...children) {
-  console.log(tagName, props, ...children);
-
-  console.log(children);
   const element = document.createElement(tagName);
 
-  Object.entries(props || {}).forEach(
-    ([key, value]) => (element[key.toLowerCase()] = value)
-  );
+  Object.entries(props || {}).forEach(([key, value]) => {
+    element[key.toLowerCase()] = value;
+  });
   children.flat().forEach((child) => {
     if (child instanceof Node) {
       element.appendChild(child);
@@ -21,11 +18,8 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick(count) {
-  render(count + 1);
-}
-
 function handleClickNumber(number) {
+  // eslint-disable-next-line no-use-before-define
   render(number);
 }
 
@@ -34,8 +28,10 @@ function render(count) {
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => handleClick(count)}>
-          Click me! ({count})
+        <button type="button" onClick={() => handleClickNumber(count + 1)}>
+          Click me! (
+          {count}
+          )
         </button>
       </p>
       <p>
@@ -47,8 +43,8 @@ function render(count) {
       </p>
     </div>
   );
-  document.getElementById("app").textContent = "";
-  document.getElementById("app").appendChild(element);
+  document.getElementById('app').textContent = '';
+  document.getElementById('app').appendChild(element);
 }
 
 render(0);
