@@ -18,12 +18,11 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClickNumber(number) {
-  // eslint-disable-next-line no-use-before-define
-  render(number);
-}
-
 function render(count) {
+  function handleClickNumber(number) {
+    render(number);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
