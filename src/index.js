@@ -1,11 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
-// console.log('잘 돌아가는지 확인!');
-
-// 전역에서 선언한 let에 재할당 안하기
-// let count = 0;
-
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -25,16 +20,16 @@ function createElement(tagName, props, ...children) {
 }
 
 // 매개변수 초기값 0 세팅
-function render(count = 0) {
+function render({ count = 0 } = {}) {
   // 초기값 count를 받아서 다시 그리기
   function handleClick(value) {
     const plusNumber = value + 1;
-    render(plusNumber);
+    render({ count: plusNumber });
   }
 
   // 클릭해서 들어온 index를 넣어 다시 랜더링하기
   function handleClickNumber(idx) {
-    render(idx);
+    render({ count: idx });
   }
 
   const element = (
