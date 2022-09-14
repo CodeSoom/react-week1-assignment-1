@@ -21,6 +21,8 @@ function createElement(tagName, props, ...children) {
 
 // 매개변수 초기값 0 세팅
 function render({ count = 0 } = {}) {
+  const root = document.getElementById('app');
+
   // 초기값 count를 받아서 다시 그리기
   function handleClick(value) {
     const plusNumber = value + 1;
@@ -49,8 +51,9 @@ function render({ count = 0 } = {}) {
       </p>
     </div>
   );
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+
+  root.textContent = '';
+  root.appendChild(element);
 }
 
-render();
+render({ count: 0 });
