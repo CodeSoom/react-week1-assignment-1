@@ -20,15 +20,18 @@ function createElement(tagName, props, ...children) {
 }
 
 const DEFAULT_COUNT = 0;
+const counter = {
+  count: DEFAULT_COUNT,
+};
 
-function render(count) {
+function render({ count }) {
   const root = document.getElementById('app');
 
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render(count + 1)}>
+        <button type="button" onClick={() => render({ count: count + 1 })}>
           Click me!
           (
           {count}
@@ -37,7 +40,7 @@ function render(count) {
       </p>
       <p>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => render(number)}>
+          <button type="button" onClick={() => render({ count: number })}>
             {number}
           </button>
         ))}
@@ -49,4 +52,4 @@ function render(count) {
   root.appendChild(element);
 }
 
-render(DEFAULT_COUNT);
+render(counter);
