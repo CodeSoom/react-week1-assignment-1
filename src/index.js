@@ -1,6 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
 
+const app = document.getElementById('app');
+
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -21,12 +23,9 @@ function createElement(tagName, props, ...children) {
 
 // 매개변수 초기값 0 세팅
 function render({ count = 0 } = {}) {
-  const root = document.getElementById('app');
-
-  // 초기값 count를 받아서 다시 그리기
-  function handleClick(value) {
-    const plusNumber = value + 1;
-    render({ count: plusNumber });
+  // count 값에 1씩 더하고 다시 랜더링하기
+  function handleClick() {
+    render({ count: count + 1 });
   }
 
   // 클릭해서 들어온 index를 넣어 다시 랜더링하기
@@ -39,21 +38,24 @@ function render({ count = 0 } = {}) {
       <p>Hello, World!</p>
       <p>Hi, World!</p>
       <p>
-        <button type="button" onClick={() => handleClick(count)}>
-          click me!
-          (
+        <button type="button" onClick={() => handleClick()}>
+          click me! (
           {count}
           )
         </button>
       </p>
       <p>
-        {[1, 2, 3].map((i) => <button type="button" onClick={() => handleClickNumber(i)}>{i}</button>)}
+        {[1, 2, 3].map((i) => (
+          <button type="button" onClick={() => handleClickNumber(i)}>
+            {i}
+          </button>
+        ))}
       </p>
     </div>
   );
 
-  root.textContent = '';
-  root.appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render({ count: 0 });
