@@ -20,6 +20,8 @@ function createElement(tagName, props, ...children) {
 }
 
 function render(count) {
+  const root = document.getElementById('app');
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -41,8 +43,8 @@ function render(count) {
     </div>
   );
 
-  document.getElementById('app').textContent = '';
-  document.getElementById('app').appendChild(element);
+  root.textContent = '';
+  root.appendChild(element);
 }
 
 render(0);
