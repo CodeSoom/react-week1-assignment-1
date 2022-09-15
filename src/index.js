@@ -19,6 +19,8 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+const DEFAULT_COUNT = 0;
+
 function render(count) {
   const root = document.getElementById('app');
 
@@ -47,4 +49,4 @@ function render(count) {
   root.appendChild(element);
 }
 
-render(0);
+render(DEFAULT_COUNT);
