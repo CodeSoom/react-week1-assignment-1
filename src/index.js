@@ -19,14 +19,13 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
+const app = document.getElementById('app');
 const DEFAULT_COUNT = 0;
 const counter = {
   count: DEFAULT_COUNT,
 };
 
 function render({ count }) {
-  const root = document.getElementById('app');
-
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
@@ -48,8 +47,8 @@ function render({ count }) {
     </div>
   );
 
-  root.textContent = '';
-  root.appendChild(element);
+  app.textContent = '';
+  app.appendChild(element);
 }
 
 render(counter);
