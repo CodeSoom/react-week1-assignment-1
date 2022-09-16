@@ -21,16 +21,30 @@ function createElement(tagName, props, ...children) {
 
 const app = document.getElementById('app');
 const DEFAULT_COUNT = 0;
-const counter = {
+const init = {
   count: DEFAULT_COUNT,
 };
 
 function render({ count }) {
+  function handleClick() {
+    const props = {
+      count: count + 1,
+    };
+    render(props);
+  }
+
+  function handleClickNumber(value) {
+    const props = {
+      count: value,
+    };
+    render(props);
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, world!</p>
       <p>
-        <button type="button" onClick={() => render({ count: count + 1 })}>
+        <button type="button" onClick={() => handleClick()}>
           Click me!
           (
           {count}
@@ -39,7 +53,7 @@ function render({ count }) {
       </p>
       <p>
         {[1, 2, 3].map((number) => (
-          <button type="button" onClick={() => render({ count: number })}>
+          <button type="button" onClick={() => handleClickNumber(number)}>
             {number}
           </button>
         ))}
@@ -51,4 +65,4 @@ function render({ count }) {
   app.appendChild(element);
 }
 
-render(counter);
+render(init);
