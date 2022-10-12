@@ -1,8 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-import { useState } from 'react';
-
-const [count, setCount] = useState(0);
 function createElement(tagName, props, ...children) {
   const element = document.createElement(tagName);
 
@@ -20,17 +17,19 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function handleClick() {
-  const counter = count++;
-  setCount(counter);
-  render();
-}
+function render({ count }) {
+  const initial = {
+    count: 0,
+  };
 
-function handleClickNumber(value) {
-  count = value;
-  render();
-}
-function render() {
+  function handleClick() {
+    render({ count: count + 1 });
+  }
+
+  function handleClickNumber(idx) {
+    render({ count: idx });
+  }
+
   const element = (
     <div id="hello" className="greeting">
       <p>Hello, World!</p>
@@ -54,4 +53,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render({ count: 0 });
