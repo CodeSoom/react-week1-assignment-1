@@ -42,8 +42,14 @@ const template = (count, addCount, setCount) => (
 );
 
 function render(state) {
-  const addCount = (count) => { render({ ...state, count: count + 1 }); };
-  const setCount = (value) => { render({ ...state, count: value }); };
+  const addCount = (count) => {
+    render({ ...state, count: count + 1 });
+  };
+
+  const setCount = (value) => {
+    render({ ...state, count: value });
+  };
+
   const container = document.getElementById('app');
   container.textContent = '';
   container.appendChild(template(state.count, addCount, setCount));
