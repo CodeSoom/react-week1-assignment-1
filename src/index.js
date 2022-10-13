@@ -18,29 +18,6 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-const template = (count, addCount, setCount) => (
-  <div>
-    <div id="title">
-      <p>hello world!</p>
-      <p>hello world!!</p>
-    </div>
-    <div>
-      <button type="button" onClick={() => addCount(count)}>
-        Click me (
-        {count}
-        )
-      </button>
-      <div>
-        {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => setCount(i)}>
-            {i}
-          </button>
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
 function render(state) {
   const addCount = (count) => {
     render({ ...state, count: count + 1 });
@@ -50,9 +27,32 @@ function render(state) {
     render({ ...state, count: value });
   };
 
+  const template = (
+    <div>
+      <div id="title">
+        <p>hello world!</p>
+        <p>hello world!!</p>
+      </div>
+      <div>
+        <button type="button" onClick={() => addCount(state.count)}>
+          Click me (
+          {state.count}
+          )
+        </button>
+        <div>
+          {[1, 2, 3].map((i) => (
+            <button type="button" onClick={() => setCount(i)}>
+              {i}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
   const container = document.getElementById('app');
   container.textContent = '';
-  container.appendChild(template(state.count, addCount, setCount));
+  container.appendChild(template);
 }
 
 const initState = {
