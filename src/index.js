@@ -17,11 +17,7 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render({ count }) {
-  const initial = {
-    count: 0,
-  };
-
+function render({ count = 0 }) {
   function handleClick() {
     render({ count: count + 1 });
   }
@@ -35,8 +31,7 @@ function render({ count }) {
       <p>Hello, World!</p>
       <p>
         <button type="button" onClick={handleClick}>
-          Click Me!(
-          {count})
+          Click Me! ({count})
         </button>
       </p>
       <p>
