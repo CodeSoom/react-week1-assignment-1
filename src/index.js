@@ -20,19 +20,15 @@ function createElement(tagName, props, ...children) {
 }
 
 //
-const count = {
-  number: 0,
-};
 
-function render() {
-  function handleClick() {
-    count.number += 1;
-    render(count);
+function render(count = 0) {
+  function handleClick(number) {
+    number += 1;
+    render(number);
   }
 
   function handleClickNumber(value) {
-    count.number = value;
-    render(count);
+    render(value);
   }
 
   const element = (
@@ -42,9 +38,7 @@ function render() {
         <button type="button" onClick={() => handleClick(count)}>
           Click me!
           (
-          {
-              Object.values(count)
-            }
+          {count}
           )
         </button>
       </p>
