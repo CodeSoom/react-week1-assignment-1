@@ -22,8 +22,8 @@ function render({ count = 0 }) {
     render({ count: count + 1 });
   }
 
-  function handleClickNumber(idx) {
-    render({ count: idx });
+  function handleClickNumber(clickNumber) {
+    render({ count: clickNumber });
   }
 
   const element = (
