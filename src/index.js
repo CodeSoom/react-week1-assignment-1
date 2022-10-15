@@ -20,15 +20,13 @@ function createElement(tagName, props, ...children) {
 }
 
 //
-
 function render(count = 0) {
   function handleClick(number) {
-    number += 1;
-    render(number);
+    render(number + 1);
   }
 
-  function handleClickNumber(value) {
-    render(value);
+  function handleClickNumber(number) {
+    render(number);
   }
 
   const element = (
