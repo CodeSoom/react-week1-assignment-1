@@ -20,25 +20,27 @@ const createElement = (tagName, props, ...children) => {
     return element;
 };
 
-let count = 0;
-
-function clickHandler() {
-    count += 1;
-    render();
-}
-
-function clickNumberHandler(clickedNumber) {
-    count = clickedNumber;
-    render();
-}
+const state = {
+    count: 0,
+};
 
 function render() {
+    function clickHandler() {
+        state.count += 1;
+        render();
+    }
+
+    function clickNumberHandler(clickedNumber) {
+        state.count = clickedNumber;
+        render();
+    }
+
     const element = ( <
         div >
         <
         button type = "button"
         onClick = { clickHandler } >
-        클릭!{ count } { ' ' } <
+        클릭!{ state.count } { ' ' } <
         /button>{' '} <
         p > { ' ' } {
             [1, 2, 3].map(i => ( <
