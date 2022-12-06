@@ -40,17 +40,18 @@ function render() {
         <
         button type = "button"
         onClick = { clickHandler } >
-        클릭!{ state.count } { ' ' } <
-        /button>{' '} <
-        p > { ' ' } {
+        Click me!({ state.count }) <
+        /button> <
+        p > {
             [1, 2, 3].map(i => ( <
                 button type = "button"
                 onClick = {
-                    () => clickNumberHandler(i) } > { ' ' } { i } { ' ' } <
+                    () => clickNumberHandler(i) } >
+                ({ i }) <
                 /button>
             ))
-        } { ' ' } <
-        /p>{' '} <
+        } <
+        /p> <
         /div>
     );
 
