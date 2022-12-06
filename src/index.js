@@ -1,7 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
 /* @jsx createElement */
-/* eslint-disable react/react-in-jsx-scope, react/jsx-filename-extension */
-/* @jsx createElement */
+
 const createElement = (tagName, props, ...children) => {
     const element = document.createElement(tagName);
 
