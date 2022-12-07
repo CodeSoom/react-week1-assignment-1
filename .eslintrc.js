@@ -4,7 +4,12 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+    extends: [
+        'plugin:react/recommended',
+        'airbnb',
+        'plugin:prettier/recommended',
+    ],
+    parser: 'babel-eslint',
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
