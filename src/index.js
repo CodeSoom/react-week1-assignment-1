@@ -15,7 +15,6 @@ const createElement = (tagName, props, ...children) => {
     }
     element.appendChild(document.createTextNode(child));
   });
-
   return element;
 };
 
