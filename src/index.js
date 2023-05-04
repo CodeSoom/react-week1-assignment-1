@@ -80,31 +80,27 @@ const createElement = (tagName, props, ...children) => {
   return tag;
 };
 
-let num = 1;
-
-function handleClick() {
-  num += 1;
-  render();
+function numberAddClick(count) {
+  render(count + 1);
 }
 
-function handleClickNum(clickNum) {
-  num = clickNum;
-  render();
+function changeNumberHandler(clickNum) {
+  render(clickNum);
 }
 
-function render() {
+function render(count) {
   const element = (
     <div>
       <p className="hi" id="tag">
         Hi
       </p>
 
-      <button type="button" onClick={handleClick}>
-        Click me {num}
+      <button type="button" onclick={() => numberAddClick(count)}>
+        Click me! {count}
       </button>
       <div>
         {[1, 2, 3].map((i) => (
-          <button type="button" onClick={() => handleClickNum(i)}>
+          <button type="button" onclick={() => changeNumberHandler(i)}>
             {i}
           </button>
         ))}
@@ -115,4 +111,4 @@ function render() {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render((count = 0));
