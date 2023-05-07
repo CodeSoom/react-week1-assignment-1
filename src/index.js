@@ -61,13 +61,10 @@
 
 // step5. 바벨을 적용해 JSX로 만들어주기
 const createElement = (tagName, props, ...children) => {
-  console.log(props);
-
   const tag = document.createElement(tagName);
 
   Object.entries(props || {}).forEach(([key, value]) => {
     tag[key.toLowerCase()] = value;
-    console.log(tag);
   });
 
   children.flat().forEach((child) => {
@@ -80,13 +77,13 @@ const createElement = (tagName, props, ...children) => {
   return tag;
 };
 
-function render(count = 0) {
+function render({ count }) {
   function handleClickMe() {
-    render(count + 1);
+    render({ count: count + 1 });
   }
 
   function handleClickNumber(number) {
-    render(number);
+    render({ count: number });
   }
   const element = (
     <div>
@@ -110,4 +107,4 @@ function render(count = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render({ count: 0 });
